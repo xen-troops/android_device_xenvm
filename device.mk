@@ -157,7 +157,7 @@ PRODUCT_PACKAGES += \
 # Vehicle HAL
 PRODUCT_PACKAGES += \
     android.hardware.automotive.vehicle-V2.0-java \
-    android.hardware.automotive.vehicle@2.0-service 
+    android.hardware.automotive.vehicle@2.0-service.xenvm \
 
 # HW service manager
 PRODUCT_PACKAGES += \
