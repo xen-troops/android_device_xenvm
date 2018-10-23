@@ -42,13 +42,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.radio.noril=true \
     ro.carrier=unknown
 
-# Automotive overrides
-PRODUCT_PROPERTY_OVERRIDES += \
-    android.car.drawer.unlimited=true \
-    android.car.hvac.demo=true \
-    com.android.car.radio.demo=true \
-    com.android.car.radio.demo.dual=true
-
 PRODUCT_PROPERTY_OVERRIDES += ro.sf.lcd_density=160
 
 PRODUCT_TAGS += dalvik.gc.type-precise
