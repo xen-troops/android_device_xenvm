@@ -75,12 +75,6 @@ PRODUCT_PROPERTY_OVERRIDES := \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.setupwizard.require_network=any
 
-PRODUCT_PROPERTY_OVERRIDES += \
-    android.car.drawer.unlimited=true \
-    android.car.hvac.demo=true \
-    com.android.car.radio.demo=true \
-    com.android.car.radio.demo.dual=true
-
 
 PRODUCT_PROPERTY_OVERRIDES += \
     keyguard.no_require_sim=true
@@ -90,7 +84,6 @@ PRODUCT_PACKAGES += \
     CarService \
     CarTrustAgentService \
     CarDialerApp \
-    CarRadioApp \
     OverviewApp \
     CarLauncher \
     CarLensPickerApp \
