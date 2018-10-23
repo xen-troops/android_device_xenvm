@@ -20,7 +20,7 @@
 
 /system/bin/vehicle_monitor_service                                                 u:object_r:vms_exec:s0
 /vendor/bin/hw/android.hardware.memtrack@1.0-service                                u:object_r:hal_memtrack_default_exec:s0
-/vendor/bin/hw/android.hardware.automotive.vehicle@2.0-service                      u:object_r:hal_vehicle_default_exec:s0
+/vendor/bin/hw/android.hardware.automotive.vehicle@2.0-service.xenvm                u:object_r:hal_vehicle_default_exec:s0
 /vendor/bin/hw/android.hardware.thermal@1.0-service                                 u:object_r:hal_thermal_default_exec:s0
 /vendor/bin/hw/android.hardware.dumpstate@1.0-service                               u:object_r:hal_dumpstate_default_exec:s0
 /vendor/bin/hw/android.hardware.gnss@1.1-service.xenvm                              u:object_r:hal_gnss_default_exec:s0
