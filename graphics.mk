@@ -38,7 +38,7 @@ $(call inherit-product-if-exists, vendor/imagination/llvm/device-vendor.mk)
 PRODUCT_PACKAGES += $(DDK_UM_DEP)
 else
 # Use DDK-UM from prebuilds
-$(call inherit-product-if-exists, $(DDK_UM_PREBUILDS))
+$(call inherit-product-if-exists, $(DDK_UM_PREBUILDS)/prebuilds.mk)
 endif # DDK_UM_PREBUILDS
 
 
