@@ -1,0 +1,4 @@
+type audiocontrol_service_xenvm, domain;
+type audiocontrol_service_xenvm_exec, exec_type, vendor_file_type, file_type;
+
+init_daemon_domain(audiocontrol_service_xenvm)

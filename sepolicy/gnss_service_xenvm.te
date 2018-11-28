@@ -1,0 +1,14 @@
+type gnss_service_xenvm, domain;
+type gnss_service_xenvm_exec, exec_type, vendor_file_type, file_type;
+
+init_daemon_domain(gnss_service_xenvm)
+
+allow gnss_service_xenvm hidl_base_hwservice:hwservice_manager add;
+allow gnss_service_xenvm hwservicemanager:binder { call transfer };
+allow gnss_service_xenvm hwservicemanager_prop:file { getattr map open read };
+allow gnss_service_xenvm self:tcp_socket create;
+allow gnss_service_xenvm system_server:binder { call transfer };
+
+
+typeattribute gnss_service_xenvm hal_automotive_socket_exemption;
+

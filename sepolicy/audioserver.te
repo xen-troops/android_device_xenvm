@@ -1,0 +1,2 @@
+allow audioserver debugfs_tracing:file { open read write };
+

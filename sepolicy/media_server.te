@@ -1,0 +1,2 @@
+allow mediaserver tty_device:chr_file { read write };
+allow mediaserver debugfs_tracing:file { open read write };

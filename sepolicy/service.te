@@ -1,0 +1,7 @@
+#============= service ==============
+type car_service, service_manager_type;
+type vms_service, service_manager_type;
+
+allow servicemanager vms:dir search;
+allow servicemanager vms:file { open read };
+allow servicemanager vms:process getattr;

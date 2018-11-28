@@ -1,0 +1,2 @@
+allow profman debugfs_tracing:file { open read write };
+

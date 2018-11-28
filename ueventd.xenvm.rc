@@ -1,0 +1,5 @@
+/dev/ion		0666	system		graphics
+/dev/pvrsrvkm		0666	system		graphics
+/dev/pvr_sync		0666	system		graphics
+/dev/dri/controlD64	0660	system		graphics
+/dev/ttyUSB0		0666	system		system

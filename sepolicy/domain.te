@@ -1,0 +1,2 @@
+dontaudit domain kernel:system module_request;
+

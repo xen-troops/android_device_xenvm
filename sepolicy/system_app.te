@@ -1,0 +1,6 @@
+#============= system_app ==============
+hal_client_domain(system_app, hal_vehicle)
+
+set_prop(system_app, car_prop)
+
+allow system_app hal_vehicle_hwservice:hwservice_manager { find };

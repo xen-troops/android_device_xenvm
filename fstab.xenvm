@@ -1,0 +1,4 @@
+/dev/block/xvda1           /               ext4    ro,barrier=1,discard                  wait,verify
+/dev/block/xvda3           /misc           emmc    defaults                              defaults
+/dev/block/xvda4           /data           ext4    noatime,nosuid,nodev,barrier=1        wait,check,latemount
+

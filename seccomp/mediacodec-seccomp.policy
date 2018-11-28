@@ -1,0 +1,5 @@
+newfstatat: 1
+mmap: 1
+fstat: 1
+getrlimit: 1
+getuid: 1

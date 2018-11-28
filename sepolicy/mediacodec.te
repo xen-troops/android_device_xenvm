@@ -1,0 +1,2 @@
+allow mediacodec tty_device:chr_file { read write };
+allow mediacodec debugfs_tracing:file { open read write };

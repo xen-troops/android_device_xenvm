@@ -1,0 +1,3 @@
+#============= update_verifier ==============
+allow update_verifier sysfs:dir read;
+allow update_verifier sysfs:file { getattr open read };

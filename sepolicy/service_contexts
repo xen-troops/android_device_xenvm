@@ -1,0 +1,3 @@
+#============= service_contexts ==============
+com.android.car.vehiclenetwork.IVehicleNetwork          u:object_r:car_service:s0
+com.android.car.vehiclemonitor.IVehicleMonitor          u:object_r:vms_service:s0

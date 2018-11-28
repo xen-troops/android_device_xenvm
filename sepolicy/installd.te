@@ -1,0 +1,2 @@
+#============= installd ==============
+allow installd self:capability sys_admin;
