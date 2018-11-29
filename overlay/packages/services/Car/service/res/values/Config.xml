@@ -1,4 +1,8 @@
 <resources>
+    <!--  Configuration to enable usage of dynamic audio routing. If this is set to false,
+          dynamic audio routing is disabled and audio works in legacy mode. It may be useful
+          during initial development where audio hal does not support bus based addressing yet. -->
+    <bool name="audioUseDynamicRouting">true</bool>
     <!-- default activity whitelist which are allowed while driving -->
 <!--    <string name="defauiltActivityWhitelist">com.epam.telemetrics,com.android.systemui,com.android.car.dialer,com.android.car.hvac,com.android.car.media,com.android.car.radio,com.android.support.car.lenspicker</string> -->
 </resources>
