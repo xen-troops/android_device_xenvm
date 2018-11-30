@@ -137,7 +137,7 @@ PRODUCT_PACKAGES += \
 
 # AudioControl
 PRODUCT_PACKAGES += \
-    android.hardware.automotive.audiocontrol@1.0-service.xenvm \
+    android.hardware.automotive.audiocontrol@1.0-service \
 
 # Composer
 PRODUCT_PACKAGES += \
