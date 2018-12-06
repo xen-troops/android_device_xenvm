@@ -33,8 +33,12 @@ endif
 ifeq ($(DDK_UM_PREBUILDS),)
 # Build DDK-UM
 DDK_UM_DEP=img_ddk_um
+
+ifeq ($(DDK_BUILD_OPENCL),true)
 $(call inherit-product-if-exists, vendor/imagination/clang/device-vendor.mk)
 $(call inherit-product-if-exists, vendor/imagination/llvm/device-vendor.mk)
+endif
+
 PRODUCT_PACKAGES += $(DDK_UM_DEP)
 else
 # Use DDK-UM from prebuilds
