@@ -196,4 +196,7 @@ endif
 $(call inherit-product, device/xen/xenvm/graphics.mk)
 $(call inherit-product-if-exists, frameworks/base/data/sounds/AudioPackage13.mk)
 $(call inherit-product-if-exists, frameworks/base/data/fonts/fonts.mk)
+ifeq ($(USE_G_APPS),true)
+$(call inherit-product-if-exists, vendor/Google/Google-product.mk)
+endif
 
