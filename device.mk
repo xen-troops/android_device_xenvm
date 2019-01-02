@@ -111,6 +111,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     packages/services/Car/car_product/bootanimations/bootanimation-832.zip:system/media/bootanimation.zip
 
+# Input configuration
+PRODUCT_COPY_FILES += \
+    device/xen/xenvm/Vendor_5853_Product_fffd.idc:$(TARGET_COPY_OUT_VENDOR)/usr/idc/Vendor_5853_Product_fffd.idc \
+
 # Native apps for audio
 PRODUCT_PACKAGES += \
     tinyplay \
