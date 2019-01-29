@@ -187,11 +187,10 @@ ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
 PRODUCT_PROPERTY_OVERRIDES += ro.logd.size=2M
 endif
 
-# Gallery, Music and SoundRecorder for local AV playback and record
+# Gallery and Music for local AV playback
 PRODUCT_PACKAGES += \
      Gallery2 \
      Music \
-     SoundRecorder
 
 ifneq ($(TARGET_PREBUILT_KERNEL),)
 PRODUCT_COPY_FILES +=   $(TARGET_PREBUILT_KERNEL):kernel
