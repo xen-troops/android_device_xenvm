@@ -1,0 +1,9 @@
+type hal_keymaster_optee, domain;
+hal_server_domain(hal_keymaster_optee, hal_keymaster)
+
+type hal_keymaster_optee_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(hal_keymaster_optee)
+
+allow hal_keymaster_optee tee_device:chr_file rw_file_perms;
+allow hal_keymaster_optee vendor_data_file:dir create_dir_perms;
+allow hal_keymaster_optee vendor_data_file:file create_file_perms;
