@@ -3,3 +3,5 @@
 /dev/pvr_sync		0666	system		graphics
 /dev/dri/controlD64	0660	system		graphics
 /dev/ttyUSB0		0666	system		system
+/dev/teepriv0		0660	system		keystore
+/dev/tee0		0660	system		keystore
