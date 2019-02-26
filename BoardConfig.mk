@@ -72,7 +72,7 @@ ART_USE_HSPACE_COMPACT := true
 BOARD_SECCOMP_POLICY += device/xen/xenvm/seccomp
 
 # SELinux support
-BOARD_SEPOLICY_DIRS += device/xen/xenvm/sepolicy
+BOARD_VENDOR_SEPOLICY_DIRS += device/xen/xenvm/sepolicy
 
 ifeq ($(TARGET_PREBUILT_KERNEL),)
 # Kernel build rules
