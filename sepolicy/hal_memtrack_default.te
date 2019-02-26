@@ -1,0 +1,4 @@
+userdebug_or_eng(`
+  dontaudit hal_memtrack_default debugfs:dir { open read };
+  dontaudit hal_memtrack_default debugfs:file { getattr open read };
+')
