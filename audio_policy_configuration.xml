@@ -60,7 +60,9 @@
               <profile name="" format="AUDIO_FORMAT_PCM_16_BIT" samplingRates="48000" channelMasks="AUDIO_CHANNEL_OUT_STEREO"/>
             </mixPort>
             <mixPort name="primary input" role="sink">
-              <profile name="" format="AUDIO_FORMAT_PCM_16_BIT" samplingRates="48000" channelMasks="AUDIO_CHANNEL_IN_STEREO"/>
+              <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
+                       samplingRates="8000,11025,12000,16000,22050,24000,32000,44100,48000"
+                       channelMasks="AUDIO_CHANNEL_IN_MONO,AUDIO_CHANNEL_IN_STEREO"/>
             </mixPort>
           </mixPorts>
 
@@ -115,7 +117,9 @@
             </devicePort>
 
             <devicePort tagName="Built-In Mic" type="AUDIO_DEVICE_IN_BUILTIN_MIC" role="source">
-              <profile name="" format="AUDIO_FORMAT_PCM_16_BIT" samplingRates="48000" channelMasks="AUDIO_CHANNEL_IN_MONO"/>
+              <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
+                       samplingRates="8000,11025,12000,16000,22050,24000,32000,44100,48000"
+                       channelMasks="AUDIO_CHANNEL_IN_MONO,AUDIO_CHANNEL_IN_STEREO"/>
             </devicePort>
             <devicePort tagName="Line In" type="AUDIO_DEVICE_IN_LINE" role="source">
               <profile name="" format="AUDIO_FORMAT_PCM_16_BIT" samplingRates="48000" channelMasks="AUDIO_CHANNEL_IN_STEREO"/>
