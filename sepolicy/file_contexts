@@ -27,6 +27,7 @@
 /vendor/bin/hw/android.hardware.automotive.audiocontrol@1.0-service.xenvm           u:object_r:hal_audiocontrol_default_exec:s0
 /vendor/bin/hw/android.hardware.keymaster@3.0-service.optee                         u:object_r:hal_keymaster_optee_exec:s0
 /vendor/bin/hw/android.hardware.gatekeeper@1.0-service.optee                        u:object_r:hal_gatekeeper_optee_exec:s0
+/vendor/bin/hw/android.hardware.sensors@1.0-service.xenvm                           u:object_r:hal_sensors_default_exec:s0
 
 # optee
 /dev/tee0                            u:object_r:tee_device:s0
