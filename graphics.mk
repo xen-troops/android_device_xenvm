@@ -52,10 +52,11 @@ ifeq ($(TARGET_PREBUILT_KERNEL),)
 HOSTCC=$(ABS_TOP)/prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.15-4.8/bin/x86_64-linux-gcc
 ANDROID_TOOLCHAIN_XX=$(ABS_TOP)/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/bin
 CROSS_COMPILE="$(ANDROID_TOOLCHAIN_XX)/aarch64-linux-android-"
+KM_TOP=$(ABS_TOP)/vendor/imagination/rogue_km/
 
 RGX_MODULE:
-	make -C vendor/imagination/rogue_km/build/linux/$(TARGET_SOC_PLATFORM_REVISION)_android KERNELDIR=$(KERNEL_OUT) \
-        PVRSRV_VZ_NUM_OSID=$(PVRSRV_VZ_NUM_OSID) ANDROID_ROOT=$(ABS_TOP) CROSS_COMPILE=$(CROSS_COMPILE) ARCH="arm64"\
+	make -C $(KM_TOP)/build/linux/$(TARGET_SOC_PLATFORM_REVISION)_android KERNELDIR=$(KERNEL_OUT) \
+        PVRSRV_VZ_NUM_OSID=$(PVRSRV_VZ_NUM_OSID) ANDROID_ROOT=$(ABS_TOP) CROSS_COMPILE=$(CROSS_COMPILE) ARCH="arm64" TOP=$(KM_TOP) \
         OUT=$(PRODUCT_OUT)/obj/ROGUE_KM_OBJ HOST_CC=$(HOSTCC) KERNEL_CROSS_COMPILE=$(CROSS_COMPILE)
 	mv $(PRODUCT_OUT)/obj/ROGUE_KM_OBJ/target_aarch64/kbuild/pvrsrvkm.ko $(TARGET_KERNEL_MODULES_OUT)
 
