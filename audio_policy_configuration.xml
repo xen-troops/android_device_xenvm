@@ -35,7 +35,7 @@
           <defaultOutputDevice>bus0_out_media</defaultOutputDevice>
 
           <mixPorts>
-            <mixPort name="mixport_bus0" role="source" flags="AUDIO_OUTPUT_FLAG_PRIMARY">
+            <mixPort name="mixport_bus0" role="source" flags="AUDIO_OUTPUT_FLAG_PRIMARY|AUDIO_OUTPUT_FLAG_DEEP_BUFFER">
               <profile name="" format="AUDIO_FORMAT_PCM_16_BIT" samplingRates="48000" channelMasks="AUDIO_CHANNEL_OUT_STEREO"/>
             </mixPort>
             <mixPort name="mixport_bus1" role="source" flags="AUDIO_OUTPUT_FLAG_PRIMARY">
