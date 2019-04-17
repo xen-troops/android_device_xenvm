@@ -1,0 +1,2 @@
+# reported by audit2allow when camera is active
+allow surfaceflinger hal_evs_driver:binder call;
