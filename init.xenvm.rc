@@ -24,6 +24,7 @@ on boot
     write /sys/power/wake_lock ws10_suspend_wa
 
 on late-init
+    chmod 666 /dev/video0
     start tee_supplicant
 
 service pvrsrvctl /vendor/bin/pvrsrvctl --start
