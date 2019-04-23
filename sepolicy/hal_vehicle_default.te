@@ -4,5 +4,9 @@ hal_server_domain(hal_vehicle_default, hal_vehicle)
 allow hal_vehicle_default car_service:service_manager { add };
 allow hal_vehicle_default node:tcp_socket node_bind;
 allow hal_vehicle_default self:tcp_socket { accept bind create listen };
+allow hal_vehicle_default fwmarkd_socket:sock_file write;
+allow hal_vehicle_default netd:unix_stream_socket connectto;
+allow hal_vehicle_default port:tcp_socket name_connect;
+allow hal_vehicle_default self:tcp_socket { connect read setopt write };
 
 typeattribute hal_vehicle_default hal_automotive_socket_exemption;
