@@ -177,6 +177,13 @@ PRODUCT_PACKAGES += \
     android.hardware.gnss@1.1-service.xenvm \
     libuws \
 
+#Sensors
+PRODUCT_PACKAGES += \
+       android.hardware.sensors@1.0-service.xenvm \
+
+PRODUCT_COPY_FILES += \
+    vendor/xen/sensors/cfg/sensors-config.json:$(TARGET_COPY_OUT_VENDOR)/etc/vehicle/sensors-config.json
+
 # Set default log size on userdebug/eng builds to 2M
 ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
 PRODUCT_PROPERTY_OVERRIDES += ro.logd.size=2M
