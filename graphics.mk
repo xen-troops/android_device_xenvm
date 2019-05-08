@@ -46,7 +46,7 @@ $(call inherit-product-if-exists, $(DDK_UM_PREBUILDS)/prebuilds.mk)
 endif # DDK_UM_PREBUILDS
 
 
-ifeq ($(TARGET_PREBUILT_KERNEL),)
+ifeq ($(DDK_KM_PREBUILT_MODULE),)
 # Rule for building DDK-KM module
 
 HOSTCC=$(ABS_TOP)/prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.15-4.8/bin/x86_64-linux-gcc
@@ -72,7 +72,7 @@ RGX_MODULE:
 
 $(BOARD_VENDOR_KERNEL_MODULES) : RGX_MODULE $(DDK_UM_DEP)
 
-endif # TARGET_PREBUILT_KERNEL
+endif # DDK_KM_PREBUILT_MODULE
 
 # Global for IMG DDK
 
