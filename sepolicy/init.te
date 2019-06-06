@@ -29,8 +29,11 @@ allow init configfs:lnk_file { create unlink };
 allow init configfs:file create;
 allow init debugfs:dir mounton;
 allow init functionfs:dir mounton;
-
+#============= init ==============
 allow init self:capability sys_nice;
-
 allow init sysfs:file create;
+
+userdebug_or_eng(`
+  dontaudit init self:capability dac_read_search;
+')
 

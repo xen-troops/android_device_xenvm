@@ -3,3 +3,7 @@ allow vold kernel:system module_request;
 allow vold storage_stub_file:dir {open read};
 allow vold cache_file:dir {open read write};
 allow vold block_device:file {create open read write unlink getattr};
+
+userdebug_or_eng(`
+  dontaudit vold self:capability dac_read_search;
+')
