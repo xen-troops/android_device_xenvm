@@ -1,2 +1,6 @@
 #============= installd ==============
 allow installd self:capability sys_admin;
+
+userdebug_or_eng(`
+  dontaudit installd self:capability dac_read_search;
+')
