@@ -1,0 +1,2 @@
+#============= vendor_init ==============
+allow vendor_init file_contexts_file:file map;

@@ -1,0 +1,6 @@
+#============= uncrypt ==============
+userdebug_or_eng(`
+  dontaudit uncrypt block_device:blk_file { open write };
+')
+allow uncrypt sysfs:dir { open read };
+allow uncrypt sysfs:file { getattr open read };

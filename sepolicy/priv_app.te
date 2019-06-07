@@ -1,3 +1,15 @@
+#============= priv_app ==============
 hal_client_domain(priv_app, hal_vehicle)
 
 get_prop(priv_app, opengles_prop)
+
+allow priv_app proc:file { getattr open };
+allow priv_app proc_modules:file { getattr open };
+allow priv_app sysfs:dir open;
+allow priv_app sysfs:file { open read };
+allow priv_app zygote:dir search;
+allow priv_app device:dir open;
+allow priv_app proc_interrupts:file open;
+userdebug_or_eng(`
+  dontaudit priv_app zygote:file { open read };
+')
