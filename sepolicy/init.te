@@ -35,5 +35,7 @@ allow init sysfs:file create;
 
 userdebug_or_eng(`
   dontaudit init self:capability dac_read_search;
+  dontaudit init proc:file setattr;
+  dontaudit init sysfs:file { open read };
 ')
 

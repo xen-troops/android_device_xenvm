@@ -6,3 +6,8 @@ set_prop(system_app, car_prop)
 allow system_app hal_vehicle_hwservice:hwservice_manager { find };
 allow system_app hal_audiocontrol_hwservice:hwservice_manager { find };
 allow system_app hal_audiocontrol_default:binder { call };
+allow system_app proc_uid_io_stats:file { getattr open read };
+
+userdebug_or_eng(`
+  dontaudit system_app default_android_service:service_manager add;
+')

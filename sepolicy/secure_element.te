@@ -1,0 +1,2 @@
+#============= secure_element ==============
+allow secure_element runtime_event_log_tags_file:file map;

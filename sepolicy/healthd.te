@@ -1,3 +1,8 @@
+#============= healthd ==============
 allow healthd self:capability { sys_nice };
 allow healthd self:capability2 wake_alarm;
 allow healthd device:dir w_dir_perms;
+
+userdebug_or_eng(`
+  dontaudit healthd debugfs_tracing_debug:filesystem mount;
+')
