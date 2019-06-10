@@ -1,0 +1,4 @@
+#============= hal_allocator_default ==============
+userdebug_or_eng(`
+  dontaudit hal_allocator_default debugfs_tracing_debug:filesystem mount;
+')
