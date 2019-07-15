@@ -91,3 +91,8 @@ PVRSRV_VZ_NUM_OSID := 2
 ANDROID_COMPILE_WITH_JACK := false
 
 BOARD_USES_DRM_HWCOMPOSER := true
+
+# Verified boot
+ifeq ($(ENABLE_AVB),true)
+  BOARD_AVB_ENABLE := true
+endif
