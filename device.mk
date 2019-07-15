@@ -84,9 +84,13 @@ PRODUCT_COPY_FILES +=\
     packages/services/Car/car_product/init/init.bootstat.rc:root/init.bootstat.rc
 
 # Mount points
-PRODUCT_COPY_FILES += \
+ifeq ($(ENABLE_AVB),true)
+  PRODUCT_COPY_FILES += \
+    device/xen/xenvm/fstab.xenvm.avb:root/fstab.xenvm
+else
+  PRODUCT_COPY_FILES += \
     device/xen/xenvm/fstab.xenvm:root/fstab.xenvm
-
+endif
 PRODUCT_COPY_FILES += \
     device/xen/xenvm/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration.xml \
     frameworks/av/services/audiopolicy/config/audio_policy_volumes.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_volumes.xml \
