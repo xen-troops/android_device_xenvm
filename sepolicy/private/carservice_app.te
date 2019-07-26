@@ -47,3 +47,4 @@ allow carservice_app procfsinspector:binder call;
 
 # To access /sys/fs/<type>/<partition>/lifetime_write_kbytes
 allow carservice_app sysfs_fs_lifetime_write:file { getattr open read };
+allow carservice_app runtime_event_log_tags_file:file map;
