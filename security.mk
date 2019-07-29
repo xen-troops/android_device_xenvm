@@ -15,6 +15,9 @@
 # limitations under the License.
 #
 
+TEEC_TEST_LOAD_PATH = /metadata/vendor/tee
+CFG_TEE_FS_PARENT_PATH = /metadata/vendor/tee
+
 PRODUCT_PACKAGES += \
     android.hardware.keymaster@3.0-service.optee \
     dba51a17-0563-11e7-93b1-6fa7b0071a51.ta \

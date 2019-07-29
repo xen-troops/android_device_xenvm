@@ -92,6 +92,8 @@ ANDROID_COMPILE_WITH_JACK := false
 
 BOARD_USES_DRM_HWCOMPOSER := true
 
+BOARD_USES_METADATA_PARTITION=true
+
 # Verified boot
 ifeq ($(ENABLE_AVB),true)
   BOARD_AVB_ENABLE := true
