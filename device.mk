@@ -142,10 +142,12 @@ PRODUCT_PACKAGES += \
     android.hardware.graphics.composer@2.1-service \
     hwcomposer.$(TARGET_BOARD_PLATFORM) \
 
-# Health HAL
+# Health HAL 2.0
 PRODUCT_PACKAGES += \
-    android.hardware.health@1.0-impl \
-    android.hardware.health@1.0-service
+    android.hardware.health@2.0-service.xenvm \
+
+DEVICE_FRAMEWORK_MANIFEST_FILE += \
+            system/libhidl/vintfdata/manifest_healthd_exclude.xml
 
 # Keymaster HAL
 # All security related settings are moved into dedicated security.mk

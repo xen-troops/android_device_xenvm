@@ -1,5 +1,6 @@
 /*
  * Copyright 2017 The Android Open Source Project
+ * Copyright (C) 2019 EPAM Systems Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,15 +15,16 @@
  * limitations under the License.
  */
 
-#define LOG_TAG "health@2.0/"
+#define LOG_TAG "android.hardware.health@2.0-service.xenvm"
+
 #include <android-base/logging.h>
 
 #include <android/hardware/health/1.0/types.h>
 #include <hal_conversion.h>
-#include <health2/Health.h>
 #include <health2/service.h>
 #include <healthd/healthd.h>
 #include <hidl/HidlTransportSupport.h>
+#include "Health.h"
 
 using android::hardware::IPCThreadState;
 using android::hardware::configureRpcThreadpool;
@@ -31,7 +33,7 @@ using android::hardware::setupTransportPolling;
 using android::hardware::health::V2_0::HealthInfo;
 using android::hardware::health::V1_0::hal_conversion::convertToHealthInfo;
 using android::hardware::health::V2_0::IHealth;
-using android::hardware::health::V2_0::implementation::Health;
+using android::hardware::health::V2_0::xenvm::Health;
 
 extern int healthd_main(void);
 
@@ -65,7 +67,6 @@ int healthd_mode_service_2_0_preparetowait(void) {
 }
 
 void healthd_mode_service_2_0_heartbeat(void) {
-    // noop
 }
 
 void healthd_mode_service_2_0_battery_update(struct android::BatteryProperties* prop) {
@@ -81,8 +82,16 @@ static struct healthd_mode_ops healthd_mode_service_2_0_ops = {
     .battery_update = healthd_mode_service_2_0_battery_update,
 };
 
-int health_service_main(const char* instance) {
-    gInstanceName = instance;
+void healthd_board_init(struct healthd_config*) {}
+void get_storage_info(std::vector<struct StorageInfo>&) {}
+void get_disk_stats(std::vector<struct DiskStats>&) {}
+
+int healthd_board_battery_update(struct android::BatteryProperties*) {
+    return 0;
+}
+
+int main()
+{
     if (gInstanceName.empty()) {
         gInstanceName = "default";
     }
