@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2013 The Android Open Source Project
+ * Copyright (C) 2019 EPAM Systems Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +15,7 @@
  * limitations under the License.
  */
 
-#define LOG_TAG "android.hardware.health@2.0-impl"
+#define LOG_TAG "android.hardware.health@2.0-impl.xenvm"
 #define KLOG_LEVEL 6
 
 #include <healthd/BatteryMonitor.h>
@@ -33,7 +34,7 @@
 #include <unistd.h>
 #include <utils/Errors.h>
 
-#include <health2/Health.h>
+#include <Health.h>
 
 using namespace android;
 
@@ -77,7 +78,7 @@ static int awake_poll_interval = -1;
 
 static int wakealarm_wake_interval = DEFAULT_PERIODIC_CHORES_INTERVAL_FAST;
 
-using ::android::hardware::health::V2_0::implementation::Health;
+using ::android::hardware::health::V2_0::xenvm::Health;
 
 struct healthd_mode_ops* healthd_mode_ops = nullptr;
 
@@ -268,7 +269,7 @@ int healthd_main() {
         KLOG_ERROR("Initialization failed, exiting\n");
         exit(2);
     }
-
+    KLOG_INFO("Health.xenvm is starting ....\n");
     healthd_mainloop();
     KLOG_ERROR("Main loop terminated, exiting\n");
     return 3;

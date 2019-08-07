@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2018 The Android Open Source Project
+ * Copyright (C) 2019 EPAM Systems Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,11 +14,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#define LOG_TAG "android.hardware.health@2.0-impl"
+#define LOG_TAG "android.hardware.health@2.0-impl.xenvm"
 #include <android-base/logging.h>
 
 #include <android-base/file.h>
-#include <health2/Health.h>
+#include <Health.h>
 
 #include <hal_conversion.h>
 #include <hidl/HidlTransportSupport.h>
@@ -28,7 +29,7 @@ namespace android {
 namespace hardware {
 namespace health {
 namespace V2_0 {
-namespace implementation {
+namespace xenvm {
 
 sp<Health> Health::instance_;
 
@@ -110,32 +111,32 @@ void getProperty(const std::unique_ptr<BatteryMonitor>& monitor, int id, T defau
 }
 
 Return<void> Health::getChargeCounter(getChargeCounter_cb _hidl_cb) {
-    getProperty<int32_t>(battery_monitor_, BATTERY_PROP_CHARGE_COUNTER, 0, _hidl_cb);
+    getProperty<int32_t>(battery_monitor_, BATTERY_PROP_CHARGE_COUNTER, 1, _hidl_cb);
     return Void();
 }
 
 Return<void> Health::getCurrentNow(getCurrentNow_cb _hidl_cb) {
-    getProperty<int32_t>(battery_monitor_, BATTERY_PROP_CURRENT_NOW, 0, _hidl_cb);
+    getProperty<int32_t>(battery_monitor_, BATTERY_PROP_CURRENT_NOW, 1, _hidl_cb);
     return Void();
 }
 
 Return<void> Health::getCurrentAverage(getCurrentAverage_cb _hidl_cb) {
-    getProperty<int32_t>(battery_monitor_, BATTERY_PROP_CURRENT_AVG, 0, _hidl_cb);
+    getProperty<int32_t>(battery_monitor_, BATTERY_PROP_CURRENT_AVG, 1, _hidl_cb);
     return Void();
 }
 
 Return<void> Health::getCapacity(getCapacity_cb _hidl_cb) {
-    getProperty<int32_t>(battery_monitor_, BATTERY_PROP_CAPACITY, 0, _hidl_cb);
+    getProperty<int32_t>(battery_monitor_, BATTERY_PROP_CAPACITY, 1, _hidl_cb);
     return Void();
 }
 
 Return<void> Health::getEnergyCounter(getEnergyCounter_cb _hidl_cb) {
-    getProperty<int64_t>(battery_monitor_, BATTERY_PROP_ENERGY_COUNTER, 0, _hidl_cb);
+    getProperty<int64_t>(battery_monitor_, BATTERY_PROP_ENERGY_COUNTER, 1, _hidl_cb);
     return Void();
 }
 
 Return<void> Health::getChargeStatus(getChargeStatus_cb _hidl_cb) {
-    getProperty(battery_monitor_, BATTERY_PROP_BATTERY_STATUS, BatteryStatus::UNKNOWN, _hidl_cb);
+    getProperty(battery_monitor_, BATTERY_PROP_BATTERY_STATUS, BatteryStatus::FULL, _hidl_cb);
     return Void();
 }
 
@@ -171,9 +172,31 @@ void Health::notifyListeners(HealthInfo* healthInfo) {
         currentAvg = static_cast<int32_t>(prop.valueInt64);
     }
 
-    healthInfo->batteryCurrentAverage = currentAvg;
-    healthInfo->diskStats = stats;
-    healthInfo->storageInfos = info;
+    *healthInfo = {
+        .legacy = {
+            .chargerAcOnline = true,
+            .chargerUsbOnline = false,
+            .chargerWirelessOnline = false,
+            .maxChargingCurrent = 0,
+            .maxChargingVoltage = 0,
+            .batteryStatus = {},
+            .batteryHealth = {},
+            .batteryPresent = false,
+            .batteryLevel = 100,
+            .batteryVoltage = 0,
+            .batteryTemperature = 0,
+            .batteryCurrent = 0,
+            .batteryCycleCount = 0,
+            .batteryFullCharge = 1,
+            .batteryChargeCounter = 1,
+            .batteryStatus = android::hardware::health::V1_0::BatteryStatus::FULL,
+            .batteryHealth = android::hardware::health::V1_0::BatteryHealth::GOOD,
+            .batteryTechnology = "AC",
+        },
+        .batteryCurrentAverage = currentAvg,
+        .diskStats = stats,
+        .storageInfos = info
+    };
 
     std::lock_guard<std::mutex> _lock(callbacks_lock_);
     for (auto it = callbacks_.begin(); it != callbacks_.end();) {
@@ -253,11 +276,31 @@ Return<void> Health::getHealthInfo(getHealthInfo_cb _hidl_cb) {
         currentAvg = static_cast<int32_t>(prop.valueInt64);
     }
 
-    V2_0::HealthInfo healthInfo = {};
-    healthInfo.legacy = std::move(batteryInfo);
-    healthInfo.batteryCurrentAverage = currentAvg;
-    healthInfo.diskStats = stats;
-    healthInfo.storageInfos = info;
+    V2_0::HealthInfo healthInfo = {
+        .legacy = {
+            .chargerAcOnline = true,
+            .chargerUsbOnline = false,
+            .chargerWirelessOnline = false,
+            .maxChargingCurrent = 0,
+            .maxChargingVoltage = 0,
+            .batteryStatus = {},
+            .batteryHealth = {},
+            .batteryPresent = false,
+            .batteryLevel = 100,
+            .batteryVoltage = 0,
+            .batteryTemperature = 0,
+            .batteryCurrent = 0,
+            .batteryCycleCount = 0,
+            .batteryFullCharge = 1,
+            .batteryChargeCounter = 1,
+            .batteryStatus = android::hardware::health::V1_0::BatteryStatus::FULL,
+            .batteryHealth = android::hardware::health::V1_0::BatteryHealth::GOOD,
+            .batteryTechnology = "AC",
+        },
+        .batteryCurrentAverage = currentAvg,
+        .diskStats = stats,
+        .storageInfos = info
+    };
 
     _hidl_cb(Result::SUCCESS, healthInfo);
     return Void();
