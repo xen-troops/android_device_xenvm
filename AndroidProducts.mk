@@ -17,3 +17,8 @@
 
 PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/xenvm.mk
+
+COMMON_LUNCH_CHOICES := \
+	xenvm-userdebug \
+	xenvm-eng
+
