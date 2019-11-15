@@ -22,5 +22,4 @@ PRODUCT_BRAND := Android
 PRODUCT_MODEL := Xenvm
 PRODUCT_MANUFACTURER := Xen
 PRODUCT_RUNTIMES := runtime_libart_default
-DEVICE_PACKAGE_OVERLAYS := device/xen/xenvm/overlay
 PRODUCT_CHARACTERISTICS := nosdcard
