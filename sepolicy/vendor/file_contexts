@@ -18,7 +18,6 @@
 /dev/dri/renderD128                  u:object_r:gpu_device:s0
 
 
-/system/bin/vehicle_monitor_service                                                 u:object_r:vms_exec:s0
 /vendor/bin/hw/android.hardware.memtrack@1.0-service                                u:object_r:hal_memtrack_default_exec:s0
 /vendor/bin/hw/android.hardware.automotive.vehicle@2.0-service.xenvm                u:object_r:hal_vehicle_default_exec:s0
 /vendor/bin/hw/android.hardware.thermal@1.0-service                                 u:object_r:hal_thermal_default_exec:s0
@@ -34,13 +33,3 @@
 /dev/teepriv0                        u:object_r:tee_device:s0
 /vendor/bin/tee-supplicant           u:object_r:tee-supp_exec:s0
 
-###################################
-# Binaries associated with the default EVS stack, plus
-# the directory which contains the configuration for the evs_app
-#
-/vendor/bin/android\.hardware\.automotive\.evs@1\.0\.xenvm   u:object_r:hal_evs_driver_exec:s0
-/vendor/bin/android\.automotive\.evs\.manager@1\.0\.xenvm    u:object_r:evs_manager_exec:s0
-/vendor/bin/evs_app_xt                                       u:object_r:evs_app_exec:s0
-/vendor/etc/vehicle/evs_app_xt.json                          u:object_r:evs_app_files:s0
-
-###################################

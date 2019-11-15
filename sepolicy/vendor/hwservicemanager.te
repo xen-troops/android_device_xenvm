@@ -1,9 +1,4 @@
 #============= hwservicemanager ==============
-allow hwservicemanager runtime_event_log_tags_file:file map;
-allow hwservicemanager gnss_service_xenvm:binder call;
-allow hwservicemanager gnss_service_xenvm:dir search;
-allow hwservicemanager gnss_service_xenvm:file { open read };
-allow hwservicemanager gnss_service_xenvm:process getattr;
 userdebug_or_eng(`
   dontaudit hwservicemanager debugfs_tracing_debug:filesystem mount;
 ')

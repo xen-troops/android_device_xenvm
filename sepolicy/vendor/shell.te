@@ -2,7 +2,3 @@
 allow shell hal_graphics_allocator_default:fifo_file { read write };
 allow shell runtime_event_log_tags_file:file map;
 
-# EVS related
-allow shell evs_app_exec:file execute_no_trans;
-allow shell hal_evs_driver:binder { call transfer };
-allow shell hal_evs_hwservice:hwservice_manager find;

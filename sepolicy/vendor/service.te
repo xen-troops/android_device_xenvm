@@ -2,11 +2,3 @@
 type car_service, service_manager_type;
 type vms_service, service_manager_type;
 
-allow servicemanager vms:dir search;
-allow servicemanager vms:file { open read };
-allow servicemanager vms:process getattr;
-
-# reported by audit2allow when camera is active
-allow servicemanager hal_evs_driver:dir search;
-allow servicemanager hal_evs_driver:file { open read };
-allow servicemanager hal_evs_driver:process getattr;

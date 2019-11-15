@@ -1,7 +1,6 @@
 typeattribute hal_gnss_default hal_automotive_socket_exemption;
 allow hal_gnss_default vndbinder_device:chr_file { ioctl open read write };
 allow hal_gnss_default hidl_base_hwservice:hwservice_manager add;
-allow hal_gnss_default hwservicemanager:binder { call transfer };
 allow hal_gnss_default hwservicemanager_prop:file { getattr map open read };
 allow hal_gnss_default self:tcp_socket create;
 
