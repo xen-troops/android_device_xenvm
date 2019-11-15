@@ -160,10 +160,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     vendor/xen/vehicle/cfg/vehicle-mappings.json:$(TARGET_COPY_OUT_VENDOR)/etc/vehicle/vehicle-mappings.json
 
-# HW service manager
-PRODUCT_PACKAGES += \
-    hwservicemanager
-
 # Generic memtrack module
 PRODUCT_PACKAGES += \
     android.hardware.memtrack@1.0-impl \
