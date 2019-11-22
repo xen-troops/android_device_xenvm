@@ -62,7 +62,6 @@ void healthd_mode_service_2_0_init(struct healthd_config* config) {
 }
 
 int healthd_mode_service_2_0_preparetowait(void) {
-    IPCThreadState::self()->flushCommands();
     return -1;
 }
 
