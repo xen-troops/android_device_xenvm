@@ -19,7 +19,7 @@ ifneq (,$(filter r8a7795 r8a7796, $(TARGET_BOARD_PLATFORM)))
 
 ABS_TOP := $(abspath $(TOP))
 
-TARGET_KERNEL_MODULES_OUT := $(PRODUCT_OUT)/obj/KERNEL_MODULES
+TARGET_KERNEL_MODULES_OUT := $(abspath ${OUT_DIR}/target/product/$(TARGET_PRODUCT)/obj/KERNEL_MODULES)
 
 BOARD_VENDOR_KERNEL_MODULES += \
 	$(TARGET_KERNEL_MODULES_OUT)/pvrsrvkm.ko \
@@ -49,28 +49,25 @@ endif # DDK_UM_PREBUILDS
 ifeq ($(DDK_KM_PREBUILT_MODULE),)
 # Rule for building DDK-KM module
 
-HOSTCC=$(ABS_TOP)/prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.15-4.8/bin/x86_64-linux-gcc
+HOSTCC=$(ABS_TOP)/prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8/bin/x86_64-linux-gcc
 ANDROID_TOOLCHAIN_XX=$(ABS_TOP)/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/bin
-CROSS_COMPILE="$(ANDROID_TOOLCHAIN_XX)/aarch64-linux-android-"
+DDK_CROSS_COMPILE := $(ABS_TOP)/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/bin/aarch64-linux-android-
 KM_TOP=$(ABS_TOP)/vendor/imagination/rogue_km/
+KERNEL_MAKE := $(abspath ./prebuilts/build-tools/linux-x86/bin/make)
 
-RGX_MODULE:
-	make -C $(KM_TOP)/build/linux/$(TARGET_SOC_PLATFORM_REVISION)_android KERNELDIR=$(KERNEL_OUT) \
-        PVRSRV_VZ_NUM_OSID=$(PVRSRV_VZ_NUM_OSID) ANDROID_ROOT=$(ABS_TOP) CROSS_COMPILE=$(CROSS_COMPILE) ARCH="arm64" TOP=$(KM_TOP) \
-        OUT=$(PRODUCT_OUT)/obj/ROGUE_KM_OBJ HOST_CC=$(HOSTCC) KERNEL_CROSS_COMPILE=$(CROSS_COMPILE)
+$(BOARD_VENDOR_KERNEL_MODULES) : $(ABS_TOP)/device/xen/kernel $(DDK_UM_DEP)
+	$(KERNEL_MAKE) -C $(KM_TOP)/build/linux/$(TARGET_SOC_PLATFORM_REVISION)_android KERNELDIR=$(KERNEL_OUT) \
+        PVRSRV_VZ_NUM_OSID=$(PVRSRV_VZ_NUM_OSID) ANDROID_ROOT=$(ABS_TOP) CROSS_COMPILE=$(DDK_CROSS_COMPILE) ARCH="arm64" TOP=$(KM_TOP) \
+        OUT=$(PRODUCT_OUT)/obj/ROGUE_KM_OBJ HOST_CC=$(HOSTCC) KERNEL_CROSS_COMPILE=$(DDK_CROSS_COMPILE)
 	mv $(PRODUCT_OUT)/obj/ROGUE_KM_OBJ/target_aarch64/kbuild/pvrsrvkm.ko $(TARGET_KERNEL_MODULES_OUT)
 
-TARGET_KERNEL_EXT_MODULES += RGX_MODULE
-$(BOARD_VENDOR_KERNEL_MODULES) : $(ABS_TOP)/device/xen/kernel $(DDK_UM_DEP) RGX_MODULE
 
 else
 # Use DDK-KM module from prebuilds
 
-RGX_MODULE:
+$(BOARD_VENDOR_KERNEL_MODULES):
 	mkdir -p $(TARGET_KERNEL_MODULES_OUT)
 	cp $(DDK_KM_PREBUILT_MODULE)  $(TARGET_KERNEL_MODULES_OUT)
-
-$(BOARD_VENDOR_KERNEL_MODULES) : RGX_MODULE $(DDK_UM_DEP)
 
 endif # DDK_KM_PREBUILT_MODULE
 
