@@ -19,8 +19,6 @@ $(call inherit-product, build/target/product/core_64_bit.mk)
 $(call inherit-product, frameworks/native/build/tablet-10in-xhdpi-2048-dalvik-heap.mk)
 $(call inherit-product, packages/services/Car/car_product/build/car.mk)
 
-PRODUCT_CFI_INCLUDE_PATHS :=
-
 # Add preffered configurations
 PRODUCT_AAPT_CONFIG := normal large xlarge hdpi xhdpi
 PRODUCT_AAPT_PREF_CONFIG := hdpi
