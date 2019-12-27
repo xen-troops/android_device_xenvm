@@ -19,6 +19,8 @@ ifneq (,$(filter r8a7795 r8a7796, $(TARGET_BOARD_PLATFORM)))
 
 ABS_TOP := $(abspath $(TOP))
 
+DDK_UM_PREBUILDS := $(ABS_TOP)/vendor/imagination/rogue_um
+
 TARGET_KERNEL_MODULES_OUT := $(abspath ${OUT_DIR}/target/product/$(TARGET_PRODUCT)/obj/KERNEL_MODULES)
 
 BOARD_VENDOR_KERNEL_MODULES += \
@@ -55,7 +57,7 @@ DDK_CROSS_COMPILE := $(ABS_TOP)/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-an
 KM_TOP=$(ABS_TOP)/vendor/imagination/rogue_km/
 KERNEL_MAKE := $(abspath ./prebuilts/build-tools/linux-x86/bin/make)
 
-$(BOARD_VENDOR_KERNEL_MODULES) : $(ABS_TOP)/device/xen/kernel $(DDK_UM_DEP)
+$(BOARD_VENDOR_KERNEL_MODULES) : $(ABS_TOP)/device/xen/kernel $(DDK_UM_VENDOR_TARGET_FILES)
 	$(KERNEL_MAKE) -C $(KM_TOP)/build/linux/$(TARGET_SOC_PLATFORM_REVISION)_android KERNELDIR=$(KERNEL_OUT) \
         PVRSRV_VZ_NUM_OSID=$(PVRSRV_VZ_NUM_OSID) ANDROID_ROOT=$(ABS_TOP) CROSS_COMPILE=$(DDK_CROSS_COMPILE) ARCH="arm64" TOP=$(KM_TOP) \
         OUT=$(PRODUCT_OUT)/obj/ROGUE_KM_OBJ HOST_CC=$(HOSTCC) KERNEL_CROSS_COMPILE=$(DDK_CROSS_COMPILE)
