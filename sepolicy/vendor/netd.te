@@ -7,3 +7,5 @@ allow netd hal_sensors_default:fd use;
 allow netd hal_sensors_default:tcp_socket { getopt read setopt write };
 allow netd hal_vehicle_default:fd use;
 allow netd hal_vehicle_default:tcp_socket { getopt read setopt write };
+allow netd hal_gnss_default:fd use;
+allow netd hal_gnss_default:tcp_socket { getopt read setopt write };

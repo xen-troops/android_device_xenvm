@@ -1,0 +1,7 @@
+#============= init ==============
+allow init self:capability2 block_suspend;
+allow init sysfs_wake_lock:file { open write };
+
+userdebug_or_eng(`
+  dontaudit init sysfs:file { open read };
+')

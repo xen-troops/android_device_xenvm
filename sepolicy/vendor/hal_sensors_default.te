@@ -4,7 +4,7 @@ allow hal_sensors_default self:tcp_socket { accept bind create listen };
 allow hal_sensors_default fwmarkd_socket:sock_file write;
 allow hal_sensors_default netd:unix_stream_socket connectto;
 allow hal_sensors_default port:tcp_socket name_connect;
-allow hal_sensors_default self:tcp_socket { connect read setopt write create };
+allow hal_sensors_default self:tcp_socket { connect read setopt write create getopt };
 
 
 typeattribute hal_sensors_default hal_automotive_socket_exemption;
