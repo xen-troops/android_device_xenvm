@@ -233,6 +233,8 @@ ifneq ($(TARGET_PREBUILT_KERNEL),)
 PRODUCT_COPY_FILES +=   $(TARGET_PREBUILT_KERNEL):kernel
 endif
 
+DEVICE_PACKAGE_OVERLAYS := device/xen/xenvm/overlay
+
 $(call inherit-product, device/xen/xenvm/graphics.mk)
 $(call inherit-product-if-exists, frameworks/base/data/sounds/AudioPackage13.mk)
 $(call inherit-product-if-exists, frameworks/base/data/fonts/fonts.mk)
