@@ -112,6 +112,21 @@ PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml
 
+PRODUCT_PACKAGES += \
+    libsfplugin_ccodec \
+    libstagefright_bufferqueue_helper \
+    android.hardware.media.c2@1.0 \
+    libstagefright_bufferpool@2.0 \
+
+
+# seccomp policy
+PRODUCT_PACKAGES += \
+    mediacodec.policy \
+    crash_dump.policy
+
+# All VNDK libraries (HAL interfaces, VNDK, VNDK-SP, LL-NDK)
+PRODUCT_PACKAGES += vndk_package
+
 # Boot animation
 PRODUCT_COPY_FILES += \
     packages/services/Car/car_product/bootanimations/bootanimation-832.zip:system/media/bootanimation.zip
