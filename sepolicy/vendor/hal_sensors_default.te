@@ -1,11 +1,13 @@
 #============= hal_sensors_default ==============
 allow hal_sensors_default node:tcp_socket node_bind;
-allow hal_sensors_default self:tcp_socket { accept bind create listen };
+allow hal_sensors_default self:tcp_socket { accept bind create listen getopt connect read setopt write };
 allow hal_sensors_default fwmarkd_socket:sock_file write;
 allow hal_sensors_default netd:unix_stream_socket connectto;
 allow hal_sensors_default port:tcp_socket name_connect;
-allow hal_sensors_default self:tcp_socket { connect read setopt write create getopt };
-
+allow hal_sensors_default dnsproxyd_socket:sock_file write;
+allow hal_sensors_default node:udp_socket node_bind;
+allow hal_sensors_default port:udp_socket name_bind;
+allow hal_sensors_default self:udp_socket { bind connect create getopt setattr write };
 
 typeattribute hal_sensors_default hal_automotive_socket_exemption;
 
