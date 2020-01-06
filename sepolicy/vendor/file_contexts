@@ -6,6 +6,9 @@
 
 # pvrsrvctl
 /vendor/bin/pvrsrvctl                u:object_r:pvrsrvctl_exec:s0
+/vendor/lib(64)?/libAppHintsIPC.so                                              u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/vendor.imagination.gpu.apphints@1.0.so                         u:object_r:same_process_hal_file:s0
+
 
 # sync drivers
 /dev/pvr_sync                        u:object_r:gpu_device:s0
