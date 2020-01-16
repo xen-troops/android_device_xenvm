@@ -94,11 +94,18 @@ PRODUCT_COPY_FILES +=\
 # Mount points
 ifeq ($(ENABLE_AVB),true)
   PRODUCT_COPY_FILES += \
-    device/xen/xenvm/fstab.xenvm.avb:root/fstab.xenvm
+    device/xen/xenvm/fstab.xenvm.avb:root/fstab.xenvm \
+    device/xen/xenvm/fstab.xenvm.avb:$(TARGET_COPY_OUT_RECOVERY)/root/first_stage_ramdisk/fstab.xenvm \
+
+TARGET_RECOVERY_FSTAB := device/xen/xenvm/fstab.xenvm.avb
 else
   PRODUCT_COPY_FILES += \
-    device/xen/xenvm/fstab.xenvm:root/fstab.xenvm
+    device/xen/xenvm/fstab.xenvm:root/fstab.xenvm \
+    device/xen/xenvm/fstab.recovery.xenvm:$(TARGET_COPY_OUT_RECOVERY)/root/first_stage_ramdisk/fstab.xenvm \
+
+TARGET_RECOVERY_FSTAB := device/xen/xenvm/fstab.recovery.xenvm
 endif
+
 PRODUCT_COPY_FILES += \
     device/xen/xenvm/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration.xml \
     frameworks/av/services/audiopolicy/config/audio_policy_volumes.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_volumes.xml \
@@ -234,6 +241,12 @@ PRODUCT_COPY_FILES +=   $(TARGET_PREBUILT_KERNEL):kernel
 endif
 
 DEVICE_PACKAGE_OVERLAYS := device/xen/xenvm/overlay
+
+
+# Recovery files
+PRODUCT_COPY_FILES += \
+	device/xen/xenvm/init.recovery.xenvm.rc:root/init.recovery.xenvm.rc
+
 
 $(call inherit-product, device/xen/xenvm/graphics.mk)
 $(call inherit-product-if-exists, frameworks/base/data/sounds/AudioPackage13.mk)
