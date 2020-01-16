@@ -1,0 +1,4 @@
+/dev/block/xvda2           /vendor         ext4    ro,barrier=1         wait,first_stage_mount
+/dev/block/xvda1           /system         ext4    ro,barrier=1         wait,first_stage_mount
+/dev/block/xvda3           /misc           emmc    defaults             defaults
+/dev/block/xvda4           /vbmeta         emmc    defaults             defaults

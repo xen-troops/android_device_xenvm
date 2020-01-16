@@ -1,0 +1,22 @@
+on early-boot
+    mount debugfs /sys/kernel/debug /sys/kernel/debug
+    chmod a+x /sys/kernel/debug
+    chmod 0666 /sys/kernel/debug/sync/sw_sync
+
+on boot
+    chmod 777 /sys/kernel/debug/tracing
+    chmod 0666 /sys/kernel/debug/tracing/trace_marker
+    write /sys/power/wake_lock ws10_suspend_wa
+
+on early-fs
+    mkdir -p /config
+
+on late-init
+    chmod 666 /dev/video0
+    mkdir /mnt/tee
+    start tee_supplicant
+
+service tee_supplicant /vendor/bin/tee-supplicant
+    user root
+    group keystore
+    seclabel u:r:tee-supp:s0
