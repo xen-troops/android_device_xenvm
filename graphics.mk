@@ -51,16 +51,23 @@ endif # DDK_UM_PREBUILDS
 ifeq ($(DDK_KM_PREBUILT_MODULE),)
 # Rule for building DDK-KM module
 
-HOSTCC=$(ABS_TOP)/prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8/bin/x86_64-linux-gcc
-ANDROID_TOOLCHAIN_XX=$(ABS_TOP)/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/bin
-DDK_CROSS_COMPILE := $(ABS_TOP)/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/bin/aarch64-linux-android-
-KM_TOP=$(ABS_TOP)/vendor/imagination/rogue_km/
-KERNEL_MAKE := $(abspath ./prebuilts/build-tools/linux-x86/bin/make)
 
-$(BOARD_VENDOR_KERNEL_MODULES) : $(OUT_DIR)/target/product/$(TARGET_PRODUCT)/obj/KERNEL_OBJ/arch/arm64/boot/Image $(DDK_UM_VENDOR_TARGET_FILES)
-	$(KERNEL_MAKE) -C $(KM_TOP)/build/linux/$(TARGET_SOC_PLATFORM_REVISION)_android KERNELDIR=$(KERNEL_OUT) \
-        PVRSRV_VZ_NUM_OSID=$(PVRSRV_VZ_NUM_OSID) ANDROID_ROOT=$(ABS_TOP) CROSS_COMPILE=$(DDK_CROSS_COMPILE) ARCH="arm64" TOP=$(KM_TOP) \
-        OUT=$(PRODUCT_OUT)/obj/ROGUE_KM_OBJ HOST_CC=$(HOSTCC) KERNEL_CROSS_COMPILE=$(DDK_CROSS_COMPILE)
+KM_TOP := $(ABS_TOP)/vendor/imagination/rogue_km/
+KERNEL_MAKE := $(abspath ./prebuilts/build-tools/linux-x86/bin/make)
+KERNEL_OUT := $(OUT_DIR)/target/product/$(TARGET_PRODUCT)/obj/KERNEL_OBJ
+KERNEL_TARGET_BINARY := $(KERNEL_OUT)/arch/$(TARGET_ARCH)/boot/Image
+
+GCC_CROSS_COMPILE := $(abspath ./prebuilts/gcc/linux-x86/aarch64/aarch64-linux-gnu/bin/aarch64-linux-gnu-)
+DDK_CROSS_COMPILE := $(abspath ./prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/bin/aarch64-linux-android-)
+ANDROID_CLANG_TOOLCHAIN := $(abspath ./prebuilts/clang/host/linux-x86/clang-r353983c/bin/clang)
+
+KERNEL_CFLAGS := HOSTCFLAGS="-fuse-ld=lld" HOSTLDFLAGS=-fuse-ld=lld ARCH=$(TARGET_ARCH)
+KERNEL_CFLAGS += CC=$(ANDROID_CLANG_TOOLCHAIN) CLANG_TRIPLE=$(GCC_CROSS_COMPILE) CROSS_COMPILE=$(GCC_CROSS_COMPILE) HOST_CC=$(ANDROID_CLANG_TOOLCHAIN)
+KERNEL_CFLAGS += PVRSRV_VZ_NUM_OSID=$(PVRSRV_VZ_NUM_OSID) ANDROID_ROOT=$(ABS_TOP) TOP=$(KM_TOP) KERNEL_CROSS_COMPILE=$(DDK_CROSS_COMPILE)
+
+$(BOARD_VENDOR_KERNEL_MODULES) : $(KERNEL_TARGET_BINARY) $(DDK_UM_VENDOR_TARGET_FILES)
+	TEMPORARY_DISABLE_PATH_RESTRICTIONS=true $(KERNEL_MAKE) -C $(KM_TOP)/build/linux/$(TARGET_SOC_PLATFORM_REVISION)_android KERNELDIR=$(KERNEL_OUT) \
+	OUT=$(PRODUCT_OUT)/obj/ROGUE_KM_OBJ $(KERNEL_CFLAGS)
 	mv $(PRODUCT_OUT)/obj/ROGUE_KM_OBJ/target_aarch64/kbuild/pvrsrvkm.ko $(TARGET_KERNEL_MODULES_OUT)
 
 
