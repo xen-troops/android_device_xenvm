@@ -18,6 +18,7 @@
 ifneq (,$(filter r8a7795 r8a7796, $(TARGET_BOARD_PLATFORM)))
 
 ABS_TOP := $(abspath $(TOP))
+TARGET_ARCH := arm64
 
 DDK_UM_PREBUILDS := $(ABS_TOP)/vendor/imagination/rogue_um
 
