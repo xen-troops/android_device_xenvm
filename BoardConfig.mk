@@ -99,3 +99,7 @@ BOARD_USES_METADATA_PARTITION=true
 ifeq ($(ENABLE_AVB),true)
   BOARD_AVB_ENABLE := true
 endif
+
+DEVICE_MANIFEST_FILE             := device/xen/xenvm/manifest.xml
+DEVICE_MATRIX_FILE               := device/xen/xenvm/compatibility_matrix.xml
+BOARD_VNDK_VERSION               := current
