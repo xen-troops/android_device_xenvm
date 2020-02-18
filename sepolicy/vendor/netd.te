@@ -1,11 +1,13 @@
 #============= netd ==============
-dontaudit netd self:capability sys_module;
-
 allow netd proc_net:file { create };
 
 allow netd hal_sensors_default:fd use;
-allow netd hal_sensors_default:tcp_socket { getopt read setopt write };
 allow netd hal_vehicle_default:fd use;
-allow netd hal_vehicle_default:tcp_socket { getopt read setopt write };
 allow netd hal_gnss_default:fd use;
-allow netd hal_gnss_default:tcp_socket { getopt read setopt write };
+
+userdebug_or_eng(`
+    dontaudit netd self:capability sys_module;
+    dontaudit netd hal_sensors_default:tcp_socket { getopt read setopt write };
+    dontaudit netd hal_vehicle_default:tcp_socket { getopt read setopt write };
+    dontaudit netd hal_gnss_default:tcp_socket { getopt read setopt write };
+')

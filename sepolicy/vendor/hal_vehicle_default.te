@@ -5,7 +5,6 @@ allow hal_vehicle_default car_service:service_manager { add };
 allow hal_vehicle_default node:tcp_socket node_bind;
 allow hal_vehicle_default self:tcp_socket { accept bind create listen connect read setopt write getopt };
 allow hal_vehicle_default fwmarkd_socket:sock_file write;
-allow hal_vehicle_default netd:unix_stream_socket connectto;
 allow hal_vehicle_default port:tcp_socket name_connect;
 allow hal_vehicle_default dnsproxyd_socket:sock_file write;
 allow hal_vehicle_default port:udp_socket name_bind;
@@ -13,3 +12,8 @@ allow hal_vehicle_default self:udp_socket { bind connect create getopt setattr w
 allow hal_vehicle_default node:udp_socket node_bind;
 
 typeattribute hal_vehicle_default hal_automotive_socket_exemption;
+
+userdebug_or_eng(`
+    dontaudit hal_vehicle_default netd:unix_stream_socket connectto;
+    dontaudit hal_vehicle_default default_prop:file { open read };
+')

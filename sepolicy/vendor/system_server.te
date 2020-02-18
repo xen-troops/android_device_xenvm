@@ -1,10 +1,7 @@
 #============= system_server ==============
-dontaudit system_server self:capability sys_module;
-
 get_prop(system_server opengles_prop)
 
 allow system_server dumpstate:unix_stream_socket ioctl;
-allow system_server debugfs_tracing:file { open read write };
 allow system_server debugfs:dir { open read };
 allow system_server system_app:file { write };
 allow system_server platform_app:file { write };
@@ -14,4 +11,7 @@ allow system_server hal_graphics_allocator_default:fifo_file { read write };
 allow system_server mediaprovider:file write;
 allow system_server untrusted_app_25:file write;
 
-
+userdebug_or_eng(`
+    dontaudit system_server self:capability sys_module;
+    dontaudit system_server debugfs_tracing:file { open read write };
+')

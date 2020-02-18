@@ -1,4 +1,7 @@
 allow kernel device:chr_file { create setattr getattr unlink };
-allow kernel device:blk_file { create unlink setattr getattr };
 allow kernel device:dir { create write add_name remove_name rmdir };
 allow kernel self:capability { fowner mknod };
+
+userdebug_or_eng(`
+    dontaudit kernel device:blk_file { create unlink setattr getattr };
+')

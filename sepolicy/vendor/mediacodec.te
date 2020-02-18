@@ -1,2 +1,6 @@
 allow mediacodec tty_device:chr_file { read write };
 allow mediacodec debugfs_tracing:file { open read write };
+
+userdebug_or_eng(`
+    dontaudit mediacodec system_file:file { getattr open read };
+')
