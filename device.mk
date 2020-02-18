@@ -74,11 +74,8 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.autofill.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.autofill.xml \
     frameworks/native/data/etc/android.software.voice_recognizers.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.voice_recognizers.xml \
 
-
-
-
-
-
+# DRM HAL
+$(call inherit-product, hardware/interfaces/drm/1.0/default/common_default_service.mk)
 
 # Manifest
 PRODUCT_COPY_FILES += \
