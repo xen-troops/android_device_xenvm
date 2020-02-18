@@ -1,8 +1,8 @@
 #============= zygote ==============
 allow zygote self:capability sys_nice;
-allow zygote debugfs_tracing:file { open read write };
 
 userdebug_or_eng(`
-  dontaudit zygote self:capability dac_read_search;
+    dontaudit zygote self:capability dac_read_search;
+    dontaudit zygote debugfs_tracing:file { open read write };
 ')
 

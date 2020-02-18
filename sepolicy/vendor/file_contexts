@@ -1,38 +1,61 @@
 # Block devices labeling
-/dev/block/mmcblk0                   u:object_r:root_block_device:s0
+/dev/block/mmcblk0                                                              u:object_r:root_block_device:s0
 
 # Console device
-/dev/ttySC0                          u:object_r:tty_device:s0
+/dev/ttySC0                                                                     u:object_r:tty_device:s0
 
-# pvrsrvctl
-/vendor/bin/pvrsrvctl                u:object_r:pvrsrvctl_exec:s0
+# graphics
+/vendor/bin/pvrsrvctl                                                           u:object_r:pvrsrvctl_exec:s0
 /vendor/lib(64)?/libAppHintsIPC.so                                              u:object_r:same_process_hal_file:s0
 /vendor/lib(64)?/vendor.imagination.gpu.apphints@1.0.so                         u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libIMGegl.so                                                   u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libPVRRS.so                                                    u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libPVRScopeServices.so                                         u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libglslcompiler.so                                             u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libsrv_um.so                                                   u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libtqvalidate.so                                               u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libusc.so                                                      u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libdrmutils.so                                                 u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libdrm.so                                                      u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libeffects.so                                                  u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libeffectsconfig.so                                            u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libufwriter.so                                                 u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/hw/android.hardware.graphics.allocator@2.0-impl.so             u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/hw/android.hardware.graphics.mapper@2.0-impl.so                u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/hw/android.hardware.memtrack@1.0-impl.so                       u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/hw/android.hardware.renderscript@1.0-impl.so                   u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/hw/gralloc.r8a779(5|6)?.so                                     u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/hw/memtrack.r8a779(5|6)?.so                                    u:object_r:same_process_hal_file:s0
 
 
 # sync drivers
-/dev/pvr_sync                        u:object_r:gpu_device:s0
+/dev/pvr_sync                                                                   u:object_r:gpu_device:s0
+/dev/sw_sync                                                                    u:object_r:gpu_device:s0
 
 # drm device nodes
-/dev/dri/card0                       u:object_r:gpu_device:s0
-/dev/dri/controlD64                  u:object_r:gpu_device:s0
-/dev/dri/card1                       u:object_r:gpu_device:s0
-/dev/dri/controlD65                  u:object_r:gpu_device:s0
-/dev/dri/renderD128                  u:object_r:gpu_device:s0
+/dev/dri/card0                                                                  u:object_r:gpu_device:s0
+/dev/dri/controlD64                                                             u:object_r:gpu_device:s0
+/dev/dri/card1                                                                  u:object_r:gpu_device:s0
+/dev/dri/controlD65                                                             u:object_r:gpu_device:s0
+/dev/dri/renderD128                                                             u:object_r:gpu_device:s0
 
 
-/vendor/bin/hw/android.hardware.memtrack@1.0-service                                u:object_r:hal_memtrack_default_exec:s0
-/vendor/bin/hw/android.hardware.automotive.vehicle@2.0-service.xenvm                u:object_r:hal_vehicle_default_exec:s0
-/vendor/bin/hw/android.hardware.thermal@1.0-service                                 u:object_r:hal_thermal_default_exec:s0
-/vendor/bin/hw/android.hardware.dumpstate@1.0-service                               u:object_r:hal_dumpstate_default_exec:s0
-/vendor/bin/hw/android.hardware.gnss@1.1-service.xenvm                              u:object_r:hal_gnss_default_exec:s0
-/vendor/bin/hw/android.hardware.keymaster@3.0-service.optee                         u:object_r:hal_keymaster_optee_exec:s0
-/vendor/bin/hw/android.hardware.gatekeeper@1.0-service.optee                        u:object_r:hal_gatekeeper_optee_exec:s0
-/vendor/bin/hw/android.hardware.sensors@1.0-service.xenvm                           u:object_r:hal_sensors_default_exec:s0
-/vendor/bin/hw/android.hardware.health@2.0-service.xenvm                            u:object_r:hal_health_default_exec:s0
+/vendor/bin/hw/android.hardware.memtrack@1.0-service                            u:object_r:hal_memtrack_default_exec:s0
+/vendor/bin/hw/android.hardware.automotive.vehicle@2.0-service.xenvm            u:object_r:hal_vehicle_default_exec:s0
+/vendor/bin/hw/android.hardware.thermal@1.0-service                             u:object_r:hal_thermal_default_exec:s0
+/vendor/bin/hw/android.hardware.dumpstate@1.0-service                           u:object_r:hal_dumpstate_default_exec:s0
+/vendor/bin/hw/android.hardware.gnss@1.1-service.xenvm                          u:object_r:hal_gnss_default_exec:s0
+/vendor/bin/hw/android.hardware.keymaster@3.0-service.optee                     u:object_r:hal_keymaster_optee_exec:s0
+/vendor/bin/hw/android.hardware.gatekeeper@1.0-service.optee                    u:object_r:hal_gatekeeper_optee_exec:s0
+/vendor/bin/hw/android.hardware.sensors@1.0-service.xenvm                       u:object_r:hal_sensors_default_exec:s0
+/vendor/bin/hw/android.hardware.health@2.0-service.xenvm                        u:object_r:hal_health_default_exec:s0
 
 # optee
-/dev/tee0                            u:object_r:tee_device:s0
-/dev/teepriv0                        u:object_r:tee_device:s0
-/vendor/bin/tee-supplicant           u:object_r:tee-supp_exec:s0
+/dev/tee0                                                                       u:object_r:tee_device:s0
+/dev/teepriv0                                                                   u:object_r:tee_device:s0
+/vendor/bin/tee-supplicant                                                      u:object_r:tee_exec:s0
+#/vendor/bin/tee-supp                                                            u:object_r:tee_exec:s0
 
+# audio
+/vendor/lib(64)?/hw/android.hardware.audio@2.0-impl.so                          u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/hw/audio.r_submix.default.so                                   u:object_r:same_process_hal_file:s0

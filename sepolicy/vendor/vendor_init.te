@@ -1,2 +1,17 @@
-#============= vendor_init ==============
-allow vendor_init file_contexts_file:file map;
+
+allow vendor_init self:capability sys_module;
+allow vendor_init self:capability2 block_suspend;
+
+allow vendor_init vendor_file:system module_load;
+
+allow vendor_init tmpfs:dir { add_name create write };
+
+recovery_only(`
+  allow vendor_init rootfs:dir read;
+')
+
+userdebug_or_eng(`
+    dontaudit vendor_init bluetooth_prop:property_service set;
+    dontaudit vendor_init default_prop:property_service set;
+    dontaudit vendor_init shell_prop:property_service set;
+')

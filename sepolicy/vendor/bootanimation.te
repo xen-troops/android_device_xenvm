@@ -1,3 +1,6 @@
 allow bootanim self:process execmem;
 allow bootanim ashmem_device:chr_file execute;
-allow bootanim debugfs_tracing:file { open read write };
+
+userdebug_or_eng(`
+    dontaudit bootanim debugfs_tracing:file { open read write };
+')
