@@ -1,0 +1,2 @@
+#============= kitchensink_app ==============
+allow kitchensink_app cgroup:file write;

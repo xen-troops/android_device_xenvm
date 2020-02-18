@@ -1,9 +1,9 @@
-#============= pvrsrvctl ==============
 type pvrsrvctl, domain;
 type pvrsrvctl_exec, exec_type, vendor_file_type, file_type;
 init_daemon_domain(pvrsrvctl)
 
 allow pvrsrvctl vendor_file:system module_load;
+allow pvrsrvctl vendor_file:dir read;
 
 allow pvrsrvctl self:capability { sys_admin sys_module sys_nice };
 allow pvrsrvctl kernel:process setsched;
@@ -17,6 +17,7 @@ allow pvrsrvctl proc:file { read getattr open };
 # allow access to /proc/modules directory
 allow pvrsrvctl proc_modules:file { getattr open read };
 
+# Surfaceflinger requires to read /dev to find adf device nodes (for composerhal)
 allow surfaceflinger device:dir { read open };
 allow surfaceflinger gpu_device:chr_file { read write };
 
@@ -26,4 +27,4 @@ allow bootanim surfaceflinger:fifo_file rw_file_perms;
 allow system_server surfaceflinger:fifo_file rw_file_perms;
 allow appdomain surfaceflinger:fifo_file rw_file_perms;
 allow mediaserver surfaceflinger:fifo_file rw_file_perms;
-allow pvrsrvctl vendor_file:dir read;
+

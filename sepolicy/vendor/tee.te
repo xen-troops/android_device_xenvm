@@ -1,7 +1,6 @@
 allow tee self:capability { chown setgid setuid sys_admin sys_rawio };
 allow tee device:dir r_dir_perms;
 allow tee block_device:dir { getattr search };
-allow tee system_data_file:dir r_dir_perms;
 allow tee vendor_data_file:dir create_dir_perms;
 allow tee vendor_data_file:file create_file_perms;
 
@@ -14,9 +13,10 @@ allow tee-supp self:capability sys_module;
 allow tee-supp tee_device:chr_file { getattr ioctl open read write };
 allow tee-supp vendor_data_file:file create_file_perms;
 allow tee-supp vendor_data_file:dir create_dir_perms;
-allow tee-supp system_data_file:dir { add_name create write };
 
 userdebug_or_eng(`
-  dontaudit tee-supp self:capability dac_override;
-  dontaudit tee-supp system_data_file:file { create open read write };
+    dontaudit tee-supp self:capability dac_override;
+    dontaudit tee-supp system_data_file:file { create open read write };
+    dontaudit tee-supp system_data_file:dir { add_name create write };
+    dontaudit tee system_data_file:dir r_dir_perms;
 ')

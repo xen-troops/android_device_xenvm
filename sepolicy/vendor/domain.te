@@ -1,2 +1,4 @@
 dontaudit domain kernel:system module_request;
+dontaudit domain self:capability { dac_read_search dac_override };
 
+allow domain runtime_event_log_tags_file:file map;

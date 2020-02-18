@@ -1,0 +1,4 @@
+#============= webview_zygote ==============
+userdebug_or_eng(`
+    dontaudit webview_zygote app_data_file:dir getattr;
+')

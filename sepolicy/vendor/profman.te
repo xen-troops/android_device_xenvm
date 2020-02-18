@@ -1,2 +1,5 @@
-allow profman debugfs_tracing:file { open read write };
+userdebug_or_eng(`
+    dontaudit profman debugfs_tracing:file { open read write };
+')
+
 
