@@ -59,3 +59,12 @@
 # audio
 /vendor/lib(64)?/hw/android.hardware.audio@2.0-impl.so                          u:object_r:same_process_hal_file:s0
 /vendor/lib(64)?/hw/audio.r_submix.default.so                                   u:object_r:same_process_hal_file:s0
+
+###################################
+# Binaries associated with the default EVS stack, plus
+# the directory which contains the configuration for the evs_app
+#
+/system/bin/android\.hardware\.automotive\.evs@1\.0\.xenvm   u:object_r:hal_evs_driver_exec:s0
+/vendor/bin/android\.automotive\.evs\.manager@1\.0\.xenvm    u:object_r:evs_manager_exec:s0
+/vendor/bin/evs_app_xt                                       u:object_r:evs_app_exec:s0
+/vendor/etc/vehicle/evs_app_xt.json                          u:object_r:evs_app_files:s0

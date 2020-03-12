@@ -1,0 +1,11 @@
+# evs manager
+type evs_manager, domain;
+hal_server_domain(evs_manager, hal_evs)
+hal_client_domain(evs_manager, hal_evs)
+
+# allow init to launch processes in this context
+type evs_manager_exec, exec_type, file_type, vendor_file_type;
+init_daemon_domain(evs_manager)
+
+allow evs_manager hal_evs_hwservice:hwservice_manager { add find };
+allow evs_manager hidl_base_hwservice:hwservice_manager add;
