@@ -1,0 +1,13 @@
+cc_library_shared {
+    name: "hwcomposer.xenvm",
+    defaults: ["hwcomposer.drm_defaults"],
+    srcs: [":drm_hwcomposer_platformimagination"],
+    whole_static_libs: ["drm_hwcomposer"],
+    shared_libs: ["libion"],
+    include_dirs: [
+        "device/xen/xenvm/hals/hwc/include",
+    ],
+    cppflags: [
+	"-DENABLE_GEM_HANDLE_CACHING",
+    ],
+}
