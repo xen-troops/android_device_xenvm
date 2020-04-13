@@ -167,10 +167,19 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.automotive.audiocontrol@1.0-service \
 
-# Composer
+# Composer 2.3
 PRODUCT_PACKAGES += \
-    android.hardware.graphics.composer@2.1-impl \
-    android.hardware.graphics.composer@2.1-service \
+    android.hardware.graphics.composer@2.3-hal \
+    android.hardware.graphics.composer@2.3-passthrough \
+    android.hardware.graphics.composer@2.3-service \
+
+# Composer 2.1
+#PRODUCT_PACKAGES += \
+#    android.hardware.graphics.composer@2.1-impl \
+#    android.hardware.graphics.composer@2.1-service \
+
+# DRM Composer
+PRODUCT_PACKAGES += \
     hwcomposer.$(TARGET_PRODUCT) \
 
 # Health HAL 2.0
