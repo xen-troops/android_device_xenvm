@@ -37,8 +37,6 @@ PRODUCT_PROPERTY_OVERRIDES += ro.sys.sdcardfs=1
 # Configure ADB for network connections
 PRODUCT_PROPERTY_OVERRIDES += service.adb.tcp.port=5555
 
-# Identify device as low RAM
-PRODUCT_PROPERTY_OVERRIDES += ro.config.low_ram=true
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.opengles.version=196609 \
