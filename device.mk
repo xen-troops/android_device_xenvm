@@ -159,7 +159,7 @@ PRODUCT_PACKAGES += \
 
 # Audio
 PRODUCT_PACKAGES += \
-	audio.primary.xenvm \
+    audio.primary.xenvm \
     android.hardware.audio@4.0-impl \
     android.hardware.audio.effect@2.0-impl \
     android.hardware.audio@2.0-service
@@ -223,7 +223,7 @@ PRODUCT_PACKAGES += \
 
 #Sensors
 PRODUCT_PACKAGES += \
-       android.hardware.sensors@1.0-service.xenvm \
+    android.hardware.sensors@1.0-service.xenvm \
 
 PRODUCT_COPY_FILES += \
     vendor/xen/sensors/cfg/sensors-config.json:$(TARGET_COPY_OUT_VENDOR)/etc/vehicle/sensors-config.json
@@ -245,8 +245,8 @@ endif
 
 # Gallery and Music for local AV playback
 PRODUCT_PACKAGES += \
-     Gallery2 \
-     Music \
+    Gallery2 \
+    Music \
 
 # Web browser
 PRODUCT_PACKAGES += \
@@ -265,7 +265,7 @@ DEVICE_PACKAGE_OVERLAYS := device/xen/xenvm/overlay
 
 # Recovery files
 PRODUCT_COPY_FILES += \
-	device/xen/xenvm/init.recovery.xenvm.rc:root/init.recovery.xenvm.rc
+    device/xen/xenvm/init.recovery.xenvm.rc:root/init.recovery.xenvm.rc
 
 
 $(call inherit-product, device/xen/xenvm/graphics.mk)
