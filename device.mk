@@ -182,6 +182,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     hwcomposer.$(TARGET_PRODUCT) \
 
+# Modetest from libdrm
+PRODUCT_PACKAGES += \
+    modetest \
+
 # Health HAL 2.0
 PRODUCT_PACKAGES += \
     android.hardware.health@2.0-service.xenvm \
