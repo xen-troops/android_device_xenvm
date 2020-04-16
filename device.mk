@@ -139,6 +139,9 @@ PRODUCT_PACKAGES += vndk_package
 PRODUCT_COPY_FILES += \
     packages/services/Car/car_product/bootanimations/bootanimation-832.zip:system/media/bootanimation.zip
 
+# Input mapping
+PRODUCT_COPY_FILES += \
+    device/xen/xenvm/input-port-associations.xml:$(TARGET_COPY_OUT_VENDOR)/etc/input-port-associations.xml
 
 # Native apps for audio
 PRODUCT_PACKAGES += \

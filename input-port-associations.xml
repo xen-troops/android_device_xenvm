@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+/vendor/etc/input-port-associations.xml
+-->
+<ports>
+  <port display="27" input="xenbus/device/vkbd/0" />
+  <port display="31" input="xenbus/device/vkbd/1" />
+</ports>
