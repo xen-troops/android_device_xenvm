@@ -247,6 +247,10 @@ PRODUCT_PACKAGES += \
      Gallery2 \
      Music \
 
+# Web browser
+PRODUCT_PACKAGES += \
+    Browser2 \
+
 ifneq ($(TARGET_PREBUILT_KERNEL),)
 PRODUCT_COPY_FILES +=   $(TARGET_PREBUILT_KERNEL):kernel
 endif
