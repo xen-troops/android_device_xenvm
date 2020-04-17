@@ -251,6 +251,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     Browser2 \
 
+# App for graphics testing
+PRODUCT_PACKAGES += \
+    glmark2
+
 ifneq ($(TARGET_PREBUILT_KERNEL),)
 PRODUCT_COPY_FILES +=   $(TARGET_PREBUILT_KERNEL):kernel
 endif
