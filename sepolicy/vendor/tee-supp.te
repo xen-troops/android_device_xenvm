@@ -1,3 +1,4 @@
 #============= tee-supp ==============
 allow tee-supp metadata_file:dir { add_name create getattr write };
 allow tee-supp metadata_file:file { create open read write };
+allow tee-supp tee_exec:file entrypoint;
