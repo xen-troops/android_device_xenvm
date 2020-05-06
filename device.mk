@@ -21,7 +21,7 @@ $(call inherit-product, packages/services/Car/car_product/build/car.mk)
 
 PRODUCT_SHIPPING_API_LEVEL := 29
 PRODUCT_OTA_ENFORCE_VINTF_KERNEL_REQUIREMENTS := false
-PRODUCT_USE_VNDK_OVERRIDE := false
+PRODUCT_USE_VNDK = true
 PRODUCT_FULL_TREBLE_OVERRIDE := true
 
 # Add preffered configurations
