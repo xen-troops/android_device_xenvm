@@ -89,49 +89,31 @@ void getProperty(const std::unique_ptr<BatteryMonitor>& monitor, int id, T defau
     struct BatteryProperty prop;
     T ret = defaultValue;
     Result result = Result::SUCCESS;
-    status_t err = monitor->getProperty(static_cast<int>(id), &prop);
-    if (err != OK) {
-        LOG(DEBUG) << "getProperty(" << id << ")"
-                   << " fails: (" << err << ") " << strerror(-err);
-    } else {
-        ret = static_cast<T>(prop.valueInt64);
-    }
-    switch (err) {
-        case OK:
-            result = Result::SUCCESS;
-            break;
-        case NAME_NOT_FOUND:
-            result = Result::NOT_SUPPORTED;
-            break;
-        default:
-            result = Result::UNKNOWN;
-            break;
-    }
     callback(result, static_cast<T>(ret));
 }
 
 Return<void> Health::getChargeCounter(getChargeCounter_cb _hidl_cb) {
-    getProperty<int32_t>(battery_monitor_, BATTERY_PROP_CHARGE_COUNTER, 1, _hidl_cb);
+    getProperty<int32_t>(battery_monitor_, BATTERY_PROP_CHARGE_COUNTER, kBatteryPropChargeCounter, _hidl_cb);
     return Void();
 }
 
 Return<void> Health::getCurrentNow(getCurrentNow_cb _hidl_cb) {
-    getProperty<int32_t>(battery_monitor_, BATTERY_PROP_CURRENT_NOW, 1, _hidl_cb);
+    getProperty<int32_t>(battery_monitor_, BATTERY_PROP_CURRENT_NOW, kBatteryPropCurrentNow, _hidl_cb);
     return Void();
 }
 
 Return<void> Health::getCurrentAverage(getCurrentAverage_cb _hidl_cb) {
-    getProperty<int32_t>(battery_monitor_, BATTERY_PROP_CURRENT_AVG, 1, _hidl_cb);
+    getProperty<int32_t>(battery_monitor_, BATTERY_PROP_CURRENT_AVG, kBatteryPropCurrentAvg, _hidl_cb);
     return Void();
 }
 
 Return<void> Health::getCapacity(getCapacity_cb _hidl_cb) {
-    getProperty<int32_t>(battery_monitor_, BATTERY_PROP_CAPACITY, 1, _hidl_cb);
+    getProperty<int32_t>(battery_monitor_, BATTERY_PROP_CAPACITY, kBatteryPropCapacity, _hidl_cb);
     return Void();
 }
 
 Return<void> Health::getEnergyCounter(getEnergyCounter_cb _hidl_cb) {
-    getProperty<int64_t>(battery_monitor_, BATTERY_PROP_ENERGY_COUNTER, 1, _hidl_cb);
+    getProperty<int64_t>(battery_monitor_, BATTERY_PROP_ENERGY_COUNTER, kBatteryPropEnergyCounter, _hidl_cb);
     return Void();
 }
 
