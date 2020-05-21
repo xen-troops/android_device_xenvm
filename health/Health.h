@@ -83,6 +83,12 @@ struct Health : public IHealth, hidl_death_recipient {
     std::unique_ptr<BatteryMonitor> battery_monitor_;
 
     bool unregisterCallbackInternal(const sp<IBase>& cb);
+
+    const int kBatteryPropChargeCounter = 1;
+    const int kBatteryPropCurrentNow = 1;
+    const int kBatteryPropCurrentAvg = 1;
+    const int kBatteryPropCapacity = 1;
+    const int kBatteryPropEnergyCounter = 1;
 };
 
 }  // namespace implementation
