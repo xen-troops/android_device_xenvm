@@ -1,5 +1,5 @@
-/dev/block/xvda1           /               ext4    ro,barrier=1                  	 wait
-/dev/block/xvda3           /misc           emmc    defaults                              defaults
-/dev/block/xvda4           /vbmeta         emmc    defaults                              defaults
-/dev/block/xvda5           /metadata       ext4    noatime,nosuid,                       wait,check
-/dev/block/xvda6           /data           ext4    noatime,nosuid,barrier=1              wait,check,latemount
+/dev/block/by-name/system             /               ext4    ro,barrier=1                          wait
+/dev/block/by-name/misc               /misc           emmc    defaults                              defaults
+/dev/block/by-name/vbmeta             /vbmeta         emmc    defaults                              defaults
+/dev/block/by-name/metadata           /metadata       ext4    noatime,nosuid,                       wait,check
+/dev/block/by-name/userdata           /data           ext4    noatime,nosuid,barrier=1              wait,check,latemount
