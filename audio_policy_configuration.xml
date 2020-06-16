@@ -15,10 +15,14 @@
 -->
 
 <audioPolicyConfiguration version="1.0" xmlns:xi="http://www.w3.org/2001/XInclude">
+
+    <!-- We do not have Dynamic Range Compression -->
+    <globalConfiguration speaker_drc_enabled="false"/>
+
     <modules>
 
         <!-- XEN VM Audio HAL -->
-        <module name="primary" halVersion="4.0">
+        <module name="primary" halVersion="3.0">
           <attachedDevices>
             <item>bus0_out_media</item>
             <item>bus1_out_navigation</item>
@@ -177,9 +181,7 @@
             <route type="mix" sink="bus5_out_alarm" sources="mixport_bus5"/>
             <route type="mix" sink="bus6_out_notification" sources="mixport_bus6"/>
             <route type="mix" sink="bus7_out_system_sound" sources="mixport_bus7"/>
-            <route type="mix" sink="primary input" sources="Built-In Mic"/>
-            <route type="mix" sink="primary input" sources="Line In"/>
-            <route type="mix" sink="primary input" sources="bus0_in"/>
+            <route type="mix" sink="primary input" sources="Built-In Mic,Line In,bus0_in"/>
           </routes>
         </module>
 
