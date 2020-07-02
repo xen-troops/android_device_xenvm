@@ -66,5 +66,5 @@
 #
 /system/bin/android\.hardware\.automotive\.evs@1\.0\.xenvm   u:object_r:hal_evs_driver_exec:s0
 /vendor/bin/android\.automotive\.evs\.manager@1\.0\.xenvm    u:object_r:evs_manager_exec:s0
-/vendor/bin/evs_app_xt                                       u:object_r:evs_app_exec:s0
+#/vendor/bin/evs_app_xt                                       u:object_r:evs_app_exec:s0
 /vendor/etc/vehicle/evs_app_xt.json                          u:object_r:evs_app_files:s0
