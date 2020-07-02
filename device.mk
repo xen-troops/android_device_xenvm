@@ -19,10 +19,10 @@ $(call inherit-product, build/target/product/core_64_bit.mk)
 $(call inherit-product, frameworks/native/build/tablet-10in-xhdpi-2048-dalvik-heap.mk)
 $(call inherit-product, packages/services/Car/car_product/build/car.mk)
 
-PRODUCT_SHIPPING_API_LEVEL := 29
-PRODUCT_OTA_ENFORCE_VINTF_KERNEL_REQUIREMENTS := false
-PRODUCT_USE_VNDK = true
-PRODUCT_FULL_TREBLE_OVERRIDE := true
+#PRODUCT_SHIPPING_API_LEVEL := 29
+#PRODUCT_OTA_ENFORCE_VINTF_KERNEL_REQUIREMENTS := false
+#PRODUCT_USE_VNDK = true
+#PRODUCT_FULL_TREBLE_OVERRIDE := true
 
 # Add preffered configurations
 PRODUCT_AAPT_CONFIG := normal large xlarge hdpi xhdpi
