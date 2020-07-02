@@ -137,8 +137,8 @@ PRODUCT_COPY_FILES += \
     packages/services/Car/car_product/bootanimations/bootanimation-832.zip:system/media/bootanimation.zip
 
 # Input mapping
-PRODUCT_COPY_FILES += \
-    device/xen/xenvm/input-port-associations.xml:$(TARGET_COPY_OUT_VENDOR)/etc/input-port-associations.xml
+#PRODUCT_COPY_FILES += \
+#    device/xen/xenvm/input-port-associations.xml:$(TARGET_COPY_OUT_VENDOR)/etc/input-port-associations.xml
 
 # Native apps for audio
 PRODUCT_PACKAGES += \
@@ -165,15 +165,15 @@ PRODUCT_PACKAGES += \
     android.hardware.automotive.audiocontrol@2.0-service \
 
 # Composer 2.3
-PRODUCT_PACKAGES += \
-    android.hardware.graphics.composer@2.3-hal \
-    android.hardware.graphics.composer@2.3-passthrough \
-    android.hardware.graphics.composer@2.3-service \
+#PRODUCT_PACKAGES += \
+#    android.hardware.graphics.composer@2.3-hal \
+#    android.hardware.graphics.composer@2.3-passthrough \
+#    android.hardware.graphics.composer@2.3-service \
 
 # Composer 2.1
-#PRODUCT_PACKAGES += \
-#    android.hardware.graphics.composer@2.1-impl \
-#    android.hardware.graphics.composer@2.1-service \
+PRODUCT_PACKAGES += \
+    android.hardware.graphics.composer@2.1-impl \
+    android.hardware.graphics.composer@2.1-service \
 
 # DRM Composer
 PRODUCT_PACKAGES += \
