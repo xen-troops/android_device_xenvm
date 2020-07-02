@@ -131,7 +131,7 @@ Return<Result> Health::update() {
 
     // Retrieve all information and call healthd_mode_ops->battery_update, which calls
     // notifyListeners.
-    bool chargerOnline = battery_monitor_->update();
+    bool chargerOnline = true;
 
     // adjust uevent / wakealarm periods
     healthd_battery_update_internal(chargerOnline);
@@ -237,10 +237,6 @@ Return<void> Health::getHealthInfo(getHealthInfo_cb _hidl_cb) {
     using android::hardware::health::V1_0::hal_conversion::convertToHealthInfo;
 
     update();
-    struct android::BatteryProperties p = getBatteryProperties(battery_monitor_.get());
-
-    V1_0::HealthInfo batteryInfo;
-    convertToHealthInfo(&p, batteryInfo);
 
     std::vector<StorageInfo> info;
     get_storage_info(info);
