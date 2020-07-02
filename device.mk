@@ -162,7 +162,7 @@ PRODUCT_PACKAGES += \
 
 # AudioControl
 PRODUCT_PACKAGES += \
-    android.hardware.automotive.audiocontrol@1.0-service \
+    android.hardware.automotive.audiocontrol@2.0-service \
 
 # Composer 2.3
 PRODUCT_PACKAGES += \
