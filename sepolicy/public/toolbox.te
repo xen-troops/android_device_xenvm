@@ -1,5 +1,0 @@
-#============= toolbox ==============
-dontaudit toolbox self:capability sys_module;
-
-allow toolbox vendor_file:system module_load;
-allow toolbox proc_modules:file { getattr open read };
