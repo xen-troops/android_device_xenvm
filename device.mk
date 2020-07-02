@@ -78,6 +78,10 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.usb.host.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.usb.host.xml \
     frameworks/native/data/etc/android.hardware.wifi.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.wifi.xml \
 
+# Car Audio configuration
+PRODUCT_COPY_FILES +=\
+    device/xen/xenvm/car_audio_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/car_audio_configuration.xml
+
 # DRM HAL
 $(call inherit-product, hardware/interfaces/drm/1.0/default/common_default_service.mk)
 
