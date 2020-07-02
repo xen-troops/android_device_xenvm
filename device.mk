@@ -184,8 +184,13 @@ PRODUCT_PACKAGES += \
     modetest \
 
 # Health HAL 2.0
+#PRODUCT_PACKAGES += \
+#    android.hardware.health@2.0-service.xenvm \
+
 PRODUCT_PACKAGES += \
-    android.hardware.health@2.0-service.xenvm \
+    android.hardware.health@2.1-service \
+    android.hardware.health@2.1-impl \
+    android.hardware.health.storage@1.0-service \
 
 # Keymaster HAL
 # All security related settings are moved into dedicated security.mk
