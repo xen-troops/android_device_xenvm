@@ -81,10 +81,6 @@ PRODUCT_COPY_FILES += \
 # DRM HAL
 $(call inherit-product, hardware/interfaces/drm/1.0/default/common_default_service.mk)
 
-# Manifest
-PRODUCT_COPY_FILES += \
-    device/xen/xenvm/manifest.xml:$(TARGET_COPY_OUT_VENDOR)/manifest.xml
-
 # Init rc
 PRODUCT_COPY_FILES +=\
     device/xen/xenvm/init.xenvm.rc:root/init.xenvm.rc \
