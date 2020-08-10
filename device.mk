@@ -19,6 +19,34 @@ $(call inherit-product, build/target/product/core_64_bit.mk)
 $(call inherit-product, frameworks/native/build/tablet-10in-xhdpi-2048-dalvik-heap.mk)
 $(call inherit-product, packages/services/Car/car_product/build/car.mk)
 
+
+# Boot control HAL (libavb)
+PRODUCT_PACKAGES +=  \
+    android.hardware.boot@1.0-impl.xenvm \
+    android.hardware.boot@1.0-service.xenvm
+
+# A/B System Updates
+AB_OTA_UPDATER := true
+AB_OTA_PARTITIONS := \
+    boot \
+    system \
+    vendor \
+
+PRODUCT_PACKAGES += \
+    update_verifier \
+    update_engine
+
+# A/B recovery boot control HAL (libavb)
+PRODUCT_STATIC_BOOT_CONTROL_HAL := \
+    libavb_user \
+    libavb \
+    libfs_mgr
+
+# A/B OTA dexopt package
+PRODUCT_PACKAGES += \
+    otapreopt_script
+
+
 PRODUCT_SHIPPING_API_LEVEL := 29
 PRODUCT_OTA_ENFORCE_VINTF_KERNEL_REQUIREMENTS := false
 PRODUCT_USE_VNDK = true
