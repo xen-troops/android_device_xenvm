@@ -1,0 +1,41 @@
+cc_library_shared {
+    name: "android.hardware.boot@1.0-impl.xenvm",
+    defaults: ["hidl_defaults"],
+    relative_install_path: "hw",
+    vendor: true,
+    recovery_available: true,
+    srcs: ["BootControl.cpp"],
+
+    shared_libs: [
+        "liblog",
+        "libbase",
+        "libhidlbase",
+        "libhardware",
+        "libutils",
+        "android.hardware.boot@1.0",
+    ],
+    include_dirs: [ 
+        "bootable/recovery/bootloader_message/include",
+        "external/avb",
+        "external/gptfdisk" 
+    ],
+}
+
+cc_binary {
+    name: "android.hardware.boot@1.0-service.xenvm",
+    defaults: ["hidl_defaults"],
+    relative_install_path: "hw",
+    vendor: true,
+    init_rc: ["android.hardware.boot@1.0-service.xenvm.rc"],
+    srcs: ["service.cpp"],
+
+    shared_libs: [
+        "liblog",
+        "libbase",
+        "libhardware",
+        "libhidlbase",
+        "libutils",
+        "android.hardware.boot@1.0",
+    ],
+
+}

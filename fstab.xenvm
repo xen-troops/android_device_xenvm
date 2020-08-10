@@ -1,4 +1,4 @@
-/dev/block/by-name/system             /               ext4    ro,barrier=1                          wait
+/dev/block/by-name/system             /               ext4    ro,barrier=1                          wait,slotselect,avb
 /dev/block/by-name/misc               /misc           emmc    defaults                              defaults
 /dev/block/by-name/vbmeta             /vbmeta         emmc    defaults                              defaults
 /dev/block/by-name/metadata           /metadata       ext4    noatime,nosuid,                       wait,check
