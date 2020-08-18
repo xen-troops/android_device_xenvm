@@ -88,8 +88,6 @@ TARGET_KERNEL_SOURCE := device/xen/kernel
 TARGET_KERNEL_CONFIG := android_xenvm_defconfig
 endif
 
-PVRSRV_VZ_NUM_OSID := 2
-
 # Disable Jack
 ANDROID_COMPILE_WITH_JACK := false
 
