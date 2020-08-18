@@ -14,6 +14,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
+
 TARGET_BOOTLOADER_BOARD_NAME := xenvm
 TARGET_COPY_OUT_VENDOR := vendor
 
