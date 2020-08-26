@@ -31,6 +31,7 @@ AB_OTA_PARTITIONS := \
     boot \
     system \
     vendor \
+    vbmeta \
 
 PRODUCT_PACKAGES += \
     update_verifier \
@@ -121,18 +122,20 @@ PRODUCT_COPY_FILES +=\
     packages/services/Car/car_product/init/init.bootstat.rc:root/init.bootstat.rc
 
 # Mount points
-ifeq ($(ENABLE_AVB),true)
+ifneq ($(DISABLE_AVB),true)
   PRODUCT_COPY_FILES += \
     device/xen/xenvm/fstab.xenvm.avb:root/fstab.xenvm \
+    device/xen/xenvm/fstab.xenvm.avb:$(TARGET_COPY_OUT_VENDOR)/etc/fstab.xenvm \
     device/xen/xenvm/fstab.xenvm.avb:$(TARGET_COPY_OUT_RECOVERY)/root/first_stage_ramdisk/fstab.xenvm \
 
 TARGET_RECOVERY_FSTAB := device/xen/xenvm/fstab.xenvm.avb
 else
   PRODUCT_COPY_FILES += \
     device/xen/xenvm/fstab.xenvm:root/fstab.xenvm \
-    device/xen/xenvm/fstab.recovery.xenvm:$(TARGET_COPY_OUT_RECOVERY)/root/first_stage_ramdisk/fstab.xenvm \
+    device/xen/xenvm/fstab.xenvm:$(TARGET_COPY_OUT_VENDOR)/etc/fstab.xenvm \
+    device/xen/xenvm/fstab.xenvm:$(TARGET_COPY_OUT_RECOVERY)/root/first_stage_ramdisk/fstab.xenvm \
 
-TARGET_RECOVERY_FSTAB := device/xen/xenvm/fstab.recovery.xenvm
+TARGET_RECOVERY_FSTAB := device/xen/xenvm/fstab.xenvm
 endif
 
 PRODUCT_COPY_FILES += \
