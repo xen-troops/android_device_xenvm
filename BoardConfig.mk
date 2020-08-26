@@ -61,6 +61,16 @@ BOARD_BOOTIMAGE_PARTITION_SIZE := 28483584
 BOARD_BUILD_SYSTEM_ROOT_IMAGE := false
 BOARD_USES_RECOVERY_AS_BOOT := true
 
+
+# Verified boot
+ifneq ($(DISABLE_AVB),true)
+BOARD_AVB_ENABLE := true
+BOARD_AVB_ALGORITHM := SHA512_RSA4096
+BOARD_AVB_SYSTEM_ADD_HASHTREE_FOOTER_ARGS := --do_not_generate_fec
+BOARD_AVB_VENDOR_ADD_HASHTREE_FOOTER_ARGS := --do_not_generate_fec
+endif
+
+
 # Enable dex-preoptimization to speed up first boot sequence, only for USER build
 ifeq ($(HOST_OS),linux)
   ifeq ($(TARGET_BUILD_VARIANT),user)
@@ -95,11 +105,6 @@ ANDROID_COMPILE_WITH_JACK := false
 BOARD_USES_DRM_HWCOMPOSER := true
 
 BOARD_USES_METADATA_PARTITION=true
-
-# Verified boot
-ifeq ($(ENABLE_AVB),true)
-  BOARD_AVB_ENABLE := true
-endif
 
 DEVICE_MANIFEST_FILE             := device/xen/xenvm/manifest.xml
 #DEVICE_MATRIX_FILE               := device/xen/xenvm/compatibility_matrix.xml
