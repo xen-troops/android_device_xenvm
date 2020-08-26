@@ -24,6 +24,27 @@ $(call inherit-product, packages/services/Car/car_product/build/car.mk)
 #PRODUCT_USE_VNDK = true
 #PRODUCT_FULL_TREBLE_OVERRIDE := true
 
+# Boot control HAL (libavb)
+PRODUCT_PACKAGES +=  \
+    android.hardware.boot@1.1-impl \
+    android.hardware.boot@1.1-service
+
+# A/B System Updates
+AB_OTA_UPDATER := true
+AB_OTA_PARTITIONS := \
+    boot \
+    system \
+    vendor \
+    vbmeta \
+
+PRODUCT_PACKAGES += \
+    update_verifier \
+    update_engine
+
+# A/B OTA dexopt package
+PRODUCT_PACKAGES += \
+    otapreopt_script
+
 # Add preffered configurations
 PRODUCT_AAPT_CONFIG := normal large xlarge hdpi xhdpi
 PRODUCT_AAPT_PREF_CONFIG := hdpi
@@ -89,18 +110,20 @@ PRODUCT_COPY_FILES +=\
     packages/services/Car/car_product/init/init.bootstat.rc:root/init.bootstat.rc
 
 # Mount points
-ifeq ($(ENABLE_AVB),true)
+ifneq ($(DISABLE_AVB),true)
   PRODUCT_COPY_FILES += \
     device/xen/xenvm/fstab.xenvm.avb:root/fstab.xenvm \
+    device/xen/xenvm/fstab.xenvm.avb:$(TARGET_COPY_OUT_VENDOR)/etc/fstab.xenvm \
     device/xen/xenvm/fstab.xenvm.avb:$(TARGET_COPY_OUT_RECOVERY)/root/first_stage_ramdisk/fstab.xenvm \
 
 TARGET_RECOVERY_FSTAB := device/xen/xenvm/fstab.xenvm.avb
 else
   PRODUCT_COPY_FILES += \
     device/xen/xenvm/fstab.xenvm:root/fstab.xenvm \
-    device/xen/xenvm/fstab.recovery.xenvm:$(TARGET_COPY_OUT_RECOVERY)/root/first_stage_ramdisk/fstab.xenvm \
+    device/xen/xenvm/fstab.xenvm:$(TARGET_COPY_OUT_VENDOR)/etc/fstab.xenvm \
+    device/xen/xenvm/fstab.xenvm:$(TARGET_COPY_OUT_RECOVERY)/root/first_stage_ramdisk/fstab.xenvm \
 
-TARGET_RECOVERY_FSTAB := device/xen/xenvm/fstab.recovery.xenvm
+TARGET_RECOVERY_FSTAB := device/xen/xenvm/fstab.xenvm
 endif
 
 PRODUCT_COPY_FILES += \
