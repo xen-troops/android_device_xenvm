@@ -1,5 +1,5 @@
-/dev/block/by-name/system             /system         ext4    ro,barrier=1                          wait,slotselect,avb,first_stage_mount
-/dev/block/by-name/vendor             /vendor         ext4    ro,barrier=1                          wait,slotselect,avb,first_stage_mount
+system                                /system         ext4    ro,barrier=1                          wait,slotselect,avb=vbmeta,logical,first_stage_mount
+vendor                                /vendor         ext4    ro,barrier=1                          wait,slotselect,avb,logical,first_stage_mount
 /dev/block/by-name/misc               /misc           emmc    defaults                              defaults
 /dev/block/by-name/vbmeta             /vbmeta         emmc    defaults                              defaults
 /dev/block/by-name/metadata           /metadata       ext4    noatime,nosuid,                       wait,check
