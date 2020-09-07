@@ -37,6 +37,8 @@ AB_OTA_PARTITIONS := \
     vendor \
     vbmeta \
 
+PRODUCT_USE_DYNAMIC_PARTITIONS := true
+
 PRODUCT_PACKAGES += \
     update_verifier \
     update_engine
