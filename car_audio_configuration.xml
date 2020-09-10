@@ -27,16 +27,16 @@
         <zone name="primary zone" isPrimary="true" occupantZoneId="0">
             <volumeGroups>
                 <group>
-                    <device address="bus0_out_media">
+                    <device address="bus0_media_out">
                         <context context="music"/>
                     </device>
-                    <device address="bus3_out_call_ring">
+                    <device address="bus3_call_ring_out">
                         <context context="call_ring"/>
                     </device>
-                    <device address="bus6_out_notification">
+                    <device address="bus6_notification_out">
                         <context context="notification"/>
                     </device>
-                    <device address="bus7_out_system_sound">
+                    <device address="bus7_system_sound_out">
                         <context context="system_sound"/>
                         <context context="emergency"/>
                         <context context="safety"/>
@@ -45,20 +45,20 @@
                     </device>
                 </group>
                 <group>
-                    <device address="bus1_out_navigation">
+                    <device address="bus1_navigation_out">
                         <context context="navigation"/>
                     </device>
-                    <device address="bus2_out_voice_command">
+                    <device address="bus2_voice_command_out">
                         <context context="voice_command"/>
                     </device>
                 </group>
                 <group>
-                    <device address="bus4_out_call">
+                    <device address="bus4_call_out">
                         <context context="call"/>
                     </device>
                 </group>
                 <group>
-                    <device address="bus5_out_alarm">
+                    <device address="bus5_alarm_out">
                         <context context="alarm"/>
                     </device>
                 </group>
