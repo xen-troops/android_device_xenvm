@@ -194,6 +194,9 @@ PRODUCT_PACKAGES += \
 
 # Keymaster HAL
 # All security related settings are moved into dedicated security.mk
+PRODUCT_PACKAGES += \
+    android.hardware.keymaster@3.0-impl \
+
 
 # Vehicle HAL
 PRODUCT_PACKAGES += \
@@ -275,5 +278,4 @@ $(call inherit-product-if-exists, frameworks/base/data/fonts/fonts.mk)
 ifeq ($(USE_G_APPS),true)
 $(call inherit-product-if-exists, vendor/Google/Google-product.mk)
 endif
-$(call inherit-product, device/xen/xenvm/security.mk)
-
+#$(call inherit-product, device/xen/xenvm/security.mk)
