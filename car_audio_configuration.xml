@@ -22,9 +22,9 @@
     - Volume groups
   in the car environment.
 -->
-<carAudioConfiguration version="1">
+<carAudioConfiguration version="2">
     <zones>
-        <zone name="primary zone" isPrimary="true">
+        <zone name="primary zone" isPrimary="true" occupantZoneId="0">
             <volumeGroups>
                 <group>
                     <device address="bus0_out_media">
@@ -38,6 +38,10 @@
                     </device>
                     <device address="bus7_out_system_sound">
                         <context context="system_sound"/>
+                        <context context="emergency"/>
+                        <context context="safety"/>
+                        <context context="vehicle_status"/>
+                        <context context="announcement"/>
                     </device>
                 </group>
                 <group>
