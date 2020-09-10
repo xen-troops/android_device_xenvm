@@ -24,19 +24,19 @@
         <!-- XEN VM Audio HAL -->
         <module name="primary" halVersion="3.0">
           <attachedDevices>
-            <item>bus0_out_media</item>
-            <item>bus1_out_navigation</item>
-            <item>bus2_out_voice_command</item>
-            <item>bus3_out_call_ring</item>
-            <item>bus4_out_call</item>
-            <item>bus5_out_alarm</item>
-            <item>bus6_out_notification</item>
-            <item>bus7_out_system_sound</item>
+            <item>bus0_media_out</item>
+            <item>bus1_navigation_out</item>
+            <item>bus2_voice_command_out</item>
+            <item>bus3_call_ring_out</item>
+            <item>bus4_call_out</item>
+            <item>bus5_alarm_out</item>
+            <item>bus6_notification_out</item>
+            <item>bus7_system_sound_out</item>
             <item>Built-In Mic</item>
             <item>Line In</item>
             <item>bus0_in</item>
           </attachedDevices>
-          <defaultOutputDevice>bus0_out_media</defaultOutputDevice>
+          <defaultOutputDevice>bus0_media_out</defaultOutputDevice>
 
           <mixPorts>
             <mixPort name="mixport_bus0" role="source" flags="AUDIO_OUTPUT_FLAG_PRIMARY|AUDIO_OUTPUT_FLAG_DEEP_BUFFER">
@@ -87,7 +87,7 @@
           </mixPorts>
 
           <devicePorts>
-            <devicePort tagName="bus0_out_media" role="sink" type="AUDIO_DEVICE_OUT_BUS" address="bus0_out_media">
+            <devicePort tagName="bus0_media_out" role="sink" type="AUDIO_DEVICE_OUT_BUS" address="bus0_media_out">
               <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
                        samplingRates="8000,11025,16000,22050,32000,44100,48000"
                        channelMasks="AUDIO_CHANNEL_OUT_MONO,AUDIO_CHANNEL_OUT_STEREO"/>
@@ -95,7 +95,7 @@
                   <gain name="" mode="AUDIO_GAIN_MODE_JOINT" minValueMB="-3200" maxValueMB="600" defaultValueMB="0" stepValueMB="100"/>
               </gains>
             </devicePort>
-            <devicePort tagName="bus1_out_navigation" role="sink" type="AUDIO_DEVICE_OUT_BUS" address="bus1_out_navigation">
+            <devicePort tagName="bus1_navigation_out" role="sink" type="AUDIO_DEVICE_OUT_BUS" address="bus1_navigation_out">
               <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
                        samplingRates="8000,11025,16000,22050,32000,44100,48000"
                        channelMasks="AUDIO_CHANNEL_OUT_MONO,AUDIO_CHANNEL_OUT_STEREO"/>
@@ -103,7 +103,7 @@
                   <gain name="" mode="AUDIO_GAIN_MODE_JOINT" minValueMB="-3200" maxValueMB="600" defaultValueMB="0" stepValueMB="100"/>
               </gains>
             </devicePort>
-            <devicePort tagName="bus2_out_voice_command" role="sink" type="AUDIO_DEVICE_OUT_BUS" address="bus2_out_voice_command">
+            <devicePort tagName="bus2_voice_command_out" role="sink" type="AUDIO_DEVICE_OUT_BUS" address="bus2_voice_command_out">
               <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
                        samplingRates="8000,11025,16000,22050,32000,44100,48000"
                        channelMasks="AUDIO_CHANNEL_OUT_MONO,AUDIO_CHANNEL_OUT_STEREO"/>
@@ -111,7 +111,7 @@
                   <gain name="" mode="AUDIO_GAIN_MODE_JOINT" minValueMB="-3200" maxValueMB="600" defaultValueMB="0" stepValueMB="100"/>
               </gains>
             </devicePort>
-            <devicePort tagName="bus3_out_call_ring" role="sink" type="AUDIO_DEVICE_OUT_BUS" address="bus3_out_call_ring">
+            <devicePort tagName="bus3_call_ring_out" role="sink" type="AUDIO_DEVICE_OUT_BUS" address="bus3_call_ring_out">
               <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
                        samplingRates="8000,11025,16000,22050,32000,44100,48000"
                        channelMasks="AUDIO_CHANNEL_OUT_MONO,AUDIO_CHANNEL_OUT_STEREO"/>
@@ -119,7 +119,7 @@
                   <gain name="" mode="AUDIO_GAIN_MODE_JOINT" minValueMB="-3200" maxValueMB="600" defaultValueMB="0" stepValueMB="100"/>
               </gains>
             </devicePort>
-            <devicePort tagName="bus4_out_call" role="sink" type="AUDIO_DEVICE_OUT_BUS" address="bus4_out_call">
+            <devicePort tagName="bus4_call_out" role="sink" type="AUDIO_DEVICE_OUT_BUS" address="bus4_call_out">
               <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
                        samplingRates="8000,11025,16000,22050,32000,44100,48000"
                        channelMasks="AUDIO_CHANNEL_OUT_MONO,AUDIO_CHANNEL_OUT_STEREO"/>
@@ -127,7 +127,7 @@
                   <gain name="" mode="AUDIO_GAIN_MODE_JOINT" minValueMB="-3200" maxValueMB="600" defaultValueMB="0" stepValueMB="100"/>
               </gains>
             </devicePort>
-            <devicePort tagName="bus5_out_alarm" role="sink" type="AUDIO_DEVICE_OUT_BUS" address="bus5_out_alarm">
+            <devicePort tagName="bus5_alarm_out" role="sink" type="AUDIO_DEVICE_OUT_BUS" address="bus5_alarm_out">
               <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
                        samplingRates="8000,11025,16000,22050,32000,44100,48000"
                        channelMasks="AUDIO_CHANNEL_OUT_MONO,AUDIO_CHANNEL_OUT_STEREO"/>
@@ -135,7 +135,7 @@
                   <gain name="" mode="AUDIO_GAIN_MODE_JOINT" minValueMB="-3200" maxValueMB="600" defaultValueMB="0" stepValueMB="100"/>
               </gains>
             </devicePort>
-            <devicePort tagName="bus6_out_notification" role="sink" type="AUDIO_DEVICE_OUT_BUS" address="bus6_out_notification">
+            <devicePort tagName="bus6_notification_out" role="sink" type="AUDIO_DEVICE_OUT_BUS" address="bus6_notification_out">
               <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
                        samplingRates="8000,11025,16000,22050,32000,44100,48000"
                        channelMasks="AUDIO_CHANNEL_OUT_MONO,AUDIO_CHANNEL_OUT_STEREO"/>
@@ -143,7 +143,7 @@
                   <gain name="" mode="AUDIO_GAIN_MODE_JOINT" minValueMB="-3200" maxValueMB="600" defaultValueMB="0" stepValueMB="100"/>
               </gains>
             </devicePort>
-            <devicePort tagName="bus7_out_system_sound" role="sink" type="AUDIO_DEVICE_OUT_BUS" address="bus7_out_system_sound">
+            <devicePort tagName="bus7_system_sound_out" role="sink" type="AUDIO_DEVICE_OUT_BUS" address="bus7_system_sound_out">
               <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
                        samplingRates="8000,11025,16000,22050,32000,44100,48000"
                        channelMasks="AUDIO_CHANNEL_OUT_MONO,AUDIO_CHANNEL_OUT_STEREO"/>
@@ -173,14 +173,14 @@
           </devicePorts>
 
           <routes>
-            <route type="mix" sink="bus0_out_media" sources="mixport_bus0"/>
-            <route type="mix" sink="bus1_out_navigation" sources="mixport_bus1"/>
-            <route type="mix" sink="bus2_out_voice_command" sources="mixport_bus2"/>
-            <route type="mix" sink="bus3_out_call_ring" sources="mixport_bus3"/>
-            <route type="mix" sink="bus4_out_call" sources="mixport_bus4"/>
-            <route type="mix" sink="bus5_out_alarm" sources="mixport_bus5"/>
-            <route type="mix" sink="bus6_out_notification" sources="mixport_bus6"/>
-            <route type="mix" sink="bus7_out_system_sound" sources="mixport_bus7"/>
+            <route type="mix" sink="bus0_media_out" sources="mixport_bus0"/>
+            <route type="mix" sink="bus1_navigation_out" sources="mixport_bus1"/>
+            <route type="mix" sink="bus2_voice_command_out" sources="mixport_bus2"/>
+            <route type="mix" sink="bus3_call_ring_out" sources="mixport_bus3"/>
+            <route type="mix" sink="bus4_call_out" sources="mixport_bus4"/>
+            <route type="mix" sink="bus5_alarm_out" sources="mixport_bus5"/>
+            <route type="mix" sink="bus6_notification_out" sources="mixport_bus6"/>
+            <route type="mix" sink="bus7_system_sound_out" sources="mixport_bus7"/>
             <route type="mix" sink="primary input" sources="Built-In Mic,Line In,bus0_in"/>
           </routes>
         </module>
