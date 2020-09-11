@@ -235,13 +235,10 @@ PRODUCT_COPY_FILES += \
 
 # Exterior View System (EVS)
 PRODUCT_PACKAGES += \
-    android.hardware.automotive.evs@1.0-service \
-    android.hardware.automotive.evs@1.0.xenvm \
-    android.automotive.evs.manager@1.0.xenvm \
+    android.frameworks.automotive.display@1.0-service \
+    android.hardware.automotive.evs@1.1.xt \
+    android.automotive.evs.manager@1.1 \
     evs_app_xt \
-
-PRODUCT_COPY_FILES += \
-    vendor/xen/evs/app/evs_app_xt.json:$(TARGET_COPY_OUT_VENDOR)/etc/vehicle/evs_app_xt.json
 
 # Set default log size on userdebug/eng builds to 2M
 ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
