@@ -20,7 +20,7 @@ ifneq (,$(filter r8a7795 r8a7796, $(TARGET_BOARD_PLATFORM)))
 ABS_TOP := $(abspath $(TOP))
 TARGET_ARCH := arm64
 
-DDK_UM_PREBUILDS := $(ABS_TOP)/vendor/imagination/rogue_um
+DDK_UM_PREBUILDS ?= $(ABS_TOP)/vendor/imagination/rogue_um
 
 TARGET_KERNEL_MODULES_OUT := $(abspath ${OUT_DIR}/target/product/$(TARGET_PRODUCT)/obj/KERNEL_MODULES)
 
