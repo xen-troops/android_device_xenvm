@@ -47,9 +47,6 @@ PRODUCT_PROPERTY_OVERRIDES += ro.sf.lcd_density=160
 
 PRODUCT_TAGS += dalvik.gc.type-precise
 
-# Use audio_policy_configuration.xml
-USE_XML_AUDIO_POLICY_CONF := 1
-
 # Software permissions
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.activities_on_secondary_displays.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.activities_on_secondary_displays.xml \
