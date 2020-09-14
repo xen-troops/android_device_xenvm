@@ -2,6 +2,6 @@ system                                /system         ext4    ro,barrier=1      
 vendor                                /vendor         ext4    ro,barrier=1                          wait,slotselect,avb,logical,first_stage_mount
 /dev/block/by-name/misc               /misc           emmc    defaults                              defaults
 /dev/block/by-name/vbmeta             /vbmeta         emmc    defaults                              defaults
-/dev/block/by-name/metadata           /metadata       ext4    noatime,nosuid,                       wait,check
+/dev/block/by-name/metadata           /metadata       ext4    noatime,nosuid,nodev,discard,sync     wait,formattable,first_stage_mount,check
 /dev/block/by-name/userdata           /data           ext4    noatime,nosuid,barrier=1              wait,check,latemount
 

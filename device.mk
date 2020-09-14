@@ -26,8 +26,8 @@ $(call inherit-product, packages/services/Car/car_product/build/car.mk)
 
 # Boot control HAL (libavb)
 PRODUCT_PACKAGES +=  \
-    android.hardware.boot@1.0-impl.xenvm \
-    android.hardware.boot@1.0-service.xenvm
+    android.hardware.boot@1.1-impl \
+    android.hardware.boot@1.1-service
 
 # A/B System Updates
 AB_OTA_UPDATER := true
@@ -44,10 +44,10 @@ PRODUCT_PACKAGES += \
     update_engine
 
 # A/B recovery boot control HAL (libavb)
-PRODUCT_STATIC_BOOT_CONTROL_HAL := \
-    libavb_user \
-    libavb \
-    libfs_mgr
+#PRODUCT_STATIC_BOOT_CONTROL_HAL := \
+#    libavb_user \
+#    libavb \
+#    libfs_mgr
 
 # A/B OTA dexopt package
 PRODUCT_PACKAGES += \
@@ -303,6 +303,9 @@ DEVICE_PACKAGE_OVERLAYS := device/xen/xenvm/overlay
 PRODUCT_COPY_FILES += \
     device/xen/xenvm/init.recovery.xenvm.rc:root/init.recovery.xenvm.rc
 
+# Virtual AB
+$(call inherit-product, \
+    $(SRC_TARGET_DIR)/product/virtual_ab_ota.mk)
 
 $(call inherit-product, device/xen/xenvm/graphics.mk)
 $(call inherit-product-if-exists, frameworks/base/data/sounds/AudioPackage13.mk)
