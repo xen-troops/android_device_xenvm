@@ -294,6 +294,9 @@ DEVICE_PACKAGE_OVERLAYS := device/xen/xenvm/overlay
 PRODUCT_COPY_FILES += \
     device/xen/xenvm/init.recovery.xenvm.rc:root/init.recovery.xenvm.rc
 
+# Virtual AB
+$(call inherit-product, \
+    $(SRC_TARGET_DIR)/product/virtual_ab_ota.mk)
 
 $(call inherit-product, device/xen/xenvm/graphics.mk)
 $(call inherit-product-if-exists, frameworks/base/data/sounds/AudioPackage13.mk)
