@@ -117,5 +117,5 @@ BOARD_USES_DRM_HWCOMPOSER := true
 BOARD_USES_METADATA_PARTITION=true
 
 DEVICE_MANIFEST_FILE             := device/xen/xenvm/manifest.xml
-#DEVICE_MATRIX_FILE               := device/xen/xenvm/compatibility_matrix.xml
-#BOARD_VNDK_VERSION               := current
+DEVICE_MATRIX_FILE               := device/xen/xenvm/compatibility_matrix.xml
+BOARD_VNDK_VERSION               := current
