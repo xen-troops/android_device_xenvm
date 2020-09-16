@@ -227,8 +227,12 @@ PRODUCT_PACKAGES += \
 # Keymaster HAL
 # All security related settings are moved into dedicated security.mk
 PRODUCT_PACKAGES += \
-    android.hardware.keymaster@3.0-impl \
+    android.hardware.keymaster@4.1-service \
 
+# Gatekeeper HAL
+# Software version
+PRODUCT_PACKAGES += \
+   android.hardware.gatekeeper@1.0-service.software \
 
 # Vehicle HAL
 PRODUCT_PACKAGES += \
