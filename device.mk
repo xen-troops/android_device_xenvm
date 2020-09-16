@@ -60,9 +60,6 @@ PRODUCT_AAPT_PREF_CONFIG := hdpi
 # The default locale should be determined from VPD, not from build.prop.
 PRODUCT_SYSTEM_PROPERTY_BLACKLIST := ro.product.locale
 
-# Use Sdcardfs
-PRODUCT_PROPERTY_OVERRIDES += ro.sys.sdcardfs=1
-
 # Configure ADB for network connections
 PRODUCT_PROPERTY_OVERRIDES += service.adb.tcp.port=5555
 
@@ -306,6 +303,9 @@ DEVICE_PACKAGE_OVERLAYS := device/xen/xenvm/overlay
 # Recovery files
 PRODUCT_COPY_FILES += \
     device/xen/xenvm/init.recovery.xenvm.rc:root/init.recovery.xenvm.rc
+
+# Enable Storage
+$(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
 
 # Virtual AB
 $(call inherit-product, \
