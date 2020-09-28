@@ -1,5 +1,6 @@
 /*
  * Copyright 2018 The Android Open Source Project
+ * Copyright 2020 EPAM Systems
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,24 +23,26 @@
 
 #include <memory>
 
-#include <allocator-hal/2.0/AllocatorHal.h>
-#include <android/hardware/graphics/allocator/2.0/IAllocator.h>
-#include <android/hardware/graphics/mapper/2.0/IMapper.h>
+#include "AllocatorHal.h"
+#include <android/hardware/graphics/allocator/3.0/IAllocator.h>
+#include <android/hardware/graphics/mapper/3.0/IMapper.h>
 #include <log/log.h>
 
 namespace android {
 namespace hardware {
 namespace graphics {
 namespace allocator {
-namespace V2_0 {
+namespace V3_0 {
+
+namespace xenvm {
 namespace hal {
 
-using mapper::V2_0::BufferDescriptor;
-using mapper::V2_0::Error;
+using mapper::V3_0::BufferDescriptor;
+using mapper::V3_0::Error;
 
 namespace detail {
 
-// AllocatorImpl implements V2_*::IAllocator on top of V2_*::hal::AllocatorHal
+// AllocatorImpl implements V3_*::IAllocator on top of V3_*::hal::AllocatorHal
 template <typename Interface, typename Hal>
 class AllocatorImpl : public Interface {
    public:
@@ -48,30 +51,10 @@ class AllocatorImpl : public Interface {
         return true;
     }
 
-    // IAllocator 2.0 interface
-    Return<void> dumpDebugInfo(IAllocator::dumpDebugInfo_cb hidl_cb) override {
-        hidl_cb(mHal->dumpDebugInfo());
-        return Void();
-    }
+    Return<void> dumpDebugInfo(IAllocator::dumpDebugInfo_cb hidl_cb) override ;
 
     Return<void> allocate(const BufferDescriptor& descriptor, uint32_t count,
-                          IAllocator::allocate_cb hidl_cb) override {
-        uint32_t stride;
-        std::vector<const native_handle_t*> buffers;
-        Error error = mHal->allocateBuffers(descriptor, count, &stride, &buffers);
-        if (error != Error::NONE) {
-            hidl_cb(error, 0, hidl_vec<hidl_handle>());
-            return Void();
-        }
-
-        hidl_vec<hidl_handle> hidlBuffers(buffers.cbegin(), buffers.cend());
-        hidl_cb(Error::NONE, stride, hidlBuffers);
-
-        // free the local handles
-        mHal->freeBuffers(buffers);
-
-        return Void();
-    }
+                          IAllocator::allocate_cb hidl_cb) override ;
 
    protected:
     std::unique_ptr<Hal> mHal;
@@ -82,7 +65,8 @@ class AllocatorImpl : public Interface {
 using Allocator = detail::AllocatorImpl<IAllocator, AllocatorHal>;
 
 }  // namespace hal
-}  // namespace V2_0
+}  // namespace xenvm
+}  // namespace V3_0
 }  // namespace allocator
 }  // namespace graphics
 }  // namespace hardware
