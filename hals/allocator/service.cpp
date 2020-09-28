@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-#define LOG_TAG "android.hardware.graphics.allocator@2.0-service"
+#define LOG_TAG "android.hardware.graphics.allocator@3.0-service.xenvm"
 
-#include <android/hardware/graphics/allocator/2.0/IAllocator.h>
+#include <android/hardware/graphics/allocator/3.0/IAllocator.h>
 
 #include <hidl/LegacySupport.h>
 
 using android::hardware::defaultPassthroughServiceImplementation;
-using android::hardware::graphics::allocator::V2_0::IAllocator;
+using android::hardware::graphics::allocator::V3_0::IAllocator;
 
 int main() {
     return defaultPassthroughServiceImplementation<IAllocator>(4);

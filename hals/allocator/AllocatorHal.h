@@ -19,18 +19,19 @@
 #include <string>
 #include <vector>
 
-#include <android/hardware/graphics/allocator/2.0/IAllocator.h>
-#include <android/hardware/graphics/mapper/2.0/IMapper.h>
+#include <android/hardware/graphics/allocator/3.0/IAllocator.h>
+#include <android/hardware/graphics/mapper/3.0/IMapper.h>
 
 namespace android {
 namespace hardware {
 namespace graphics {
 namespace allocator {
-namespace V2_0 {
+namespace V3_0 {
+namespace xenvm {
 namespace hal {
 
-using mapper::V2_0::BufferDescriptor;
-using mapper::V2_0::Error;
+using mapper::V3_0::BufferDescriptor;
+using mapper::V3_0::Error;
 
 class AllocatorHal {
    public:
@@ -49,7 +50,8 @@ class AllocatorHal {
 };
 
 }  // namespace hal
-}  // namespace V2_0
+}  // namespace xenvm
+}  // namespace V3_0
 }  // namespace allocator
 }  // namespace graphics
 }  // namespace hardware

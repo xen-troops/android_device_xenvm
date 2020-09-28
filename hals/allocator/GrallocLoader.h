@@ -22,18 +22,19 @@
 
 #include <memory>
 
-#include <allocator-hal/2.0/Allocator.h>
-#include <allocator-passthrough/2.0/Gralloc0Hal.h>
-#include <allocator-passthrough/2.0/Gralloc1Hal.h>
 #include <hardware/gralloc.h>
 #include <hardware/hardware.h>
 #include <log/log.h>
+
+#include "Allocator.h"
+#include "Gralloc0Hal.h"
+#include "Gralloc1Hal.h"
 
 namespace android {
 namespace hardware {
 namespace graphics {
 namespace allocator {
-namespace V2_0 {
+namespace V3_0 {
 namespace passthrough {
 
 class GrallocLoader {
@@ -68,7 +69,7 @@ class GrallocLoader {
     }
 
     // create an AllocatorHal instance
-    static std::unique_ptr<hal::AllocatorHal> createHal(const hw_module_t* module) {
+    static std::unique_ptr<xenvm::hal::AllocatorHal> createHal(const hw_module_t* module) {
         int major = getModuleMajorApiVersion(module);
         switch (major) {
             case 1: {
@@ -86,14 +87,14 @@ class GrallocLoader {
     }
 
     // create an IAllocator instance
-    static IAllocator* createAllocator(std::unique_ptr<hal::AllocatorHal> hal) {
-        auto allocator = std::make_unique<hal::Allocator>();
+    static IAllocator* createAllocator(std::unique_ptr<xenvm::hal::AllocatorHal> hal) {
+        auto allocator = std::make_unique<xenvm::hal::Allocator>();
         return allocator->init(std::move(hal)) ? allocator.release() : nullptr;
     }
 };
 
 }  // namespace passthrough
-}  // namespace V2_0
+}  // namespace V3_0
 }  // namespace allocator
 }  // namespace graphics
 }  // namespace hardware

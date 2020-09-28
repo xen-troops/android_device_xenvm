@@ -22,7 +22,7 @@
 
 #include <cstring>  // for strerror
 
-#include <allocator-hal/2.0/AllocatorHal.h>
+#include "AllocatorHal.h"
 #include <hardware/gralloc1.h>
 #include <log/log.h>
 #include <mapper-passthrough/2.0/GrallocBufferDescriptor.h>
@@ -31,17 +31,17 @@ namespace android {
 namespace hardware {
 namespace graphics {
 namespace allocator {
-namespace V2_0 {
+namespace V3_0 {
 namespace passthrough {
 
 namespace detail {
 
-using common::V1_0::BufferUsage;
+using common::V1_2::BufferUsage;
 using mapper::V2_0::BufferDescriptor;
-using mapper::V2_0::Error;
+using mapper::V3_0::Error;
 using mapper::V2_0::passthrough::grallocDecodeBufferDescriptor;
 
-// Gralloc1HalImpl implements V2_*::hal::AllocatorHal on top of gralloc1
+// Gralloc1HalImpl implements V3_*::hal::AllocatorHal on top of gralloc1
 template <typename Hal>
 class Gralloc1HalImpl : public Hal {
    public:
@@ -354,7 +354,7 @@ class Gralloc1HalImpl : public Hal {
 
 }  // namespace detail
 
-using Gralloc1Hal = detail::Gralloc1HalImpl<hal::AllocatorHal>;
+using Gralloc1Hal = detail::Gralloc1HalImpl<xenvm::hal::AllocatorHal>;
 
 }  // namespace passthrough
 }  // namespace V2_0
