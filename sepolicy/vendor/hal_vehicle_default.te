@@ -1,7 +1,6 @@
 # vehicle subsystem
 hal_server_domain(hal_vehicle_default, hal_vehicle)
 
-allow hal_vehicle_default car_service:service_manager { add };
 allow hal_vehicle_default node:tcp_socket node_bind;
 allow hal_vehicle_default self:tcp_socket { accept bind create listen connect read setopt write getopt };
 allow hal_vehicle_default fwmarkd_socket:sock_file write;
