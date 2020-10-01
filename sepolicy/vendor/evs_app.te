@@ -1,5 +1,5 @@
 # evs app
-type evs_app, domain, coredomain;
+type evs_app, domain;
 hal_client_domain(evs_app, hal_evs)
 hal_client_domain(evs_app, hal_vehicle)
 hal_client_domain(evs_app, hal_configstore)
