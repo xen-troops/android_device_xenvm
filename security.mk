@@ -26,6 +26,10 @@ PRODUCT_PACKAGES += \
     libteec \
     tee-supplicant \
 
+OPTEE_COMPILER := clang
+OPTEE_COMPILER_PATH :=  $(abspath prebuilts/clang/host/linux-x86/clang-r383902/bin)
+CROSS_COMPILE64 := aarch64-linux-gnu-
+
 # settings for building of trusted applications (TA)
 OPTEE_OS_DIR := vendor/xen/optee_os
 OPTEE_TA_TARGETS := ta_arm64
@@ -35,12 +39,12 @@ OPTEE_EXTRA_FLAGS := \
     CFG_VIRTUALIZATION=y \
     CFG_SYSTEM_PTA=y \
     CFG_ASN1_PARSER=y \
-    CFG_CORE_MBEDTLS_MPI=n \
+    CFG_CORE_MBEDTLS_MPI=y 
 
 # for available FLAVOR options see optee-os/core/arch/arm/plat-rcar/conf.mk
 ifeq ($(TARGET_BOARD_PLATFORM),r8a7795)
 OPTEE_PLATFORM := rcar
-OPTEE_PLATFORM_FLAVOR := salvator_h3
+OPTEE_PLATFORM_FLAVOR := salvator_h3_4x2g
 endif
 ifeq ($(TARGET_BOARD_PLATFORM),r8a7796)
 OPTEE_PLATFORM := rcar
