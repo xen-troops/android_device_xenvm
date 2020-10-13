@@ -285,9 +285,6 @@ ifneq ($(TARGET_PREBUILT_KERNEL),)
 PRODUCT_COPY_FILES +=   $(TARGET_PREBUILT_KERNEL):kernel
 endif
 
-DEVICE_PACKAGE_OVERLAYS := device/xen/xenvm/overlay
-
-
 # Recovery files
 PRODUCT_COPY_FILES += \
     device/xen/xenvm/init.recovery.xenvm.rc:root/init.recovery.xenvm.rc
