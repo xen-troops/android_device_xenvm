@@ -143,6 +143,8 @@ PRODUCT_COPY_FILES += \
     device/xen/xenvm/media_profiles.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles_V1_0.xml
 
 PRODUCT_PACKAGES += \
+    stagefright \
+    libstagefrighthw \
     libsfplugin_ccodec \
     libstagefright_bufferqueue_helper \
     android.hardware.media.c2@1.0 \
