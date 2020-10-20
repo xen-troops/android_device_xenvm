@@ -25,6 +25,8 @@ PRODUCT_USE_VNDK := true
 PRODUCT_FULL_TREBLE := true
 PRODUCT_ENFORCE_VINTF_MANIFEST := true
 
+PRODUCT_PACKAGES += vndservicemanager
+
 # Boot control HAL (libavb)
 PRODUCT_PACKAGES +=  \
     android.hardware.boot@1.1-impl \
