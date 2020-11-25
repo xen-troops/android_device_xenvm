@@ -50,3 +50,7 @@ ifeq ($(TARGET_BOARD_PLATFORM),r8a7796)
 OPTEE_PLATFORM := rcar
 OPTEE_PLATFORM_FLAVOR := salvator_m3
 endif
+#ifeq ($(TARGET_BOARD_PLATFORM),<to-be-defined>)
+#OPTEE_PLATFORM := <to-be-defined>
+#OPTEE_PLATFORM_FLAVOR := <to-be-defined>
+#endif
