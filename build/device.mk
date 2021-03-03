@@ -27,6 +27,8 @@ PRODUCT_FULL_TREBLE := true
 PRODUCT_ENFORCE_VINTF_MANIFEST := true
 
 PRODUCT_PACKAGES += vndservicemanager
+# VISS
+PRODUCT_PROPERTY_OVERRIDES += persist.vis.uri="wss://wwwivi:443"
 
 # Boot control HAL (libavb)
 PRODUCT_PACKAGES +=  \
