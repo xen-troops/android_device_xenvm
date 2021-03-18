@@ -14,7 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-$(call inherit-product, device/xen/xenvm/device.mk)
+$(call inherit-product, device/xen/xenvm/build/device.mk)
 
 PRODUCT_NAME := xenvm
 PRODUCT_DEVICE := xenvm

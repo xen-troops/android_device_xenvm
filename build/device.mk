@@ -310,11 +310,11 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
 $(call inherit-product, \
     $(SRC_TARGET_DIR)/product/virtual_ab_ota.mk)
 
-$(call inherit-product, device/xen/xenvm/graphics.mk)
+$(call inherit-product, device/xen/xenvm/build/graphics.mk)
 $(call inherit-product-if-exists, frameworks/base/data/sounds/AudioPackage13.mk)
 $(call inherit-product-if-exists, frameworks/base/data/fonts/fonts.mk)
 ifeq ($(USE_G_APPS),true)
 $(call inherit-product-if-exists, vendor/Google/Google-product.mk)
 endif
-$(call inherit-product, device/xen/xenvm/security.mk)
+$(call inherit-product, device/xen/xenvm/build/security.mk)
 
