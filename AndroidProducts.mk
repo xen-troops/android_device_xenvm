@@ -16,7 +16,7 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/xenvm.mk
+    $(LOCAL_DIR)/build/xenvm.mk
 
 COMMON_LUNCH_CHOICES := \
 	xenvm-userdebug \
