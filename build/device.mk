@@ -1,6 +1,6 @@
 #
 # Copyright (C) 2016 The Android Open-Source Project
-# Copyright (C) 2018 EPAM Systems Inc.
+# Copyright (C) 2021 EPAM Systems Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -18,6 +18,7 @@
 $(call inherit-product, build/target/product/core_64_bit.mk)
 $(call inherit-product, frameworks/native/build/tablet-10in-xhdpi-2048-dalvik-heap.mk)
 $(call inherit-product, packages/services/Car/car_product/build/car.mk)
+$(call inherit-product, device/xen/xenvm/build/common_build.mk)
 
 PRODUCT_SHIPPING_API_LEVEL := 30
 PRODUCT_OTA_ENFORCE_VINTF_KERNEL_REQUIREMENTS := false
@@ -317,4 +318,5 @@ ifeq ($(USE_G_APPS),true)
 $(call inherit-product-if-exists, vendor/Google/Google-product.mk)
 endif
 $(call inherit-product, device/xen/xenvm/build/security.mk)
+$(call inherit-product, device/xen/xenvm/build/kernel_modules.mk)
 
