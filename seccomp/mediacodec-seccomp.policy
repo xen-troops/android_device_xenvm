@@ -1,5 +1,10 @@
+# for vspmif
+sched_getparam: 1
+sched_getscheduler: 1
+
 newfstatat: 1
 mmap: 1
 fstat: 1
 getrlimit: 1
 getuid: 1
+fstatfs: 1
