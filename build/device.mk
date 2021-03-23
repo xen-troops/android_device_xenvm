@@ -310,6 +310,11 @@ PRODUCT_COPY_FILES += \
     device/xen/xenvm/seccomp/mediaextractor-seccomp.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediaextractor.policy \
     device/xen/xenvm/seccomp/mediaswcodec-seccomp.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediaswcodec.policy
 
+# C2 HAL
+PRODUCT_PACKAGES += \
+    android.hardware.media.c2@1.0-service.renesas
+
+
 # Enable Storage
 $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
 
