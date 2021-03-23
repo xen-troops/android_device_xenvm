@@ -51,6 +51,7 @@
 /vendor/bin/hw/android.hardware.sensors@1.0-service.xenvm                       u:object_r:hal_sensors_default_exec:s0
 /vendor/bin/hw/android.hardware.health@2.0-service.xenvm                        u:object_r:hal_health_default_exec:s0
 /vendor/bin/hw/android.hardware.graphics.allocator@3.0-service.xenvm            u:object_r:hal_graphics_allocator_default_exec:s0
+/vendor/bin/hw/android.hardware.media.c2@1.0-service.renesas                    u:object_r:hal_codec2_vendor_exec:s0
 
 # optee
 /dev/tee0                                                                       u:object_r:tee_device:s0
@@ -67,3 +68,16 @@
 /vendor/bin/evs_app_xt                                                          u:object_r:evs_app_exec:s0
 /vendor/etc/automotive/evs(/.*)?                                                u:object_r:evs_app_files:s0
 /system/bin/android\.automotive\.evs\.manager@1\.[0-9]+                         u:object_r:evs_manager_exec:s0
+
+
+# Memory manager devices
+/dev/rgnmm                                                                      u:object_r:mmngr_device:s0
+/dev/rgnmmbuf                                                                   u:object_r:mmngr_device:s0
+
+# UVCS
+/dev/uvcs                                                                       u:object_r:uvcs_device:s0
+
+# VSPM
+/dev/vspm_if                                                                    u:object_r:vspm_device:s0
+
+

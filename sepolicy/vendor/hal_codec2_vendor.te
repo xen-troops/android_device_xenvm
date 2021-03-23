@@ -1,0 +1,14 @@
+type hal_codec2_vendor, domain;
+type hal_codec2_vendor_exec, vendor_file_type, exec_type, file_type;
+
+init_daemon_domain(hal_codec2_vendor)
+hal_server_domain(hal_codec2_vendor, hal_codec2)
+
+hal_client_domain(hal_codec2_vendor, hal_allocator)
+hal_client_domain(hal_codec2_vendor, hal_graphics_allocator)
+
+allow hal_codec2_vendor gpu_device:chr_file { ioctl map open read write };
+allow hal_codec2_vendor mmngr_device:chr_file { ioctl map open read write };
+allow hal_codec2_vendor uvcs_device:chr_file { ioctl map open read write };
+allow hal_codec2_vendor vspm_device:chr_file { ioctl map open read write };
+allow hal_codec2_vendor ion_device:chr_file { ioctl map open read write };

@@ -1,0 +1,33 @@
+
+# Memory manager devices
+type mmngr_device, dev_type;
+
+# UVCS device
+type uvcs_device, dev_type;
+
+# VSPM device
+type vspm_device, dev_type;
+
+# Bootloader device
+type bootloader_block_device, dev_type;
+
+# Vendor block device mounted on /vendor
+type vendor_block_device, dev_type;
+
+# Device tree overlay device
+type dtbo_block_device, dev_type;
+
+# Android Verified Boot device
+type vbmeta_block_device, dev_type;
+
+# Android Product device
+type product_block_device, dev_type;
+
+# Android ODM device
+type odm_block_device, dev_type;
+
+# rfkill device
+type rfkill_device, dev_type;
+
+#gpiochip device
+type gpio_device, dev_type;

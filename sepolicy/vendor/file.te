@@ -1,0 +1,9 @@
+
+# debugfs
+type debugfs_ion, debugfs_type, fs_type;
+type debugfs_sync, debugfs_type, fs_type;
+type debugfs_pvr, debugfs_type, fs_type;
+
+# sysfs
+type sysfs_fs_lifetime, sysfs_type, fs_type;
+type sysfs_mmc_stat, fs_type, sysfs_type;
