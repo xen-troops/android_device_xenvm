@@ -157,13 +157,14 @@ PRODUCT_COPY_FILES += \
 #    frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_audio.xml \
 #    device/xen/xenvm/media_profiles.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles_V1_0.xml
 
-PRODUCT_PACKAGES += \
-    stagefright \
-    libstagefrighthw \
-    libsfplugin_ccodec \
-    libstagefright_bufferqueue_helper \
-    android.hardware.media.c2@1.0 \
-    libstagefright_bufferpool@2.0 \
+# Software multimedia
+#PRODUCT_PACKAGES += \
+#    stagefright \
+#    libstagefrighthw \
+#    libsfplugin_ccodec \
+#    libstagefright_bufferqueue_helper \
+#    android.hardware.media.c2@1.0 \
+#    libstagefright_bufferpool@2.0 \
 
 
 # seccomp policy
