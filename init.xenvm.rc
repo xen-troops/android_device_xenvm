@@ -22,7 +22,13 @@ on boot
     chmod 777 /sys/kernel/debug/tracing
     chmod 0666 /sys/kernel/debug/tracing/trace_marker
     write /sys/power/wake_lock ws10_suspend_wa
-    setprop debug.stagefright.ccodec 0
+    insmod /vendor/lib/modules/vspm.ko
+    insmod /vendor/lib/modules/vspm_if.ko
+    insmod /vendor/lib/modules/mmngr.ko
+    insmod /vendor/lib/modules/mmngrbuf.ko
+    insmod /vendor/lib/modules/uvcs_drv.ko
+
+#   setprop debug.stagefright.ccodec 0
 
 on late-init
     chmod 666 /dev/video0
@@ -39,3 +45,4 @@ service tee_supplicant /vendor/bin/tee-supplicant
     user root
     group keystore
     seclabel u:r:tee-supp:s0
+
