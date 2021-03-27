@@ -45,7 +45,7 @@ endif
 PRODUCT_PACKAGES += $(DDK_UM_DEP)
 else
 # Use DDK-UM from prebuilds
-$(call inherit-product-if-exists, $(DDK_UM_PREBUILDS)/prebuilds.mk)
+$(call inherit-product, $(DDK_UM_PREBUILDS)/$(TARGET_BOARD_PLATFORM)/prebuilds.mk)
 endif # DDK_UM_PREBUILDS
 
 
