@@ -30,6 +30,17 @@ BOARD_VENDOR_KERNEL_MODULES += \
 	$(KERNEL_MODULES_OUT)/mmngrbuf.ko \
 	$(KERNEL_MODULES_OUT)/uvcs_drv.ko
 
+BOARD_VENDOR_KERNEL_MODULES += \
+	$(KERNEL_MODULES_OUT)/phy-rcar-gen3-usb2.ko \
+	$(KERNEL_MODULES_OUT)/renesas_usbhs.ko \
+	$(KERNEL_MODULES_OUT)/ehci-hcd.ko \
+	$(KERNEL_MODULES_OUT)/ehci-platform.ko \
+	$(KERNEL_MODULES_OUT)/ohci-hcd.ko \
+	$(KERNEL_MODULES_OUT)/ohci-platform.ko \
+	$(KERNEL_MODULES_OUT)/xhci-hcd.ko \
+	$(KERNEL_MODULES_OUT)/xhci-plat-hcd.ko \
+	$(KERNEL_MODULES_OUT)/usb-storage.ko
+
 BOARD_VENDOR_RAMDISK_KERNEL_MODULES += \
 	$(BOARD_RECOVERY_KERNEL_MODULES)
 
