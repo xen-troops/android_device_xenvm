@@ -120,10 +120,11 @@ $(call inherit-product, hardware/interfaces/drm/1.0/default/common_default_servi
 
 # Init rc
 PRODUCT_COPY_FILES +=\
-    device/xen/xenvm/init.xenvm.rc:root/init.xenvm.rc \
-    device/xen/xenvm/ueventd.xenvm.rc:root/ueventd.xenvm.rc \
-    packages/services/Car/car_product/init/init.car.rc:root/init.car.rc \
-    packages/services/Car/car_product/init/init.bootstat.rc:root/init.bootstat.rc
+    device/xen/xenvm/init.xenvm.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.xenvm.rc \
+    device/xen/xenvm/init.xenvm.usb.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.xenvm.usb.rc \
+    device/xen/xenvm/ueventd.xenvm.rc:$(TARGET_COPY_OUT_VENDOR)/ueventd.rc \
+    packages/services/Car/car_product/init/init.car.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.car.rc \
+    packages/services/Car/car_product/init/init.bootstat.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.bootstat.rc
 
 # Mount points
 ifneq ($(DISABLE_AVB),true)

@@ -1,4 +1,5 @@
-import /init.car.rc
+import init.car.rc
+import init.${ro.hardware}.usb.rc
 
 on init
     start vms
