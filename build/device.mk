@@ -112,6 +112,8 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.usb.accessory.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.usb.accessory.xml \
     frameworks/native/data/etc/android.hardware.usb.host.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.usb.host.xml \
     frameworks/native/data/etc/android.hardware.wifi.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.wifi.xml \
+    frameworks/native/data/etc/android.hardware.wifi.direct.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.wifi.direct.xml \
+
 
 # DRM HAL
 $(call inherit-product, hardware/interfaces/drm/1.0/default/common_default_service.mk)
@@ -234,12 +236,17 @@ PRODUCT_PACKAGES += \
 
 # Wi-Fi
 PRODUCT_PACKAGES += \
+    libwifi-hal \
+    android.hardware.wifi.supplicant@1.0-service \
+    android.hardware.wifi.supplicant@1.1-service \
+    android.hardware.wifi.supplicant@1.2-service \
     android.hardware.wifi@1.0-service \
+    android.hardware.wifi@1.0-service-lib \
     hostapd \
     wlutil \
     wificond \
-    wifilogd \
-    wpa_supplicant
+    wpa_supplicant \
+    wpa_supplicant.conf
 
 # GNSS
 PRODUCT_PACKAGES += \
@@ -295,6 +302,17 @@ PRODUCT_COPY_FILES += \
 # C2 HAL
 PRODUCT_PACKAGES += \
     android.hardware.media.c2@1.0-service.renesas
+
+# Wifi
+PRODUCT_PACKAGES += \
+    libwpa_client \
+    libwifilogd \
+    p2p_supplicant.conf
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    wifi.direct.interface=p2p0 \
+    wifi.interface=wlan0
+
 
 
 # Audio common defaults

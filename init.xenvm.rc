@@ -12,6 +12,11 @@ on late-fs
     mount_all ./fstab.xenvm --late
 
 on post-fs-data
+    mkdir /data/system/car 0700 system system
+    mkdir /data/vendor/wifi 0770 wifi wifi
+    mkdir /data/vendor/wifi/wpa_supplicant 0770 wifi wifi
+    mkdir /data/vendor/wifi/wpa 0770 wifi wifi
+    mkdir /data/vendor/wifi/wpa/sockets 0770 wifi wifi
     setprop vold.post_fs_data_done 1
 
 on early-boot
@@ -28,6 +33,8 @@ on boot
     insmod /vendor/lib/modules/mmngr.ko
     insmod /vendor/lib/modules/mmngrbuf.ko
     insmod /vendor/lib/modules/uvcs_drv.ko
+    # default country code
+    setprop ro.boot.wificountrycode 00
 
 #   setprop debug.stagefright.ccodec 0
 
@@ -47,3 +54,15 @@ service tee_supplicant /vendor/bin/tee-supplicant
     group keystore
     seclabel u:r:tee-supp:s0
 
+service wpa_supplicant /vendor/bin/hw/wpa_supplicant \
+        -ip2p0 -Dnl80211 -c/vendor/etc/wifi/p2p_supplicant.conf \
+        -N \
+        -iwlan0 -Dnl80211 -c/vendor/etc/wifi/wpa_supplicant.conf \
+        -O/data/vendor/wifi/wpa/sockets -g@android:wpa_wlan0
+     interface android.hardware.wifi.supplicant@1.0::ISupplicant default
+     interface android.hardware.wifi.supplicant@1.1::ISupplicant default
+     interface android.hardware.wifi.supplicant@1.2::ISupplicant default
+     socket wpa_wlan0 dgram 660 wifi wifi
+     class main
+     disabled
+     oneshot
