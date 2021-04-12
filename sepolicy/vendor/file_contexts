@@ -80,4 +80,14 @@
 # VSPM
 /dev/vspm_if                                                                    u:object_r:vspm_device:s0
 
+# Audio policy
+/vendor/bin/hw/android.hardware.automotive.audiocontrol@1.0-service.renesas     u:object_r:hal_audiocontrol_default_exec:s0
+
+# Audio
+/vendor/bin/hw/android.hardware.audio.effect@6.0-service.renesas                u:object_r:hal_audio_default_exec:s0
+/vendor/bin/hw/android.hardware.audio@6.0-service.renesas                       u:object_r:hal_audio_default_exec:s0
+
+# Same process HALs installed by platform into /vendor
+/vendor/lib(64)?/hw/audio.primary.xenvm.so                                   u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/hw/audio.r_submix.xenvm.so                                  u:object_r:same_process_hal_file:s0
 
