@@ -48,5 +48,5 @@ OPTEE_PLATFORM_FLAVOR := salvator_h3_4x2g
 endif
 ifeq ($(TARGET_BOARD_PLATFORM),r8a7796)
 OPTEE_PLATFORM := rcar
-OPTEE_PLATFORM_FLAVOR := salvator_m3
+OPTEE_PLATFORM_FLAVOR := salvator_m3_2x4g
 endif
