@@ -84,8 +84,6 @@ PRODUCT_PROPERTY_OVERRIDES += ro.sf.lcd_density=160
 
 PRODUCT_TAGS += dalvik.gc.type-precise
 
-# Use audio_policy_configuration.xml
-USE_XML_AUDIO_POLICY_CONF := 1
 
 # Software permissions
 PRODUCT_COPY_FILES += \
@@ -143,13 +141,6 @@ else
 TARGET_RECOVERY_FSTAB := device/xen/xenvm/fstab.xenvm
 endif
 
-PRODUCT_COPY_FILES += \
-    device/xen/xenvm/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration.xml \
-    device/xen/xenvm/car_audio_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/car_audio_configuration.xml \
-    frameworks/av/services/audiopolicy/config/audio_policy_volumes.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_volumes.xml \
-    frameworks/av/services/audiopolicy/config/default_volume_tables.xml:$(TARGET_COPY_OUT_VENDOR)/etc/default_volume_tables.xml \
-    device/xen/xenvm/audio_effects.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.xml
-
 
 # media codec config xml file
 #PRODUCT_COPY_FILES += \
@@ -196,17 +187,6 @@ PRODUCT_PACKAGES += \
 # Config store HAL
 PRODUCT_PACKAGES += \
     android.hardware.configstore@1.1-service
-
-# Audio
-PRODUCT_PACKAGES += \
-    audio.primary.xenvm \
-    android.hardware.audio@6.0-impl \
-    android.hardware.audio.effect@6.0-impl \
-    android.hardware.audio@2.0-service
-
-# AudioControl
-PRODUCT_PACKAGES += \
-    android.hardware.automotive.audiocontrol@1.0-service \
 
 # Composer 2.3
 PRODUCT_PACKAGES += \
