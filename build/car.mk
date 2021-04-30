@@ -31,12 +31,6 @@ PRODUCT_PACKAGES += \
     Music \
     UserDictionaryProvider
 
-# Phone connections
-PRODUCT_PACKAGES += \
-    Telecom \
-    TeleService \
-    TelephonyProvider
-
 PRODUCT_PACKAGES += \
     clatd \
     clatd.conf \
@@ -46,9 +40,6 @@ PRODUCT_PACKAGES += \
 # ActivityViewDemo
 PRODUCT_PACKAGES += \
     ActivityViewDemo
-
-PRODUCT_PACKAGES += \
-    RCarSoundRecorder
 
 # This is for testing
 ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
