@@ -28,6 +28,8 @@ PRODUCT_ENFORCE_VINTF_MANIFEST := true
 
 PRODUCT_PACKAGES += vndservicemanager
 
+PRODUCT_PACKAGE_OVERLAYS += device/xen/xenvm/overlay
+
 # Boot control HAL (libavb)
 PRODUCT_PACKAGES +=  \
     android.hardware.boot@1.1-impl \
