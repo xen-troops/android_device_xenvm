@@ -14,10 +14,10 @@
 # limitations under the License.
 #
 
-$(call inherit-product, device/xen/xenvm/build/car_base.mk)
-
 PRODUCT_PUBLIC_SEPOLICY_DIRS += packages/services/Car/car_product/sepolicy/public
 PRODUCT_PRIVATE_SEPOLICY_DIRS += packages/services/Car/car_product/sepolicy/private
+
+PRODUCT_IS_AUTOMOTIVE := true
 
 PRODUCT_PACKAGES += \
     Bluetooth \
@@ -70,6 +70,8 @@ $(call inherit-product-if-exists, external/roboto-fonts/fonts.mk)
 $(call inherit-product-if-exists, external/hyphenation-patterns/patterns.mk)
 $(call inherit-product-if-exists, frameworks/base/data/keyboards/keyboards.mk)
 $(call inherit-product-if-exists, frameworks/webview/chromium/chromium.mk)
+$(call inherit-product, device/sample/products/location_overlay.mk)
+$(call inherit-product, packages/services/Car/car_product/build/car_base.mk)
 
 # Overrides
 PRODUCT_PROPERTY_OVERRIDES := \
