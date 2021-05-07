@@ -1,6 +1,6 @@
 #
 # Copyright (C) 2016 The Android Open-Source Project
-# Copyright (C) 2018 EPAM Systems Inc.
+# Copyright (C) 2021 EPAM Systems Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,15 +17,16 @@
 # IMG DDK Targets & dependencies
 ifneq (,$(filter r8a7795 r8a7796, $(TARGET_BOARD_PLATFORM)))
 
-ABS_TOP := $(abspath $(TOP))
-TARGET_ARCH := arm64
-
-DDK_UM_PREBUILDS := $(ABS_TOP)/vendor/imagination/rogue_um
-
-TARGET_KERNEL_MODULES_OUT := $(abspath ${OUT_DIR}/target/product/$(TARGET_PRODUCT)/obj/KERNEL_MODULES)
+TOP_ABS                     := $(abspath $(TOP))
+ANDROID_CLANG_TOOLCHAIN_ABS := $(abspath ./prebuilts/clang/host/linux-x86/clang-r353983c/bin/clang)
+DDK_UM_PREBUILDS            := $(TOP_ABS)/vendor/imagination/rogue_um
+DDK_KM_SOURCE_ABS           := $(TOP_ABS)/vendor/imagination/rogue_km
+DDK_KM_OUT_ABS              := $(abspath $(PRODUCT_OUT)/obj/ROGUE_KM_OBJ)
+DDK_CROSS_COMPILE_ABS       := $(abspath ./prebuilts/gcc/linux-x86/aarch64/aarch64-linux-gnu/bin/aarch64-linux-gnu-)
+PVRSRV_VZ_NUM_OSID          := 2
 
 BOARD_VENDOR_KERNEL_MODULES += \
-	$(TARGET_KERNEL_MODULES_OUT)/pvrsrvkm.ko \
+	$(KERNEL_MODULES_OUT)/pvrsrvkm.ko \
 
 ifneq ($(TARGET_SOC_REVISION),)
 TARGET_SOC_PLATFORM_REVISION := $(TARGET_BOARD_PLATFORM)_$(TARGET_SOC_REVISION)
@@ -52,34 +53,23 @@ endif # DDK_UM_PREBUILDS
 ifeq ($(DDK_KM_PREBUILT_MODULE),)
 # Rule for building DDK-KM module
 
-PVRSRV_VZ_NUM_OSID := 2
+DDK_KM_CFLAGS := HOSTCFLAGS="-fuse-ld=lld" HOSTLDFLAGS=-fuse-ld=lld ARCH=arm64
+DDK_KM_CFLAGS += CROSS_COMPILE=$(DDK_CROSS_COMPILE_ABS) HOST_CC=$(ANDROID_CLANG_TOOLCHAIN_ABS)
+DDK_KM_CFLAGS += PVRSRV_VZ_NUM_OSID=$(PVRSRV_VZ_NUM_OSID) ANDROID_ROOT=$(TOP_ABS) TOP=$(DDK_KM_SOURCE_ABS)
 
-KM_TOP := $(ABS_TOP)/vendor/imagination/rogue_km/
-KERNEL_MAKE := $(abspath ./prebuilts/build-tools/linux-x86/bin/make)
-KERNEL_OUT := $(OUT_DIR)/target/product/$(TARGET_PRODUCT)/obj/KERNEL_OBJ
-KERNEL_TARGET_BINARY := $(KERNEL_OUT)/arch/$(TARGET_ARCH)/boot/Image
-
-
-DDK_CROSS_COMPILE := $(abspath ./prebuilts/gcc/linux-x86/aarch64/aarch64-linux-gnu/bin/aarch64-linux-gnu-)
-ANDROID_CLANG_TOOLCHAIN := $(abspath ./prebuilts/clang/host/linux-x86/clang-r353983c/bin/clang)
-
-DDK_KM_CFLAGS := HOSTCFLAGS="-fuse-ld=lld" HOSTLDFLAGS=-fuse-ld=lld ARCH=$(TARGET_ARCH)
-DDK_KM_CFLAGS += CROSS_COMPILE=$(DDK_CROSS_COMPILE) HOST_CC=$(ANDROID_CLANG_TOOLCHAIN)
-DDK_KM_CFLAGS += PVRSRV_VZ_NUM_OSID=$(PVRSRV_VZ_NUM_OSID) ANDROID_ROOT=$(ABS_TOP) TOP=$(KM_TOP)
-
-$(BOARD_VENDOR_KERNEL_MODULES) : $(KERNEL_TARGET_BINARY) $(DDK_UM_VENDOR_TARGET_FILES)
-	TEMPORARY_DISABLE_PATH_RESTRICTIONS=true $(KERNEL_MAKE) -C $(KM_TOP)/build/linux/$(TARGET_SOC_PLATFORM_REVISION)_android KERNELDIR=$(KERNEL_OUT) \
-	OUT=$(PRODUCT_OUT)/obj/ROGUE_KM_OBJ CC=$(ANDROID_CLANG_TOOLCHAIN) CLANG_TRIPLE=$(DDK_CROSS_COMPILE)  HOST_CC=$(ANDROID_CLANG_TOOLCHAIN)  \
-	HOST_CXX=$(ANDROID_CLANG_TOOLCHAIN)  KERNEL_CROSS_COMPILE=$(DDK_CROSS_COMPILE) $(DDK_KM_CFLAGS)
-	mv $(PRODUCT_OUT)/obj/ROGUE_KM_OBJ/target_aarch64/kbuild/pvrsrvkm.ko $(TARGET_KERNEL_MODULES_OUT)
+$(BOARD_VENDOR_KERNEL_MODULES) : $(KERNEL_MODULES)
+	TEMPORARY_DISABLE_PATH_RESTRICTIONS=true $(ANDROID_MAKE) -C $(DDK_KM_SOURCE_ABS)/build/linux/$(TARGET_SOC_PLATFORM_REVISION)_android KERNELDIR=$(KERNEL_OUT_ABS) \
+	OUT=$(DDK_KM_OUT_ABS) CC=$(ANDROID_CLANG_TOOLCHAIN_ABS) CLANG_TRIPLE=$(DDK_CROSS_COMPILE_ABS)  HOST_CC=$(ANDROID_CLANG_TOOLCHAIN_ABS)  \
+	HOST_CXX=$(ANDROID_CLANG_TOOLCHAIN_ABS)  KERNEL_CROSS_COMPILE=$(DDK_CROSS_COMPILE_ABS) $(DDK_KM_CFLAGS)
+	mv $(PRODUCT_OUT)/obj/ROGUE_KM_OBJ/target_aarch64/kbuild/pvrsrvkm.ko $(KERNEL_MODULES_OUT)
 
 
 else
 # Use DDK-KM module from prebuilds
 
 $(BOARD_VENDOR_KERNEL_MODULES):
-	mkdir -p $(TARGET_KERNEL_MODULES_OUT)
-	cp $(DDK_KM_PREBUILT_MODULE)  $(TARGET_KERNEL_MODULES_OUT)
+	mkdir -p $(KERNEL_MODULES_OUT)
+	cp $(DDK_KM_PREBUILT_MODULE)  $(KERNEL_MODULES_OUT)
 
 endif # DDK_KM_PREBUILT_MODULE
 
