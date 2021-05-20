@@ -15,8 +15,6 @@
 # limitations under the License.
 #
 
-ABS_TOP := $(abspath $(TOP))
-
 TEEC_TEST_LOAD_PATH = /metadata/vendor/tee
 CFG_TEE_FS_PARENT_PATH = /metadata/vendor/tee
 
@@ -37,15 +35,12 @@ OPTEE_EXTRA_FLAGS := \
     CFG_VIRTUALIZATION=y \
     CFG_SYSTEM_PTA=y \
     CFG_ASN1_PARSER=y \
-    CFG_CORE_MBEDTLS_MPI=y \
-
-OPTEE_COMPILER := clang
-OPTEE_COMPILER_PATH := $(ABS_TOP)/prebuilts/clang/host/linux-x86/clang-r353983c/bin
+    CFG_CORE_MBEDTLS_MPI=n \
 
 # for available FLAVOR options see optee-os/core/arch/arm/plat-rcar/conf.mk
 ifeq ($(TARGET_BOARD_PLATFORM),r8a7795)
 OPTEE_PLATFORM := rcar
-OPTEE_PLATFORM_FLAVOR := salvator_h3_4x2g
+OPTEE_PLATFORM_FLAVOR := salvator_h3
 endif
 ifeq ($(TARGET_BOARD_PLATFORM),r8a7796)
 OPTEE_PLATFORM := rcar
