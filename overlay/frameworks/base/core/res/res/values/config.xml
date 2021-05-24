@@ -24,4 +24,17 @@
     <!-- Allow smart unlock immediately after boot because the user shouldn't have to enter a pin
          code to unlock their car head unit. -->
     <bool name="config_strongAuthRequiredOnBoot">false</bool>
+        <!-- Enable multi-user. -->
+    <bool name="config_enableMultiUserUI">true</bool>
+    <!-- Maximum number of users we allow to be running at a time.
+         For automotive, background user will be immediately stopped upon user switching but
+         up to this many users can be running in garage mode.
+         3 = headless user 0 + two primary users or 1 primary + 1 guest -->
+    <integer name="config_multiuserMaxRunningUsers">3</integer>
+    <!-- Arbitrary max 8 users. -->
+    <integer name="config_multiuserMaximumUsers">8</integer>
+    <!-- Use delay locking mode always for automotive -->
+    <bool name="config_multiuserDelayUserDataLocking">true</bool>
+    <!-- If true, all guest users created on the device will be ephemeral. -->
+    <bool name="config_guestUserEphemeral">true</bool>
 </resources>

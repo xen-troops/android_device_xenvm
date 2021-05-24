@@ -33,6 +33,11 @@ PRODUCT_PACKAGES +=  \
     android.hardware.boot@1.1-impl \
     android.hardware.boot@1.1-service
 
+# Pre-create users
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+    android.car.number_pre_created_users=1 \
+    android.car.number_pre_created_guests=1
+
 # A/B System Updates
 AB_OTA_UPDATER := true
 AB_OTA_PARTITIONS := \
