@@ -67,8 +67,7 @@ PRODUCT_PROPERTY_OVERRIDES += service.adb.tcp.port=5555
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.opengles.version=196609 \
     ro.radio.noril=true \
-    ro.carrier=unknown \
-    persist.vehicle.use-vis-hal=false \
+    ro.carrier=unknown
 
 # Define audio tracks that we want to use as default.
 # Do not change method of assignment because new values have to be prepended
