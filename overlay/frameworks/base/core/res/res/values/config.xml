@@ -37,4 +37,27 @@
     <bool name="config_multiuserDelayUserDataLocking">true</bool>
     <!-- If true, all guest users created on the device will be ephemeral. -->
     <bool name="config_guestUserEphemeral">true</bool>
+    <!-- Regex of wired ethernet ifaces -->
+    <string translatable="false" name="config_ethernet_iface_regex">eth0</string>
+    <!-- Configuration of Ethernet interfaces in the following format:
+         <interface name|mac address>;[Network Capabilities];[IP config];[Override Transport]
+         Where
+               [Network Capabilities] Optional. A comma seprated list of network capabilities.
+                   Values must be from NetworkCapabilities#NET_CAPABILITY_* constants.
+                   The NOT_ROAMING, NOT_CONGESTED and NOT_SUSPENDED capabilities are always
+                   added automatically because this configuration provides no way to update
+                   them dynamically.
+               [IP config] Optional. If empty or not specified - DHCP will be used, otherwise
+                   use the following format to specify static IP configuration:
+                       ip=<ip-address/mask> gateway=<ip-address> dns=<comma-sep-ip-addresses>
+                       domains=<comma-sep-domains>
+               [Override Transport] Optional. An override network transport type to allow
+                    the propagation of an interface type on the other end of a local Ethernet
+                    interface. Value must be from NetworkCapabilities#TRANSPORT_* constants. If
+                    left out, this will default to TRANSPORT_ETHERNET.
+         -->
+    <string-array translatable="false" name="config_ethernet_interfaces">
+        <item>eth0;12,13,14,15,26,27;ip=192.168.0.4/24 gateway=192.168.0.1 dns=192.168.0.1,8.8.8.8</item>
+    </string-array>
+
 </resources>
