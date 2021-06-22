@@ -225,6 +225,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     hwcomposer.$(TARGET_PRODUCT) \
 
+PRODUCT_PROPERTY_OVERRIDES += vendor.hwc.backend_override="oneplane-du"
+
 # Modetest from libdrm
 PRODUCT_PACKAGES += \
     modetest \
