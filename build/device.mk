@@ -68,6 +68,10 @@ PRODUCT_SYSTEM_PROPERTY_BLACKLIST := ro.product.locale
 # Configure ADB for network connections
 PRODUCT_PROPERTY_OVERRIDES += service.adb.tcp.port=5555
 
+# Use emulated vehicle HAL if XT_USE_VIS_SERVER is not defined
+ifndef XT_USE_VIS_SERVER
+PRODUCT_PROPERTY_OVERRIDES += persist.vehicle.use-vis-hal=false
+endif
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.opengles.version=196609 \
