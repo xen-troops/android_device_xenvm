@@ -81,9 +81,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # For same reason this override has to be used after include of car.mk
 # in order to use our values.
 PRODUCT_PROPERTY_OVERRIDES := \
-     ro.config.ringtone=Atria.ogg \
-     ro.config.notification_sound=Tethys.ogg \
-     ro.config.alarm_alert=Oxygen.ogg \
+     ro.config.ringtone=Aquila.ogg \
+     ro.config.notification_sound=Aldebaran.ogg \
+     ro.config.alarm_alert=Alarm_Buzzer.ogg \
      $(PRODUCT_PROPERTY_OVERRIDES)
 
 PRODUCT_PROPERTY_OVERRIDES += ro.sf.lcd_density=160
@@ -321,7 +321,7 @@ $(call inherit-product, \
     $(SRC_TARGET_DIR)/product/virtual_ab_ota.mk)
 
 $(call inherit-product, device/xen/xenvm/build/graphics.mk)
-$(call inherit-product-if-exists, frameworks/base/data/sounds/AudioPackage13.mk)
+$(call inherit-product-if-exists, frameworks/base/data/sounds/AudioPackage5.mk)
 $(call inherit-product-if-exists, frameworks/base/data/fonts/fonts.mk)
 ifeq ($(USE_G_APPS),true)
 $(call inherit-product-if-exists, vendor/Google/Google-product.mk)
