@@ -17,7 +17,7 @@
 
 $(call inherit-product, build/target/product/core_64_bit.mk)
 $(call inherit-product, frameworks/native/build/tablet-10in-xhdpi-2048-dalvik-heap.mk)
-$(call inherit-product, packages/services/Car/car_product/build/car.mk)
+$(call inherit-product, device/xen/xenvm/build/car.mk)
 $(call inherit-product, device/xen/xenvm/build/common_build.mk)
 
 PRODUCT_SHIPPING_API_LEVEL := 30
