@@ -328,6 +328,9 @@ $(call inherit-product, device/xen/xenvm/build/graphics.mk)
 $(call inherit-product-if-exists, frameworks/base/data/sounds/AudioPackage13.mk)
 $(call inherit-product-if-exists, frameworks/base/data/fonts/fonts.mk)
 ifeq ($(XT_USE_GOOGLE_APPS),true)
+# Default Google app permissions
+PRODUCT_COPY_FILES += \
+    device/xen/xenvm/permissions/google-apps.xml:system/etc/default-permissions/default-permissions.xml
 $(call inherit-product-if-exists, vendor/Google/Google-product.mk)
 endif
 $(call inherit-product, device/xen/xenvm/build/security.mk)
