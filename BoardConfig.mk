@@ -100,11 +100,12 @@ BOARD_VENDOR_SEPOLICY_DIRS += device/xen/xenvm/sepolicy/vendor
 BOARD_PLAT_PRIVATE_SEPOLICY_DIR += device/xen/xenvm/sepolicy/private
 BOARD_PLAT_PUBLIC_SEPOLICY_DIR += device/xen/xenvm/sepolicy/public
 
-ifeq ($(TARGET_PREBUILT_KERNEL),)
-# Kernel build rules
+
+# Boot image build rules
 BOARD_KERNEL_CMDLINE :=
 BOARD_KERNEL_BASE := 0x48000000
 BOARD_MKBOOTIMG_ARGS := --second_offset 0x800 --kernel_offset 0x80000 --ramdisk_offset 0x1100000
+ifeq ($(TARGET_PREBUILT_KERNEL),)
 TARGET_KERNEL_SOURCE := device/xen/kernel
 TARGET_KERNEL_CONFIG := android_xenvm_defconfig
 endif
