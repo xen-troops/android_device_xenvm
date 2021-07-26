@@ -74,18 +74,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.radio.noril=true \
     ro.carrier=unknown
 
-# Define audio tracks that we want to use as default.
-# Do not change method of assignment because new values have to be prepended
-# and not appended (do not use +=). Explanation from google's groups:
-# "For PRODUCT_PROPERTY_OVERRIDES ... the first instance takes precedence."
-# For same reason this override has to be used after include of car.mk
-# in order to use our values.
-PRODUCT_PROPERTY_OVERRIDES := \
-     ro.config.ringtone=Atria.ogg \
-     ro.config.notification_sound=Tethys.ogg \
-     ro.config.alarm_alert=Oxygen.ogg \
-     $(PRODUCT_PROPERTY_OVERRIDES)
-
 PRODUCT_PROPERTY_OVERRIDES += ro.sf.lcd_density=160
 
 PRODUCT_TAGS += dalvik.gc.type-precise
