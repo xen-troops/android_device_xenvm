@@ -20,7 +20,7 @@ $(call inherit-product, frameworks/native/build/tablet-10in-xhdpi-2048-dalvik-he
 $(call inherit-product, packages/services/Car/car_product/build/car.mk)
 $(call inherit-product, device/xen/xenvm/build/common_build.mk)
 
-PRODUCT_SHIPPING_API_LEVEL := 30
+PRODUCT_SHIPPING_API_LEVEL := 31
 PRODUCT_OTA_ENFORCE_VINTF_KERNEL_REQUIREMENTS := false
 PRODUCT_USE_VNDK := true
 PRODUCT_FULL_TREBLE := true
