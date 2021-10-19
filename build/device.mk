@@ -202,6 +202,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.automotive.audiocontrol@1.0-service \
 
+# SurfaceFlinger compostion buffers count
+PRODUCT_PROPERTY_OVERRIDES += ro.surface_flinger.max_frame_buffer_acquired_buffers=3
+
 # Composer 2.3
 PRODUCT_PACKAGES += \
     android.hardware.graphics.composer@2.3-hal \
