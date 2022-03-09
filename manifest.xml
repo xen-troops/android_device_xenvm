@@ -1,4 +1,4 @@
-<manifest version="1.0" type="device" target-level="2">
+<manifest version="1.0" type="device" target-level="3">
    <hal format="hidl">
         <name>vendor.imagination.gpu.apphints</name>
         <transport arch="32+64">passthrough</transport>
