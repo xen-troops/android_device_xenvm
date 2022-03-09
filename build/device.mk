@@ -110,7 +110,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.wifi.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.wifi.xml \
 
 # DRM HAL
-$(call inherit-product, hardware/interfaces/drm/1.0/default/common_default_service.mk)
+#$(call inherit-product, hardware/interfaces/drm/1.0/default/common_default_service.mk)
 
 # Init rc
 PRODUCT_COPY_FILES +=\
