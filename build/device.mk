@@ -17,6 +17,9 @@
 
 $(call inherit-product, build/target/product/core_64_bit.mk)
 $(call inherit-product, frameworks/native/build/tablet-10in-xhdpi-2048-dalvik-heap.mk)
+
+PRODUCT_PACKAGE_OVERLAYS += device/xen/xenvm/overlay
+
 $(call inherit-product, packages/services/Car/car_product/build/car.mk)
 $(call inherit-product, device/xen/xenvm/build/common_build.mk)
 
@@ -300,9 +303,6 @@ PRODUCT_PACKAGES += \
 ifneq ($(TARGET_PREBUILT_KERNEL),)
 PRODUCT_COPY_FILES +=   $(TARGET_PREBUILT_KERNEL):kernel
 endif
-
-DEVICE_PACKAGE_OVERLAYS := device/xen/xenvm/overlay
-
 
 # Recovery files
 PRODUCT_COPY_FILES += \
