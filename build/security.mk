@@ -39,7 +39,9 @@ OPTEE_EXTRA_FLAGS := \
     CFG_VIRTUALIZATION=y \
     CFG_SYSTEM_PTA=y \
     CFG_ASN1_PARSER=y \
-    CFG_CORE_MBEDTLS_MPI=y 
+    CFG_CORE_MBEDTLS_MPI=y \
+    LIB_GCC_PATH=$(abspath prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/lib/gcc/aarch64-linux-android/4.9.x/libgcc.a) \
+
 
 # for available FLAVOR options see optee-os/core/arch/arm/plat-rcar/conf.mk
 ifeq ($(TARGET_BOARD_PLATFORM),r8a7795)
