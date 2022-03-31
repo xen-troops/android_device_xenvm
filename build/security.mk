@@ -39,7 +39,8 @@ OPTEE_EXTRA_FLAGS := \
     CFG_VIRTUALIZATION=y \
     CFG_SYSTEM_PTA=y \
     CFG_ASN1_PARSER=y \
-    CFG_CORE_MBEDTLS_MPI=y 
+    CFG_CORE_MBEDTLS_MPI=y \
+    ta_dev_kit
 
 # for available FLAVOR options see optee-os/core/arch/arm/plat-rcar/conf.mk
 ifeq ($(TARGET_BOARD_PLATFORM),r8a7795)
