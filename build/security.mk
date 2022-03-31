@@ -28,7 +28,7 @@ PRODUCT_PACKAGES += \
 
 OPTEE_COMPILER := clang
 OPTEE_COMPILER_PATH :=  $(abspath prebuilts/clang/host/linux-x86/clang-r416183b1/bin)
-CROSS_COMPILE64 := aarch64-linux-gnu-
+CROSS_COMPILE64 := aarch64-linux-android
 
 # settings for building of trusted applications (TA)
 OPTEE_OS_DIR := vendor/xen/optee_os
