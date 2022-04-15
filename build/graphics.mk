@@ -19,8 +19,6 @@ ifneq (,$(filter r8a7795 r8a7796, $(TARGET_BOARD_PLATFORM)))
 
 TOP_ABS                     := $(abspath $(TOP))
 ANDROID_CLANG_TOOLCHAIN_ABS := $(abspath ./prebuilts/clang/host/linux-x86/clang-r353983c/bin/clang)
-DDK_UM_PREBUILDS            := $(TOP_ABS)/vendor/imagination/rogue_um
-DDK_KM_SOURCE_ABS           := $(TOP_ABS)/vendor/imagination/rogue_km
 DDK_KM_OUT_ABS              := $(abspath $(PRODUCT_OUT)/obj/ROGUE_KM_OBJ)
 DDK_CROSS_COMPILE_ABS       := $(abspath ./prebuilts/gcc/linux-x86/aarch64/aarch64-linux-gnu/bin/aarch64-linux-gnu-)
 PVRSRV_VZ_NUM_OSID          := 2
@@ -35,6 +33,9 @@ TARGET_SOC_PLATFORM_REVISION := $(TARGET_BOARD_PLATFORM)
 endif
 
 ifeq ($(DDK_UM_PREBUILDS),)
+
+DDK_UM_PREBUILDS := $(TOP_ABS)/vendor/imagination/rogue_um
+
 # Build DDK-UM
 DDK_UM_DEP=img_ddk_um
 
@@ -51,6 +52,9 @@ endif # DDK_UM_PREBUILDS
 
 
 ifeq ($(DDK_KM_PREBUILT_MODULE),)
+
+DDK_KM_SOURCE_ABS := $(TOP_ABS)/vendor/imagination/rogue_km
+
 # Rule for building DDK-KM module
 
 DDK_KM_CFLAGS := HOSTCFLAGS="-fuse-ld=lld" HOSTLDFLAGS=-fuse-ld=lld ARCH=arm64
