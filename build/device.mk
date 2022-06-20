@@ -68,7 +68,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.opengles.version=196609 \
     ro.radio.noril=true \
     ro.carrier=unknown \
-    persist.vehicle.use-vis-hal=false \
+    persist.vehicle.use-vis-hal=true \
 
 # Define audio tracks that we want to use as default.
 # Do not change method of assignment because new values have to be prepended
