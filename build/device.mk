@@ -173,7 +173,7 @@ PRODUCT_PACKAGES += vndk_package
 
 # Boot animation
 PRODUCT_COPY_FILES += \
-    packages/services/Car/car_product/bootanimations/bootanimation-832.zip:system/media/bootanimation.zip
+    device/xen/xenvm/bootanimation/bootanimation.zip:system/media/bootanimation.zip
 
 # Input mapping
 PRODUCT_COPY_FILES += \
