@@ -69,3 +69,5 @@ service wpa_supplicant /vendor/bin/hw/wpa_supplicant \
 
 on property:sys.boot_completed=1
     exec u:object_r:system_file:s0 system system -- /system/bin/pm grant com.google.android.apps.maps android.permission.ACCESS_FINE_LOCATION
+    exec u:object_r:system_file:s0 system system -- /system/bin/pm grant com.epam.automotive android.car.permission.CAR_SPEED
+    exec u:object_r:system_file:s0 system system -- /system/bin/pm grant com.epam.automotive android.car.permission.CAR_ENERGY
