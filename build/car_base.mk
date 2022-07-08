@@ -19,7 +19,6 @@
 
 PRODUCT_PACKAGES += \
     com.android.wifi \
-    Home \
     BasicDreams \
     CaptivePortalLogin \
     CertInstaller \

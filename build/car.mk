@@ -90,7 +90,6 @@ PRODUCT_PACKAGES += \
     CarDialerApp \
     CarRadioApp \
     OverviewApp \
-    CarLauncher \
     CarSystemUI \
     LocalMediaPlayer \
     CarMediaApp \
