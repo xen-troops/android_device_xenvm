@@ -69,6 +69,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.radio.noril=true \
     ro.carrier=unknown \
     persist.vehicle.use-vis-hal=true \
+    persist.vis.uri="wss://wwwivi:443" \
 
 # Define audio tracks that we want to use as default.
 # Do not change method of assignment because new values have to be prepended
