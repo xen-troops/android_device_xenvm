@@ -229,9 +229,6 @@ PRODUCT_PACKAGES += \
     android.hardware.automotive.vehicle-V2.0-java \
     android.hardware.automotive.vehicle@2.0-service.xenvm \
 
-PRODUCT_COPY_FILES += \
-    vendor/xen/vehicle/cfg/vehicle-mappings.json:$(TARGET_COPY_OUT_VENDOR)/etc/vehicle/vehicle-mappings.json
-
 # Generic memtrack module
 PRODUCT_PACKAGES += \
     android.hardware.memtrack@1.0-impl \
