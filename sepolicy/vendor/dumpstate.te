@@ -1,3 +1,0 @@
-allow dumpstate self:capability sys_admin;
-allow dumpstate init:process getsched;
-allow dumpstate kernel:process getsched;
