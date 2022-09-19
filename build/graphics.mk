@@ -63,7 +63,7 @@ PRODUCT_OUT_ABS := $(abspath $(PRODUCT_OUT))
 
 
 DDK_CROSS_COMPILE := $(abspath ./prebuilts/gcc/linux-x86/aarch64/aarch64-linux-gnu/bin/aarch64-linux-gnu-)
-ANDROID_CLANG_TOOLCHAIN := $(abspath ./prebuilts/clang/host/linux-x86/clang-r353983c/bin/clang)
+ANDROID_CLANG_TOOLCHAIN := $(abspath ./prebuilts/clang/host/linux-x86/clang-r416183b1/bin/clang)
 
 DDK_KM_CFLAGS := HOSTCFLAGS="-fuse-ld=lld" HOSTLDFLAGS=-fuse-ld=lld ARCH=$(TARGET_ARCH)
 DDK_KM_CFLAGS += CROSS_COMPILE=$(DDK_CROSS_COMPILE) HOST_CC=$(ANDROID_CLANG_TOOLCHAIN)
