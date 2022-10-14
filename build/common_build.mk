@@ -24,5 +24,7 @@ XARGS                    := /usr/bin/xargs
 KERNEL_OUT               := $(PRODUCT_OUT)/obj/KERNEL_OBJ
 KERNEL_OUT_ABS           := $(abspath $(KERNEL_OUT))
 KERNEL_MODULES           := $(KERNEL_OUT)/modules.order
+ifeq ($(KERNEL_MODULES_OUT),)
 KERNEL_MODULES_OUT       := $(PRODUCT_OUT)/obj/KERNEL_MODULES
+endif
 KERNEL_MODULES_OUT_ABS   := $(abspath $(KERNEL_MODULES_OUT))
