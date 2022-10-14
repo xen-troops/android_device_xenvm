@@ -48,8 +48,8 @@ BOARD_VENDOR_KERNEL_MODULES += \
 	$(KERNEL_MODULES_OUT)/rtl8192cu.ko
 
 # Realtek Wi-Fi driver
-BOARD_VENDOR_KERNEL_MODULES += \
-	$(KERNEL_MODULES_OUT)/8812au.ko
+#BOARD_VENDOR_KERNEL_MODULES += \
+#	$(KERNEL_MODULES_OUT)/8812au.ko
 
 WLAN_KM_SRC             := hardware/realtek/rtl8812au_km
 WLAN_KM_OUT             := $(PRODUCT_OUT)/obj/WLAN_KM_OBJ
