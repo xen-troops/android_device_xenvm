@@ -135,3 +135,10 @@ ifeq ($(BOARD_WIFI_VENDOR), realtek)
     BOARD_HOSTAPD_DRIVER := NL80211
     BOARD_WLAN_DEVICE := realtek
 endif
+
+SOONG_CONFIG_NAMESPACES += vhal
+SOONG_CONFIG_vhal += vhal_type
+SOONG_CONFIG_vhal_vhal_type = viss
+
+BOARD_VENDOR_SEPOLICY_DIRS += \
+    vendor/epam/aosp-vhal/vehicle/sepolicy \

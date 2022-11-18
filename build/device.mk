@@ -68,7 +68,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.opengles.version=196609 \
     ro.radio.noril=true \
     ro.carrier=unknown \
-    persist.vehicle.use-vis-hal=true \
     persist.vis.uri="wss://wwwivi:443" \
 
 PRODUCT_PROPERTY_OVERRIDES += ro.sf.lcd_density=160
@@ -212,10 +211,9 @@ PRODUCT_PACKAGES += \
 # Keymaster HAL
 # All security related settings are moved into dedicated security.mk
 
-# Vehicle HAL
+# EPAM VISS Vehicle HAL
 PRODUCT_PACKAGES += \
-    android.hardware.automotive.vehicle-V2.0-java \
-    android.hardware.automotive.vehicle@2.0-service.xenvm \
+    epam_android.hardware.automotive.vehicle@2.0-service \
 
 # Generic memtrack module
 PRODUCT_PACKAGES += \
