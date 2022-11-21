@@ -63,12 +63,13 @@ PRODUCT_SYSTEM_PROPERTY_BLACKLIST := ro.product.locale
 # Configure ADB for network connections
 PRODUCT_PROPERTY_OVERRIDES += service.adb.tcp.port=5555
 
+# VISS
+PRODUCT_PROPERTY_OVERRIDES += persist.vendor.vis.uri="wss://wwwivi:443"
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.opengles.version=196609 \
     ro.radio.noril=true \
     ro.carrier=unknown \
-    persist.vis.uri="wss://wwwivi:443" \
 
 PRODUCT_PROPERTY_OVERRIDES += ro.sf.lcd_density=160
 
