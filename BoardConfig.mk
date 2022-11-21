@@ -142,3 +142,6 @@ SOONG_CONFIG_vhal_vhal_type = viss
 
 BOARD_VENDOR_SEPOLICY_DIRS += \
     vendor/epam/aosp-vhal/vehicle/sepolicy \
+
+BOARD_VENDOR_SEPOLICY_DIRS += \
+    vendor/xen/gnss/sepolicy \

@@ -3,3 +3,4 @@
 #type car_prop, property_type;
 #type hw_cabl_prop, property_type;
 #type opengles_prop, property_type;
+system_vendor_config_prop(vendor_vis_prop)
