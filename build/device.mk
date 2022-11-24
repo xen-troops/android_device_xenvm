@@ -303,6 +303,11 @@ $(call inherit-product, vendor/renesas/hal/audio/car_audio.mk)
 PRODUCT_COPY_FILES += \
     frameworks/av/media/libeffects/data/audio_effects.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.conf
 
+# Cluster deps
+DEVICE_PACKAGE_OVERLAYS += device/generic/car/emulator/cluster/osdouble_overlay
+
+PRODUCT_PACKAGES += ClusterHomeSample ClusterOsDouble
+
 # Enable Storage
 $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
 
