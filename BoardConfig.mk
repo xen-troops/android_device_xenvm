@@ -145,3 +145,5 @@ BOARD_VENDOR_SEPOLICY_DIRS += \
 
 BOARD_VENDOR_SEPOLICY_DIRS += \
     vendor/xen/gnss/sepolicy \
+
+BOARD_HAVE_BLUETOOTH := true

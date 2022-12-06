@@ -249,6 +249,12 @@ PRODUCT_PACKAGES += \
     android.automotive.evs.manager@1.1 \
     evs_app_xt \
 
+# Bluetooth
+PRODUCT_PACKAGES += android.hardware.bluetooth@1.1-service.btlinux
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.bluetooth.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.bluetooth.xml \
+
+
 # Set default log size on userdebug/eng builds to 2M
 ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
 PRODUCT_PROPERTY_OVERRIDES += ro.logd.size=2M
