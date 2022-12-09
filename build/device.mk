@@ -254,7 +254,7 @@ PRODUCT_COPY_FILES += \
 
 # Set default log size on userdebug/eng builds to 2M
 ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
-PRODUCT_PROPERTY_OVERRIDES += ro.logd.size=2M
+PRODUCT_PROPERTY_OVERRIDES += ro.logd.size=10M
 endif
 
 # Gallery and Music for local AV playback
