@@ -307,6 +307,9 @@ DEVICE_PACKAGE_OVERLAYS += device/generic/car/emulator/cluster/osdouble_overlay
 
 PRODUCT_PACKAGES += ClusterHomeSample ClusterOsDouble
 
+PRODUCT_COPY_FILES += \
+    device/generic/car/emulator/cluster/display_settings.xml:system/etc/display_settings.xml
+
 # Enable Storage
 $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
 
