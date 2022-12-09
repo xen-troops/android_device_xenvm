@@ -17,7 +17,6 @@
 
 $(call inherit-product, build/target/product/core_64_bit.mk)
 $(call inherit-product, frameworks/native/build/tablet-10in-xhdpi-2048-dalvik-heap.mk)
-$(call inherit-product, device/xen/xenvm/build/car.mk)
 $(call inherit-product, device/xen/xenvm/build/common_build.mk)
 
 PRODUCT_SHIPPING_API_LEVEL := 31
@@ -27,8 +26,6 @@ PRODUCT_FULL_TREBLE := true
 PRODUCT_ENFORCE_VINTF_MANIFEST := true
 
 PRODUCT_PACKAGES += vndservicemanager
-
-PRODUCT_PACKAGE_OVERLAYS += device/xen/xenvm/overlay
 
 # Boot control HAL (libavb)
 PRODUCT_PACKAGES +=  \
@@ -321,6 +318,9 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
 $(call inherit-product, \
     $(SRC_TARGET_DIR)/product/virtual_ab_ota.mk)
 
+PRODUCT_PACKAGE_OVERLAYS += device/xen/xenvm/overlay
+
+$(call inherit-product, packages/services/Car/car_product/build/car.mk)
 $(call inherit-product, device/xen/xenvm/build/graphics.mk)
 $(call inherit-product-if-exists, frameworks/base/data/sounds/AudioPackage13.mk)
 $(call inherit-product-if-exists, frameworks/base/data/fonts/fonts.mk)
