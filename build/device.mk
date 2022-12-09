@@ -174,10 +174,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     librs_jni \
 
-# Config store HAL
-PRODUCT_PACKAGES += \
-    android.hardware.configstore@1.1-service
-
 # Composer 2.3
 PRODUCT_PACKAGES += \
     android.hardware.graphics.composer@2.3-hal \
