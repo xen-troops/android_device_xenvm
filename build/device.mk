@@ -323,4 +323,4 @@ $(call inherit-product-if-exists, frameworks/base/data/fonts/fonts.mk)
 $(call inherit-product-if-exists, vendor/Google/Google-product.mk)
 $(call inherit-product, device/xen/xenvm/build/security.mk)
 $(call inherit-product, device/xen/xenvm/build/kernel_modules.mk)
-
+$(call inherit-product-if-exists, vendor/epam/aosp-hmi/epam-automotive-launcher.mk)
