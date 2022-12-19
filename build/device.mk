@@ -330,13 +330,9 @@ $(call inherit-product, vendor/renesas/hal/audio/car_audio.mk)
 PRODUCT_COPY_FILES += \
     frameworks/av/media/libeffects/data/audio_effects.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.conf
 
-# Cluster deps
-DEVICE_PACKAGE_OVERLAYS += device/generic/car/emulator/cluster/osdouble_overlay
+BUILD_EMULATOR_CLUSTER_DISPLAY?=true
+ENABLE_CLUSTER_OS_DOUBLE?=true
 
-PRODUCT_PACKAGES += ClusterHomeSample ClusterOsDouble
-
-PRODUCT_COPY_FILES += \
-    device/generic/car/emulator/cluster/display_settings.xml:system/etc/display_settings.xml
 
 # Enable Storage
 $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
@@ -355,3 +351,5 @@ $(call inherit-product, device/xen/xenvm/build/security.mk)
 $(call inherit-product, device/xen/xenvm/build/kernel_modules.mk)
 $(call inherit-product, vendor/epam/aosp-hmi/epam-automotive-launcher.mk)
 $(call inherit-product, vendor/epam/ces-navigation/epam-navigation.mk)
+$(call inherit-product, vendor/epam/EpamCluster/epam-cluster-product.mk)
+
