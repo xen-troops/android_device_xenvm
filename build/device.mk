@@ -330,8 +330,13 @@ $(call inherit-product, vendor/renesas/hal/audio/car_audio.mk)
 PRODUCT_COPY_FILES += \
     frameworks/av/media/libeffects/data/audio_effects.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.conf
 
-BUILD_EMULATOR_CLUSTER_DISPLAY?=true
-ENABLE_CLUSTER_OS_DOUBLE?=true
+
+# Cluster deps
+DEVICE_PACKAGE_OVERLAYS += device/generic/car/emulator/cluster/osdouble_overlay
+
+PRODUCT_COPY_FILES += \
+    device/generic/car/emulator/cluster/display_settings.xml:system/etc/display_settings.xml
+
 
 
 # Enable Storage
