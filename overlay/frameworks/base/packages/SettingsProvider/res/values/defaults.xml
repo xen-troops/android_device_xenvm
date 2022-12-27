@@ -19,5 +19,7 @@
 <resources>
 
 	<bool name="def_bluetooth_on">false</bool>
-
+    <bool name="def_device_provisioned">true</bool>
+    <bool name="def_user_setup_complete">true</bool>
+    <bool name="def_lockscreen_disabled">true</bool>
 </resources>
