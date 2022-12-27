@@ -311,6 +311,9 @@ endif
 PRODUCT_COPY_FILES += \
     device/xen/xenvm/init.recovery.xenvm.rc:root/init.recovery.xenvm.rc
 
+PRODUCT_SYSTEM_EXT_PROPERTIES += \
+    ro.setupwizard.mode?=DISABLED
+
 # Enable Storage
 $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
 
