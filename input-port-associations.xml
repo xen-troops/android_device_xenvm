@@ -5,4 +5,6 @@
 <ports>
   <port display="31" input="xenbus/device/vkbd/0" />
   <port display="35" input="xenbus/device/vkbd/1" />
+  <port display="31" input="usb-ee0a0000.usb-1/input0" />
+  <port display="31" input="usb-ee0a0100.usb-1.2.1/input0" />
 </ports>
