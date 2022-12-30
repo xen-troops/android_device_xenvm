@@ -3,5 +3,6 @@
 /vendor/etc/input-port-associations.xml
 -->
 <ports>
-  <port display="0" input="usb-ee0a0100.usb-1.1.2.1/input0" />
+	<port display="0" input="usb-ee0a0000.usb-1/input0" />
+	<port display="0" input="usb-ee0a0100.usb-1.2.1/input0" />
 </ports>
