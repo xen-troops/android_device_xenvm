@@ -67,8 +67,7 @@ service wpa_supplicant /vendor/bin/hw/wpa_supplicant \
      disabled
      oneshot
 
-on property:sys.boot_completed=1
-    exec u:object_r:system_file:s0 system system -- /system/bin/pm grant com.google.android.apps.maps android.permission.ACCESS_FINE_LOCATION
-    exec u:object_r:system_file:s0 system system -- /system/bin/pm grant com.epam.automotive android.car.permission.CAR_SPEED
-    exec u:object_r:system_file:s0 system system -- /system/bin/pm grant com.epam.automotive android.car.permission.CAR_ENERGY
+on property:sys.boot_completed=1 && property:persist.vendor.xenvm-postinstall-done=0
+    exec u:object_r:system_file:s0 root root -- /system/bin/wm density 160 -d 2
     exec u:object_r:system_file:s0 root root -- /system/bin/cmd -w settings put global show_notification_channel_warnings 0
+    setprop persist.vendor.xenvm-postinstall-done 1
