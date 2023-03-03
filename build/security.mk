@@ -27,7 +27,7 @@ PRODUCT_PACKAGES += \
     tee-supplicant \
 
 OPTEE_COMPILER := clang
-OPTEE_COMPILER_PATH :=  $(abspath prebuilts/clang/host/linux-x86/clang-r416183b1/bin)
+OPTEE_COMPILER_PATH := $(abspath ./prebuilts/clang/host/linux-x86/clang-r450784d/bin/ )
 CROSS_COMPILE64 := aarch64-linux-android
 
 # settings for building of trusted applications (TA)
