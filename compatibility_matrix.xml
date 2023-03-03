@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Comments, Legal notices, etc. here -->
-<compatibility-matrix version="1.0" type="device" target-level="4">
+<compatibility-matrix version="1.0" type="device" target-level="6">
     <hal>
         <name>android.hidl.manager</name>
         <version>1.0</version>
@@ -26,9 +26,9 @@
         </interface>
     </hal>
     <vendor-ndk>
-        <version>31</version>
+        <version>33</version>
     </vendor-ndk>
     <system-sdk>
-        <version>31</version>
+        <version>33</version>
     </system-sdk>
 </compatibility-matrix>
