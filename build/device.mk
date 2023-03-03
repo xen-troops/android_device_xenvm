@@ -217,6 +217,7 @@ PRODUCT_PACKAGES += \
 #    android.hardware.graphics.composer@2.1-service \
 
 # DRM Composer
+PRODUCT_VENDOR_PROPERTIES += vendor.hwc.backend_override=client
 PRODUCT_PACKAGES += \
     hwcomposer.$(TARGET_PRODUCT) \
 
