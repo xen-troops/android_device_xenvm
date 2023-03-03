@@ -362,5 +362,4 @@ $(call inherit-product, device/xen/xenvm/build/security.mk)
 $(call inherit-product, device/xen/xenvm/build/kernel_modules.mk)
 $(call inherit-product, vendor/epam/aosp-hmi/epam-automotive-launcher.mk)
 $(call inherit-product, vendor/epam/ces-navigation/epam-navigation.mk)
-$(call inherit-product, vendor/epam/EpamCluster/epam-cluster-product.mk)
 
