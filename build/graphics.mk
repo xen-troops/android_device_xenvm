@@ -34,7 +34,7 @@ endif
 
 ifeq ($(DDK_UM_PREBUILDS),)
 
-DDK_UM_PREBUILDS := $(TOP_ABS)/vendor/imagination/rogue_um
+DDK_UM_PREBUILDS ?= $(TOP_ABS)/vendor/imagination/rogue_um
 
 # Build DDK-UM
 DDK_UM_DEP=img_ddk_um
