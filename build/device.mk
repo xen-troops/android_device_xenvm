@@ -314,7 +314,8 @@ PRODUCT_COPY_FILES += \
 
 # C2 HAL
 PRODUCT_PACKAGES += \
-    android.hardware.media.c2@1.0-service.renesas
+    android.hardware.media.c2@1.0-service.renesas \
+    stagefright
 
 # Wifi
 PRODUCT_PACKAGES += \
