@@ -36,6 +36,8 @@ PRODUCT_PACKAGES +=  \
 AB_OTA_UPDATER := true
 AB_OTA_PARTITIONS := \
     boot \
+    init_boot \
+    vendor_boot \
     system \
     vendor \
     vbmeta \
@@ -150,7 +152,10 @@ ifneq ($(DISABLE_AVB),true)
   PRODUCT_COPY_FILES += \
     device/xen/xenvm/fstab.xenvm.avb:root/fstab.xenvm \
     device/xen/xenvm/fstab.xenvm.avb:$(TARGET_COPY_OUT_VENDOR)/etc/fstab.xenvm \
+    device/xen/xenvm/fstab.xenvm.avb:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.xenvm \
+    device/xen/xenvm/fstab.xenvm.avb:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/fstab.xenvm \
     device/xen/xenvm/fstab.xenvm.avb:$(TARGET_COPY_OUT_RECOVERY)/root/first_stage_ramdisk/fstab.xenvm \
+    device/xen/xenvm/fstab.xenvm.avb:$(TARGET_COPY_OUT_RECOVERY)/root/fstab.xenvm \
 
 TARGET_RECOVERY_FSTAB := device/xen/xenvm/fstab.xenvm.avb
 else
@@ -350,11 +355,17 @@ PRODUCT_SYSTEM_EXT_PROPERTIES += \
 $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
 
 # Virtual AB
-$(call inherit-product, \
-    $(SRC_TARGET_DIR)/product/virtual_ab_ota.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/compression.mk)
+
+PRODUCT_PACKAGES += \
+		  linker.recovery \
+		  shell_and_utilities_recovery \
+		  adbd.recovery \
 
 PRODUCT_PACKAGE_OVERLAYS += device/xen/xenvm/overlay
 
+$(call inherit-product, build/make/target/product/generic_ramdisk.mk)
 $(call inherit-product, packages/services/Car/car_product/build/car.mk)
 $(call inherit-product, device/xen/xenvm/build/graphics.mk)
 $(call inherit-product-if-exists, frameworks/base/data/sounds/AudioPackage13.mk)
