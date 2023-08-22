@@ -129,6 +129,7 @@ ifneq ($(DISABLE_AVB),true)
     device/xen/xenvm/fstab.xenvm.avb:root/fstab.xenvm \
     device/xen/xenvm/fstab.xenvm.avb:$(TARGET_COPY_OUT_VENDOR)/etc/fstab.xenvm \
     device/xen/xenvm/fstab.xenvm.avb:$(TARGET_COPY_OUT_RECOVERY)/root/first_stage_ramdisk/fstab.xenvm \
+    device/xen/xenvm/fstab.xenvm.avb:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.xenvm \
 
 TARGET_RECOVERY_FSTAB := device/xen/xenvm/fstab.xenvm.avb
 else
