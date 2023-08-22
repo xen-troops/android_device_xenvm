@@ -355,6 +355,10 @@ $(call inherit-product, \
 
 PRODUCT_PACKAGE_OVERLAYS += device/xen/xenvm/overlay
 
+# Cluster rro
+PRODUCT_PACKAGES += CarServiceOverlayEmulatorOsDouble
+PRODUCT_PACKAGES += CarServiceOverlayEmulatorOsDoubleEpam
+
 $(call inherit-product, packages/services/Car/car_product/build/car.mk)
 $(call inherit-product, device/xen/xenvm/build/graphics.mk)
 $(call inherit-product-if-exists, frameworks/base/data/sounds/AudioPackage13.mk)
