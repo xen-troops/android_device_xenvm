@@ -57,10 +57,16 @@ BOARD_FLASH_BLOCK_SIZE := 512
 BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_SYSTEMIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_BOOTIMAGE_PARTITION_SIZE := 30720000
+BOARD_VENDOR_BOOTIMAGE_PARTITION_SIZE := 30720000
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 3145728000  # 3145728000 = 3000 MiB
 
+BOARD_INCLUDE_DTB_IN_BOOTIMG := false
+
+# It is impossible to build vendor_boot image without dtb.img
+# Using dummy/empty dtb just to create vendor_boot
+PRODUCT_COPY_FILES += device/google/cuttlefish/dtb.img:dtb.img \
+
 BOARD_BUILD_SYSTEM_ROOT_IMAGE := false
-BOARD_USES_RECOVERY_AS_BOOT := true
 BOARD_BUILD_SUPER_IMAGE_BY_DEFAULT := true
 
 # Dynamic partitions:
@@ -100,11 +106,21 @@ BOARD_VENDOR_SEPOLICY_DIRS += device/xen/xenvm/sepolicy/vendor
 BOARD_PLAT_PRIVATE_SEPOLICY_DIR += device/xen/xenvm/sepolicy/private
 BOARD_PLAT_PUBLIC_SEPOLICY_DIR += device/xen/xenvm/sepolicy/public
 
+# Boot image build rules
+BOARD_BOOT_HEADER_VERSION := 3
+BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
+
+# Turn off AVB for development purposes
+BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --flag 2
+BOARD_KERNEL_CMDLINE += androidboot.verifiedbootstate=orange
+
+# Set SELinux to permissive mode
+BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
+BOARD_KERNEL_CMDLINE += enforcing=0
 
 # Boot image build rules
-BOARD_KERNEL_CMDLINE :=
 BOARD_KERNEL_BASE := 0x48000000
-BOARD_MKBOOTIMG_ARGS := --second_offset 0x800 --kernel_offset 0x200000 --ramdisk_offset 0x1300000
+BOARD_MKBOOTIMG_ARGS += --second_offset 0x800 --kernel_offset 0x200000 --ramdisk_offset 0x1300000
 ifeq ($(TARGET_PREBUILT_KERNEL),)
 TARGET_KERNEL_SOURCE := device/xen/kernel
 TARGET_KERNEL_CONFIG := android_xenvm_defconfig
