@@ -268,11 +268,9 @@ PRODUCT_COPY_FILES += \
     vendor/xen/sensors/cfg/sensors-config.json:$(TARGET_COPY_OUT_VENDOR)/etc/vehicle/sensors-config.json
 
 # Exterior View System (EVS)
-PRODUCT_PACKAGES += \
-    android.frameworks.automotive.display@1.0-service \
-    android.hardware.automotive.evs@1.1.xt \
-    android.automotive.evs.manager@1.1 \
-    evs_app_xt \
+ifeq ($(ANDROID_EVS_ENABLED),true)
+$(call inherit-product, vendor/xen/evs/evs.mk)
+endif
 
 # Bluetooth
 PRODUCT_PACKAGES += android.hardware.bluetooth@1.1-service.btlinux
