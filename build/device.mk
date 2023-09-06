@@ -370,5 +370,5 @@ $(call inherit-product, vendor/epam/ces-navigation/epam-navigation.mk)
 $(call inherit-product, vendor/epam/EpamCluster/epam-cluster-product.mk)
 $(call inherit-product, vendor/epam/EpamMusic/epam-audio.mk)
 $(call inherit-product, vendor/epam/epam-hnav-dist/epam-hnav.mk)
-#$(call inherit-product, vendor/epam/EpamSystemUI/epam-systemui.mk)
+$(call inherit-product, vendor/epam/EpamSystemUI/epam-systemui.mk)
 
