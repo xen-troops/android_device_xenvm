@@ -64,7 +64,6 @@ BOARD_SYSTEMIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_BOOTIMAGE_PARTITION_SIZE := 33497088
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 3145728000  # 3145728000 = 3000 MiB
 
-BOARD_BUILD_SYSTEM_ROOT_IMAGE := false
 BOARD_USES_RECOVERY_AS_BOOT := true
 BOARD_BUILD_SUPER_IMAGE_BY_DEFAULT := true
 
@@ -102,8 +101,8 @@ BOARD_SECCOMP_POLICY += device/xen/xenvm/seccomp
 
 # SELinux support
 BOARD_VENDOR_SEPOLICY_DIRS += device/xen/xenvm/sepolicy/vendor
-BOARD_PLAT_PRIVATE_SEPOLICY_DIR += device/xen/xenvm/sepolicy/private
-BOARD_PLAT_PUBLIC_SEPOLICY_DIR += device/xen/xenvm/sepolicy/public
+BOARD_VENDOR_SEPOLICY_DIRS += device/xen/xenvm/sepolicy/private
+BOARD_VENDOR_SEPOLICY_DIRS += device/xen/xenvm/sepolicy/public
 
 
 # Boot image build rules
