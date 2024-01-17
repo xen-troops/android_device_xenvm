@@ -17,6 +17,8 @@
 # IMG DDK Targets & dependencies
 ifneq (,$(filter r8a7795 r8a7796, $(TARGET_BOARD_PLATFORM)))
 
+PRODUCT_VENDOR_PROPERTIES += ro.hardware.egl=POWERVR_ROGUE
+
 ABS_TOP := $(abspath $(TOP))
 TARGET_ARCH := arm64
 
