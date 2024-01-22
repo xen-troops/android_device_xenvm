@@ -179,6 +179,9 @@ endif
 #    android.hardware.media.c2@1.0 \
 #    libstagefright_bufferpool@2.0 \
 
+PRODUCT_PACKAGES += \
+    android.hardware.drm@1.0-service \
+    android.hardware.drm@1.0-impl
 
 # seccomp policy
 PRODUCT_PACKAGES += \
