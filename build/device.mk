@@ -343,7 +343,7 @@ DEVICE_PACKAGE_OVERLAYS += device/generic/car/emulator/cluster/osdouble_overlay
 PRODUCT_COPY_FILES += \
     device/generic/car/emulator/cluster/display_settings.xml:system/etc/display_settings.xml
 
-PRODUCT_SYSTEM_EXT_PROPERTIES += \
+PRODUCT_VENDOR_PROPERTIES += \
     ro.setupwizard.mode?=OPTIONAL
 
 
