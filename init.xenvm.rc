@@ -18,6 +18,11 @@ on post-fs-data
     mkdir /data/vendor/wifi/wpa 0770 wifi wifi
     mkdir /data/vendor/wifi/wpa/sockets 0770 wifi wifi
     setprop vold.post_fs_data_done 1
+    insmod /vendor/lib/modules/phy-rcar-gen3-usb2.ko
+    insmod /vendor/lib/modules/ehci-hcd.ko
+    insmod /vendor/lib/modules/ohci-hcd.ko
+    insmod /vendor/lib/modules/ohci-platform.ko
+    insmod /vendor/lib/modules/ehci-platform.ko
 
 on early-boot
     mount debugfs /sys/kernel/debug /sys/kernel/debug

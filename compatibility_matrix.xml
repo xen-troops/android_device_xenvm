@@ -26,9 +26,9 @@
         </interface>
     </hal>
     <vendor-ndk>
-        <version>33</version>
+        <version>34</version>
     </vendor-ndk>
     <system-sdk>
-        <version>33</version>
+        <version>34</version>
     </system-sdk>
 </compatibility-matrix>

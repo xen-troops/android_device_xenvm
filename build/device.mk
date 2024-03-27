@@ -139,8 +139,8 @@ PRODUCT_COPY_FILES += \
 
 # Init rc
 PRODUCT_COPY_FILES +=\
-    device/xen/xenvm/init.xenvm.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.xenvm.rc \
-    device/xen/xenvm/init.xenvm.usb.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.xenvm.usb.rc \
+    device/xen/xenvm/init.xenvm.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.xenvm.rc \
+    device/xen/xenvm/init.xenvm.usb.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.xenvm.usb.rc \
     device/xen/xenvm/ueventd.xenvm.rc:$(TARGET_COPY_OUT_VENDOR)/etc/ueventd.rc \
     packages/services/Car/car_product/init/init.car.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.car.rc \
     packages/services/Car/car_product/init/init.bootstat.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.bootstat.rc
@@ -179,6 +179,9 @@ endif
 #    android.hardware.media.c2@1.0 \
 #    libstagefright_bufferpool@2.0 \
 
+PRODUCT_PACKAGES += \
+    android.hardware.drm@1.0-service \
+    android.hardware.drm@1.0-impl
 
 # seccomp policy
 PRODUCT_PACKAGES += \
@@ -268,11 +271,9 @@ PRODUCT_COPY_FILES += \
     vendor/xen/sensors/cfg/sensors-config.json:$(TARGET_COPY_OUT_VENDOR)/etc/vehicle/sensors-config.json
 
 # Exterior View System (EVS)
-PRODUCT_PACKAGES += \
-    android.frameworks.automotive.display@1.0-service \
-    android.hardware.automotive.evs@1.1.xt \
-    android.automotive.evs.manager@1.1 \
-    evs_app_xt \
+ifeq ($(ANDROID_EVS_ENABLED),true)
+$(call inherit-product, vendor/xen/evs/evs.mk)
+endif
 
 # Bluetooth
 PRODUCT_PACKAGES += android.hardware.bluetooth@1.1-service.btlinux
@@ -342,7 +343,7 @@ DEVICE_PACKAGE_OVERLAYS += device/generic/car/emulator/cluster/osdouble_overlay
 PRODUCT_COPY_FILES += \
     device/generic/car/emulator/cluster/display_settings.xml:system/etc/display_settings.xml
 
-PRODUCT_SYSTEM_EXT_PROPERTIES += \
+PRODUCT_VENDOR_PROPERTIES += \
     ro.setupwizard.mode?=OPTIONAL
 
 
@@ -352,6 +353,9 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
 # Virtual AB
 $(call inherit-product, \
     $(SRC_TARGET_DIR)/product/virtual_ab_ota.mk)
+
+# Updateble APEX
+$(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 
 PRODUCT_PACKAGE_OVERLAYS += device/xen/xenvm/overlay
 
@@ -371,4 +375,6 @@ $(call inherit-product, vendor/epam/EpamCluster/epam-cluster-product.mk)
 $(call inherit-product, vendor/epam/EpamMusic/epam-audio.mk)
 $(call inherit-product, vendor/epam/epam-hnav-dist/epam-hnav.mk)
 $(call inherit-product, vendor/epam/EpamSystemUI/epam-systemui.mk)
+$(call inherit-product, vendor/epam/epam-evs/epam-evs.mk)
+$(call inherit-product, vendor/epam/epam-evs/epam-evs-overlay.mk)
 
