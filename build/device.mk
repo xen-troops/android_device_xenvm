@@ -240,10 +240,6 @@ PRODUCT_PACKAGES += \
 # Keymaster HAL
 # All security related settings are moved into dedicated security.mk
 
-# EPAM VISS Vehicle HAL
-PRODUCT_PACKAGES += \
-    epam_android.hardware.automotive.vehicle@2.0-service \
-
 # Generic memtrack module
 PRODUCT_PACKAGES += \
     android.hardware.memtrack@1.0-impl \
@@ -257,23 +253,6 @@ PRODUCT_PACKAGES += \
     wificond \
     wifilogd \
     wpa_supplicant
-
-# GNSS
-PRODUCT_PACKAGES += \
-    android.hardware.gnss@1.1-service.xenvm \
-    libuws \
-
-#Sensors
-PRODUCT_PACKAGES += \
-    android.hardware.sensors@1.0-service.xenvm \
-
-PRODUCT_COPY_FILES += \
-    vendor/xen/sensors/cfg/sensors-config.json:$(TARGET_COPY_OUT_VENDOR)/etc/vehicle/sensors-config.json
-
-# Exterior View System (EVS)
-ifeq ($(ANDROID_EVS_ENABLED),true)
-$(call inherit-product, vendor/xen/evs/evs.mk)
-endif
 
 # Bluetooth
 PRODUCT_PACKAGES += android.hardware.bluetooth@1.1-service.btlinux
@@ -328,17 +307,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     wifi.direct.interface=p2p0 \
     wifi.interface=wlan0
 
-
-
-# Audio common defaults
-$(call inherit-product, vendor/renesas/hal/audio/car_audio.mk)
-
 PRODUCT_COPY_FILES += \
     frameworks/av/media/libeffects/data/audio_effects.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.conf
-
-
-# Cluster deps
-DEVICE_PACKAGE_OVERLAYS += device/generic/car/emulator/cluster/osdouble_overlay
 
 PRODUCT_COPY_FILES += \
     device/generic/car/emulator/cluster/display_settings.xml:system/etc/display_settings.xml
@@ -359,22 +329,8 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 
 PRODUCT_PACKAGE_OVERLAYS += device/xen/xenvm/overlay
 
-# Cluster rro
-PRODUCT_PACKAGES += CarServiceOverlayEmulatorOsDouble
-PRODUCT_PACKAGES += CarServiceOverlayEmulatorOsDoubleEpam
-
 $(call inherit-product, packages/services/Car/car_product/build/car.mk)
 $(call inherit-product, device/xen/xenvm/build/graphics.mk)
 $(call inherit-product-if-exists, frameworks/base/data/sounds/AudioPackage13.mk)
 $(call inherit-product-if-exists, frameworks/base/data/fonts/fonts.mk)
-$(call inherit-product, device/xen/xenvm/build/security.mk)
 $(call inherit-product, device/xen/xenvm/build/kernel_modules.mk)
-$(call inherit-product, vendor/epam/aosp-hmi/epam-automotive-launcher.mk)
-$(call inherit-product, vendor/epam/ces-navigation/epam-navigation.mk)
-$(call inherit-product, vendor/epam/EpamCluster/epam-cluster-product.mk)
-$(call inherit-product, vendor/epam/EpamMusic/epam-audio.mk)
-$(call inherit-product, vendor/epam/epam-hnav-dist/epam-hnav.mk)
-$(call inherit-product, vendor/epam/EpamSystemUI/epam-systemui.mk)
-$(call inherit-product, vendor/epam/epam-evs/epam-evs.mk)
-$(call inherit-product, vendor/epam/epam-evs/epam-evs-overlay.mk)
-

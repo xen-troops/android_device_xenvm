@@ -21,15 +21,14 @@ PRODUCT_COPY_FILES += \
 		$(LOCAL_PATH)/vendor/lib/egl/libGLESv2_POWERVR_ROGUE.so:vendor/lib/egl/libGLESv2_POWERVR_ROGUE.so \
 		$(LOCAL_PATH)/vendor/lib/hw/gralloc.r8a7795.so:vendor/lib/hw/gralloc.r8a7795.so \
 		$(LOCAL_PATH)/vendor/lib/hw/memtrack.r8a7795.so:vendor/lib/hw/memtrack.r8a7795.so \
-                $(LOCAL_PATH)/vendor/lib64/libglslcompiler.so:vendor/lib64/libglslcompiler.so \
-                $(LOCAL_PATH)/vendor/lib64/libIMGegl.so:vendor/lib64/libIMGegl.so \
-                $(LOCAL_PATH)/vendor/lib64/libPVRScopeServices.so:vendor/lib64/libPVRScopeServices.so \
-                $(LOCAL_PATH)/vendor/lib64/libsrv_um.so:vendor/lib64/libsrv_um.so \
+        $(LOCAL_PATH)/vendor/lib64/libglslcompiler.so:vendor/lib64/libglslcompiler.so \
+        $(LOCAL_PATH)/vendor/lib64/libIMGegl.so:vendor/lib64/libIMGegl.so \
+        $(LOCAL_PATH)/vendor/lib64/libPVRScopeServices.so:vendor/lib64/libPVRScopeServices.so \
+        $(LOCAL_PATH)/vendor/lib64/libsrv_um.so:vendor/lib64/libsrv_um.so \
 		$(LOCAL_PATH)/vendor/lib64/libtqvalidate.so:vendor/lib64/libtqvalidate.so \
-                $(LOCAL_PATH)/vendor/lib64/libusc.so:vendor/lib64/libusc.so \
-                $(LOCAL_PATH)/vendor/lib64/egl/libEGL_POWERVR_ROGUE.so:vendor/lib64/egl/libEGL_POWERVR_ROGUE.so \
-                $(LOCAL_PATH)/vendor/lib64/egl/libGLESv1_CM_POWERVR_ROGUE.so:vendor/lib64/egl/libGLESv1_CM_POWERVR_ROGUE.so \
-                $(LOCAL_PATH)/vendor/lib64/egl/libGLESv2_POWERVR_ROGUE.so:vendor/lib64/egl/libGLESv2_POWERVR_ROGUE.so \
-                $(LOCAL_PATH)/vendor/lib64/hw/gralloc.r8a7795.so:vendor/lib64/hw/gralloc.r8a7795.so \
-                $(LOCAL_PATH)/vendor/lib64/hw/memtrack.r8a7795.so:vendor/lib64/hw/memtrack.r8a7795.so \
-
+        $(LOCAL_PATH)/vendor/lib64/libusc.so:vendor/lib64/libusc.so \
+        $(LOCAL_PATH)/vendor/lib64/egl/libEGL_POWERVR_ROGUE.so:vendor/lib64/egl/libEGL_POWERVR_ROGUE.so \
+        $(LOCAL_PATH)/vendor/lib64/egl/libGLESv1_CM_POWERVR_ROGUE.so:vendor/lib64/egl/libGLESv1_CM_POWERVR_ROGUE.so \
+        $(LOCAL_PATH)/vendor/lib64/egl/libGLESv2_POWERVR_ROGUE.so:vendor/lib64/egl/libGLESv2_POWERVR_ROGUE.so \
+        $(LOCAL_PATH)/vendor/lib64/hw/gralloc.r8a7795.so:vendor/lib64/hw/gralloc.r8a7795.so \
+        $(LOCAL_PATH)/vendor/lib64/hw/memtrack.r8a7795.so:vendor/lib64/hw/memtrack.r8a7795.so \

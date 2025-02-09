@@ -17,7 +17,6 @@
 ANDROID_CLANG_TOOLCHAIN  := $(abspath ./prebuilts/clang/host/linux-x86/clang-r450784e/bin/clang)
 ANDROID_MAKE             := $(abspath ./prebuilts/build-tools/linux-x86/bin/make)
 ANDROID_MAKE_PATH        := $(abspath ./prebuilts/build-tools/linux-x86/bin/)
-BSP_GCC_CROSS_COMPILE    := $(abspath ./prebuilts/gcc/linux-x86/aarch64/aarch64-linux-gnu/bin/aarch64-linux-gnu-)
 PRODUCT_OUT              := $(OUT_DIR)/target/product/$(TARGET_PRODUCT)
 NPROC                    := /usr/bin/nproc
 XARGS                    := /usr/bin/xargs

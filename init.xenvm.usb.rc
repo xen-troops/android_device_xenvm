@@ -13,17 +13,4 @@
 # limitations under the License.
 
 on early-boot
-    insmod /vendor/lib/modules/phy-rcar-gen3-usb2.ko
-    insmod /vendor/lib/modules/renesas_usbhs.ko
-    insmod /vendor/lib/modules/ehci-hcd.ko
-    insmod /vendor/lib/modules/ehci-platform.ko
-    insmod /vendor/lib/modules/ohci-hcd.ko
-    insmod /vendor/lib/modules/ohci-platform.ko
-    insmod /vendor/lib/modules/xhci-hcd.ko
-    insmod /vendor/lib/modules/xhci-plat-hcd.ko
-    insmod /vendor/lib/modules/usb-storage.ko
-    insmod /vendor/lib/modules/rtlwifi.ko
-    insmod /vendor/lib/modules/rtl_usb.ko
-    insmod /vendor/lib/modules/rtl8192c-common.ko
-    insmod /vendor/lib/modules/rtl8192cu.ko
     exec u:r:vendor_modprobe:s0 root root -- /vendor/bin/toybox_vendor insmod /vendor/lib/modules/8812au.ko ifname=wlan0 if2name=p2p0
