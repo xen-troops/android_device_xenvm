@@ -1,0 +1,19 @@
+# enable pipe communication between system_server processes and
+# surfaceflinger for gralloc subchannel feature (dynamic fbc)
+allow system_server surfaceflinger:fifo_file rw_file_perms;
+
+# allow system_server to load hardware_legacy modules
+allow system_server self:capability sys_module;
+
+# Allow system_server to write to /proc/<pid>/timerslack_ns
+allow system_server hal_audio_default:file w_file_perms;
+
+# allow system_server to access /vendor/lib/hw/android.hardware.graphics.mapper@2.0-impl-2.1.so
+allow system_server same_process_hal_file:file { getattr read open map };
+
+# allow system_server to access /vendor/etc/selinux/vendor_file_contexts
+allow system_server vendor_configs_file:file map;
+
+# allow system_server to access GFXService
+binder_call(system_server, hal_gfxservice_img)
+allow system_server hal_gfxservice_hwservice:hwservice_manager find;

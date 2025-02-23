@@ -1,0 +1,21 @@
+type hal_gfxservice_img, domain;
+hal_server_domain(hal_gfxservice_img, hal_gfxservice)
+
+type hal_gfxservice_img_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(hal_gfxservice_img)
+
+allow hal_gfxservice_img gpu_device:chr_file rw_file_perms;
+allow hal_gfxservice_img ion_device:chr_file rw_file_perms;
+
+allow hal_gfxservice_img hidl_base_hwservice:hwservice_manager add;
+allow hal_gfxservice_img hal_gfxservice_hwservice:hwservice_manager add;
+
+binder_call(hal_gfxservice_img, bootanim)
+binder_call(hal_gfxservice_img, surfaceflinger)
+binder_call(hal_gfxservice_img, hal_graphics_composer_default)
+binder_call(hal_gfxservice_img, hal_graphics_allocator_default)
+binder_call(hal_gfxservice_img, system_server)
+binder_call(hal_gfxservice_img, system_app)
+binder_call(hal_gfxservice_img, platform_app)
+binder_call(hal_gfxservice_img, priv_app)
+binder_call(hal_gfxservice_img, untrusted_app)

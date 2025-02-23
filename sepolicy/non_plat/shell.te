@@ -1,0 +1,9 @@
+# when the console service spawns, it makes some uncontrollable reads
+allow shell rootfs:file { entrypoint read };
+
+# Allow shell to access /proc/pvr.
+allow shell proc_pvr:file { open read write };
+allow shell proc_pvr:dir { open search read };
+
+# Allow shell to access tracefs.
+allow shell debugfs_tracing:file rw_file_perms;

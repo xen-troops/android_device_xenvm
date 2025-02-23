@@ -1,0 +1,6 @@
+# allow netd to set global alerts
+#allow netd proc_net:dir create_dir_perms;
+allow netd proc_net:file create_file_perms;
+allow netd proc_net:filesystem associate;
+# /proc/PID/task/PID/net is labeled "proc"
+allow proc_net proc:filesystem associate;

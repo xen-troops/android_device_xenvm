@@ -1,0 +1,4 @@
+dontaudit hal_sensors_default self:udp_socket { create bind };
+dontaudit hal_sensors_default self:capability net_raw;
+allow hal_sensors_default node:udp_socket node_bind;
+allow hal_sensors_default port:udp_socket name_bind;

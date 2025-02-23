@@ -1,0 +1,9 @@
+allow ueventd rtc_device:chr_file { read write };
+allow ueventd serial_device:chr_file { read write };
+allow ueventd tmpfs:file { read write };
+allow ueventd input_device:chr_file { read write };
+allow ueventd usb_device:chr_file { read write };
+allow ueventd audio_device:chr_file { read write };
+allow ueventd gpu_device:chr_file { read write };
+allow ueventd graphics_device:chr_file { read write };
+

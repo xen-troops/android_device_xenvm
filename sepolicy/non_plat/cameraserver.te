@@ -1,0 +1,8 @@
+# This file is for the IMG internal reference platforms and not necessary on
+# a customer platform.
+
+# The fake camerahal needs EGL and triggers the open of /vendor/lib/egl
+allow cameraserver system_file:dir r_dir_perms;
+
+# The fake camerahal needs to talk to the GPU
+allow cameraserver gpu_device:chr_file { open read write ioctl getattr };

@@ -1,0 +1,2 @@
+type hal_gfxservice_hwservice, hwservice_manager_type;
+typeattribute hal_gfxservice_hwservice untrusted_app_visible_hwservice_violators;

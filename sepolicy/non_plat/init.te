@@ -1,0 +1,12 @@
+# allow init to create /sdcard symlinks
+allow init tmpfs:lnk_file create_file_perms;
+
+# allow init to mount debugfs/storage
+# see http://comments.gmane.org/gmane.comp.security.seandroid/2600
+allow init { debugfs storage_file }:dir mounton;
+
+# allow init to access /vendor/etc/selinux/vendor_file_contexts
+allow init vendor_configs_file:file map;
+
+allow init proc_interrupts:file setattr;                                        
+allow init proc_stat:file setattr; 

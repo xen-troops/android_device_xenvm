@@ -101,6 +101,7 @@ BOARD_SECCOMP_POLICY += device/xen/xenvm/seccomp
 
 # SELinux support
 BOARD_VENDOR_SEPOLICY_DIRS += device/xen/xenvm/sepolicy/vendor
+BOARD_VENDOR_SEPOLICY_DIRS += device/xen/xenvm/sepolicy/non_plat
 BOARD_VENDOR_SEPOLICY_DIRS += device/xen/xenvm/sepolicy/private
 BOARD_VENDOR_SEPOLICY_DIRS += device/xen/xenvm/sepolicy/public
 

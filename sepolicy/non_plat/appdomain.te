@@ -1,0 +1,3 @@
+# enable pipe communication between appdomain processes and
+# surfaceflinger for gralloc subchannel feature (dynamic fbc)
+allow appdomain surfaceflinger:fifo_file rw_file_perms;

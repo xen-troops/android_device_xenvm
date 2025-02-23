@@ -1,0 +1,2 @@
+# allow wificond to load kernel modules
+allow wificond kernel:system module_request;

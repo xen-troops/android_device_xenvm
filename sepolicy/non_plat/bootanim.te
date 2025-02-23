@@ -1,0 +1,9 @@
+# enable pipe communication between bootanim processes and
+# surfaceflinger for gralloc subchannel feature (dynamic fbc)
+allow bootanim surfaceflinger:fifo_file rw_file_perms;
+
+allow bootanim vendor_default_prop:file { getattr map };
+
+# Allow bootanim to access GFXService
+binder_call(bootanim, hal_gfxservice_img)
+allow bootanim hal_gfxservice_hwservice:hwservice_manager find;

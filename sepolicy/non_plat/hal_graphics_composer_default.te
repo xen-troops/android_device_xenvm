@@ -1,0 +1,13 @@
+# this needs access to vndbinder
+vndbinder_use(hal_graphics_composer_default)
+
+# this needs to read /dev to find adf device nodes
+allow hal_graphics_composer_default device:dir { read open };
+
+# enable pipe communication between hal_graphics_composer_default processes and
+# surfaceflinger for gralloc subchannel feature (dynamic fbc)
+allow hal_graphics_composer_default surfaceflinger:fifo_file rw_file_perms;
+
+# Allow composer to access GFXService
+binder_call(hal_graphics_composer_default, hal_gfxservice_img)
+allow hal_graphics_composer_default hal_gfxservice_hwservice:hwservice_manager find;

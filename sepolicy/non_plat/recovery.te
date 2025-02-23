@@ -1,0 +1,12 @@
+recovery_only(`
+	# recovery needs access to the gpu
+	allow recovery gpu_device:chr_file rw_file_perms;
+
+	# allow access to pstorefs
+	allow recovery pstorefs:dir r_dir_perms;
+	allow recovery pstorefs:file r_file_perms;
+
+	# recovery reads all kinds of properties
+	# allow recovery { property_type -firstboot_prop -netd_stable_secret_prop -last_boot_reason_prop }:file r_file_perms;
+	# dontaudit recovery { firstboot_prop netd_stable_secret_prop }:file r_file_perms;
+')

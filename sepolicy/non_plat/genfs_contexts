@@ -1,0 +1,7 @@
+genfscon debugfs /pvr u:object_r:debugfs_pvr:s0
+genfscon debugfs /ion u:object_r:debugfs_ion:s0
+
+genfscon proc /pvr u:object_r:proc_pvr:s0
+genfscon tracefs /events/rogue/rogue_job_enqueue    u:object_r:debugfs_tracing:s0
+genfscon tracefs /events/rogue/rogue_firmware_activity    u:object_r:debugfs_tracing:s0
+genfscon tracefs /events/rogue/rogue_sched_switch    u:object_r:debugfs_tracing:s0

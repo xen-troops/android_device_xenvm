@@ -1,0 +1,9 @@
+# This file is for the gps emulation and not necessary on a customer platform.
+
+type np_local_gps, domain;
+type np_local_gps_exec, exec_type, vendor_file_type, file_type;
+
+init_daemon_domain(np_local_gps)
+net_domain(np_local_gps)
+
+allow np_local_gps self:capability net_raw;

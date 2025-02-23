@@ -1,0 +1,4 @@
+# accessed by memtrack hal and atrace hal
+#type debugfs_ion, fs_type, debugfs_type;
+#type debugfs_pvr, fs_type, debugfs_type;
+type proc_pvr, fs_type, proc_type;

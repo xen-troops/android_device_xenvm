@@ -1,0 +1,2 @@
+allow untrusted_app    same_process_hal_file:file execute_no_trans;
+allow untrusted_app_25 same_process_hal_file:file execute_no_trans;

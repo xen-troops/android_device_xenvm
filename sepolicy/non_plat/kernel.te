@@ -1,0 +1,11 @@
+# allow use of the mknod system call
+allow kernel self:capability mknod;
+
+# allow device nodes to be created (for modular drivers)
+allow kernel device:dir { write add_name create };
+allow kernel device:chr_file { create setattr };
+
+# allow kernel to load /vendor/etc/selinux/vendor_file_contexts
+allow kernel vendor_configs_file:file map;
+
+allow kernel vendor_file:file { open read };

@@ -1,0 +1,2 @@
+vendor.imagination.powervr.gfxservice::IGFXService u:object_r:hal_gfxservice_hwservice:s0
+vendor.img.powervr.mapper::IPvrMapper              u:object_r:hal_graphics_mapper_hwservice:s0
