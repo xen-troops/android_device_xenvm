@@ -1,0 +1,8 @@
+type hal_neuralnetworks_img, domain;
+hal_server_domain(hal_neuralnetworks_img, hal_neuralnetworks)
+
+type hal_neuralnetworks_img_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(hal_neuralnetworks_img)
+
+allow hal_neuralnetworks_img gpu_device:chr_file rw_file_perms;
+allow hal_neuralnetworks_img ion_device:chr_file rw_file_perms;

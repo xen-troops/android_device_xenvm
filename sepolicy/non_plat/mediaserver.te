@@ -1,0 +1,3 @@
+# enable pipe communication between mediaserver processes and
+# surfaceflinger for gralloc subchannel feature (dynamic fbc)
+allow mediaserver surfaceflinger:fifo_file rw_file_perms;

@@ -1,0 +1,11 @@
+# Surfaceflinger requires to read /dev to find adf device nodes
+# (for composerhal)
+allow surfaceflinger device:dir { read open };
+
+# Surfaceflinger requires to access /vendor/lib/hw/android.hardware.graphics.mapper@2.0-impl-2.1.so
+allow surfaceflinger same_process_hal_file:file { getattr read open map };
+
+# Surfaceflinger requires to access GFXService
+hal_client_domain(surfaceflinger, hal_gfxservice)
+binder_call(surfaceflinger, hal_gfxservice_img)
+allow surfaceflinger hal_gfxservice_hwservice:hwservice_manager find;

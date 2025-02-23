@@ -1,0 +1,2 @@
+
+allow pvrsrvctl device:file { read write getattr };

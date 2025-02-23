@@ -1,0 +1,3 @@
+# Allow untrusted_app to access GFXService
+binder_call(untrusted_app, hal_gfxservice_img)
+allow untrusted_app hal_gfxservice_hwservice:hwservice_manager find;

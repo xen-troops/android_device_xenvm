@@ -1,0 +1,10 @@
+# ==============================================
+# PowerVR Attribute declarations
+# ==============================================
+# THE GFXSERVICE HIDL
+attribute hal_gfxservice;
+expandattribute hal_gfxservice true;
+attribute hal_gfxservice_client;
+expandattribute hal_gfxservice_client true;
+attribute hal_gfxservice_server;
+expandattribute hal_gfxservice_server false;

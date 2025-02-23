@@ -1,0 +1,6 @@
+#allow zygote to asscess /vendor/lib/hw/android.hardware.graphics.mapper@2.0-impl-2.1.so
+allow zygote same_process_hal_file:file { getattr read open map };
+
+allow webview_zygote zygote:unix_dgram_socket write;
+
+allow zygote gpu_device:chr_file { getattr map open read write ioctl };

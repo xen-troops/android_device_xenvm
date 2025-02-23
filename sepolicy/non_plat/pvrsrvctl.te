@@ -1,0 +1,18 @@
+#type pvrsrvctl, domain;
+#type pvrsrvctl_exec, exec_type, vendor_file_type, file_type;
+
+# pvrsrvctl configuration
+init_daemon_domain(pvrsrvctl)
+
+allow pvrsrvctl kernel:process setsched;
+allow pvrsrvctl gpu_device:chr_file rw_file_perms;
+allow pvrsrvctl self:capability { sys_admin sys_module sys_nice };
+allow pvrsrvctl debugfs_pvr:dir search;
+
+# allow access to /proc/modules
+allow pvrsrvctl proc_modules:file r_file_perms;
+
+# we have to be able to load modules
+allow pvrsrvctl { system_file vendor_file }:system module_load;
+
+allow pvrsrvctl debugfs_bootreceiver_tracing:dir search;

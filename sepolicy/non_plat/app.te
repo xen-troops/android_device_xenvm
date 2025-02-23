@@ -1,0 +1,19 @@
+# platform_app
+# allow platform_app to asscess /vendor/lib/hw/android.hardware.graphics.mapper@2.0-impl-2.1.so
+allow platform_app same_process_hal_file:file { getattr read };
+
+# system_app
+# allow system_app to asscess /vendor/lib/hw/android.hardware.graphics.mapper@2.0-impl-2.1.so
+allow system_app same_process_hal_file:file { getattr read };
+
+# priv_app
+# allow priv_app to asscess /proc/pid
+allow priv_app zygote:dir search;
+# allow priv_app to asscess /proc/pid/stat
+#allow priv_app zygote:file { read open };
+# allow IntentService to access /sys/fs/ext4
+allow priv_app sysfs:dir open;
+
+# untrusted_app
+# allow untrusted_app to asscess /vendor/lib/hw/android.hardware.graphics.mapper@2.0-impl-2.1.so
+allow untrusted_app same_process_hal_file:file { getattr read };

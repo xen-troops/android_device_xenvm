@@ -1,0 +1,2 @@
+# Almost every process searches the ion debugfs directory
+allow domain debugfs_ion:dir search;

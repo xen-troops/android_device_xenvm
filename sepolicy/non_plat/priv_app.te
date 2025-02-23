@@ -1,0 +1,3 @@
+# Allow priv_app to access GFXService
+binder_call(priv_app, hal_gfxservice_img)
+allow priv_app hal_gfxservice_hwservice:hwservice_manager find;

@@ -1,0 +1,2 @@
+# this should be covered by upstream sepolicy, but it isn't
+allow recovery_persist kernel:system syslog_read;

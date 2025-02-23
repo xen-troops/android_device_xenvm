@@ -1,0 +1,3 @@
+# Allow system_app to access GFXService
+binder_call(system_app, hal_gfxservice_img)
+allow system_app hal_gfxservice_hwservice:hwservice_manager find;

@@ -1,0 +1,4 @@
+# Allow hal_graphics_allocator_default to access GFXService
+binder_call(hal_graphics_allocator_default, hal_gfxservice_img)
+allow hal_graphics_allocator_default hal_gfxservice_hwservice:hwservice_manager find;
+allow hal_graphics_allocator_default dmabuf_heap_device:chr_file { ioctl open read };

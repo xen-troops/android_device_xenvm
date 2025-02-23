@@ -1,0 +1,4 @@
+# allow installd to access /system/etc/selinux/plat_file_contexts
+allow installd file_contexts_file:file map;
+# allow installd to access /vendor/etc/selinux/vendor_file_contexts
+allow installd vendor_configs_file:file map;
