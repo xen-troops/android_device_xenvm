@@ -29,12 +29,9 @@
 #include <linux/ion.h>
 
 #ifndef ALIGN
-#define ALIGN(x,a)  ((((x) + (a) - 1L) / (a)) * (a))
+#define ALIGN(x,a)	((((x) + (a) - 1L) / (a)) * (a))
 #endif
-#define HW_ALIGN    64
-
-#define PVR_ANDROID_HAS_SET_BUFFERS_DATASPACE
-#define PVR_ANDROID_HAS_SET_BUFFERS_DATASPACE_2
+#define HW_ALIGN	32
 
 /* Use bits [0-3] of "vendor format" bits as real format. Customers should
  * use *only* the unassigned bits below for custom pixel formats, YUV or RGB.
@@ -58,24 +55,34 @@
 #define HAL_PIXEL_FORMAT_sRGB_X_8888 HAL_PIXEL_FORMAT_VENDOR_EXT(9)
 #define HAL_PIXEL_FORMAT_sBGR_A_8888 HAL_PIXEL_FORMAT_VENDOR_EXT(10)
 #define HAL_PIXEL_FORMAT_sBGR_X_8888 HAL_PIXEL_FORMAT_VENDOR_EXT(11)
-#define HAL_PIXEL_FORMAT_NV12_CUSTOM HAL_PIXEL_FORMAT_VENDOR_EXT(12)
-#define HAL_PIXEL_FORMAT_NV21_CUSTOM HAL_PIXEL_FORMAT_VENDOR_EXT(13)
-#define HAL_PIXEL_FORMAT_UYVY        HAL_PIXEL_FORMAT_VENDOR_EXT(14)
+/*      Free for customer use        HAL_PIXEL_FORMAT_VENDOR_EXT(12) */
+/*      Free for customer use        HAL_PIXEL_FORMAT_VENDOR_EXT(13) */
+/*      Free for customer use        HAL_PIXEL_FORMAT_VENDOR_EXT(14) */
 /*      Free for customer use        HAL_PIXEL_FORMAT_VENDOR_EXT(15) */
 
-#define HAL_PIXEL_FORMAT_NV21        (HAL_PIXEL_FORMAT_YCrCb_420_SP)
-
 /* One of the below compression modes is out of "vendor format" field and
- * OR'ed into bits [12-14] format. If no bits are set in this "compression
+ * OR'ed into bits [12-15] format. If no bits are set in this "compression
  * mask", the normal memory format for the pixel format is used. Otherwise
  * the pixel data will be compressed in memory with the Rogue framebuffer
  * compressor.
  */
-
 #define HAL_FB_COMPRESSION_NONE                0
 #define HAL_FB_COMPRESSION_DIRECT_8x8          1
 #define HAL_FB_COMPRESSION_DIRECT_16x4         2
 #define HAL_FB_COMPRESSION_DIRECT_32x2         3
+#define HAL_FB_COMPRESSION_DIRECT_LOSSY25_8x8  4
+#define HAL_FB_COMPRESSION_DIRECT_LOSSY25_16x4 5
+#define HAL_FB_COMPRESSION_DIRECT_LOSSY25_32x2 6
+#define HAL_FB_COMPRESSION_DIRECT_LOSSY75_8x8  7
+#define HAL_FB_COMPRESSION_DIRECT_LOSSY50_8x8  8
+#define HAL_FB_COMPRESSION_DIRECT_LOSSY50_16x4 9
+#define HAL_FB_COMPRESSION_DIRECT_LOSSY50_32x2 10
+#define HAL_FB_COMPRESSION_DIRECT_PACKED_8x8   11
+#define HAL_FB_COMPRESSION_DIRECT_LOSSY75_16x4 12
+#define HAL_FB_COMPRESSION_DIRECT_LOSSY75_32x2 13
+#define HAL_FB_COMPRESSION_DIRECT_LOSSY37_8x8  14
+#define HAL_FB_COMPRESSION_DIRECT_LOSSY37_16x4 15
+#define HAL_FB_COMPRESSION_DIRECT_LOSSY37_32x2 16
 
 /* The memory layout is OR'ed into bit 7 (top bit) of the 8 bit "vendor
  * format" field. Only STRIDED and TWIDDLED are supported; there is no space
@@ -113,25 +120,40 @@ typedef struct
 
 	/* This define should represent the number of packed 'int's required to
 	 * represent the fields following it. If you add a data type that is
-	 * 64-bit, for example using 'unsigned long long', you should write that
-	 * as "sizeof(unsigned long long) / sizeof(int)". Please keep the order
+	 * 64-bit, for example using 'uint64_t', you should write that
+	 * as "sizeof(uint64)t) / sizeof(int)". Please keep the order
 	 * of the additions the same as the defined field order.
 	 */
+
+#if defined(PVR_ANDROID_HAS_GRAPHICSHAL_HIDL)
 #define IMG_NATIVE_HANDLE_NUMINTS \
-	(sizeof(unsigned long long) / sizeof(int) + \
+	(sizeof(uint64_t) / sizeof(int) + \
+	 sizeof(uint64_t) / sizeof(int) + \
+	 5 + MAX_SUB_ALLOCS + MAX_SUB_ALLOCS + \
+	 sizeof(uint64_t) / sizeof(int) * MAX_SUB_ALLOCS + \
+	 MAX_SUB_ALLOCS + MAX_SUB_ALLOCS + MAX_SUB_ALLOCS + 2)
+#else
+#define IMG_NATIVE_HANDLE_NUMINTS \
+	(sizeof(uint64_t) / sizeof(int) + \
 	 6 + MAX_SUB_ALLOCS + MAX_SUB_ALLOCS + \
-	 sizeof(unsigned long long) / sizeof(int) * MAX_SUB_ALLOCS + \
-	 MAX_SUB_ALLOCS + 3)
+	 sizeof(uint64_t) / sizeof(int) * MAX_SUB_ALLOCS + \
+	 MAX_SUB_ALLOCS + MAX_SUB_ALLOCS + MAX_SUB_ALLOCS + 3)
+#endif
+
 	/* A KERNEL unique identifier for any exported kernel memdesc. Each
 	 * exported kernel memdesc will have a unique stamp, but note that in
 	 * userspace, several memdescs across multiple processes could have
 	 * the same stamp. As the native_handle can be dup(2)'d, there could be
 	 * multiple handles with the same stamp but different file descriptors.
 	 */
-	unsigned long long ui64Stamp;
+	uint64_t ui64Stamp;
 
 	/* This is used for buffer usage validation */
+#if defined(PVR_ANDROID_HAS_GRAPHICSHAL_HIDL)
+	uint64_t usage;
+#else
 	int usage;
+#endif
 
 	/* In order to do efficient cache flushes we need the buffer dimensions,
 	 * format and bits per pixel. There are ANativeWindow queries for the
@@ -164,10 +186,18 @@ typedef struct
 	 * Otherwise, normally the zeroth entry will be zero, and the latter
 	 * entries will be non-zero.
 	 */
-	unsigned long long aulPlaneOffset[MAX_SUB_ALLOCS];
+	uint64_t aulPlaneOffset[MAX_SUB_ALLOCS];
 
 	/* Indicates what are stored in memdesc  */
 	unsigned int auiMemdescUsage[MAX_SUB_ALLOCS];
+
+	/* Indicates the number of virtual chunks that covers the virtual size of
+	 * the handles
+	 */
+	unsigned int auiNumVirtualChunks[MAX_SUB_ALLOCS];
+
+	/* Indicates the number of chunks that are physically backed */
+	unsigned int auiNumPhysicalChunks[MAX_SUB_ALLOCS];
 
 	/* This records the number of MAX_SUB_ALLOCS fds actually used by the
 	 * buffer allocation. File descriptors up to fd[iNumSubAllocs - 1] are
@@ -183,7 +213,9 @@ typedef struct
 	int iLayers;
 
 	/* This records reserved bits for implementation-specific usage flags */
+#ifndef PVR_ANDROID_HAS_GRAPHICSHAL_HIDL
 	int iPrivUsage;
+#endif
 }
 __attribute__((aligned(sizeof(int)),packed)) IMG_native_handle_t;
 
@@ -263,6 +295,12 @@ __attribute__((aligned(sizeof(int)),packed)) IMG_native_handle_t;
 /* To determine how many components in the plane. */
 #define IMG_BFF_WITHOUT_ALPHA                (1 << 11)
 
+/* Buffers are expected to be locked for reading and writing in multiple
+ * threads and/or processes simultaneously but clients must take care of
+ * data consistent.
+ */
+#define IMG_BFF_CPU_WRITE_CONCURRENT         (1 << 12)
+
 /* Backwards compatibility */
 #define IMG_BFF_YUV             IMG_BFF_ENCODING_VUCrCb
 #define IMG_BFF_UVCbCrORDERING  IMG_BFF_ENCODING_UVCbCr
@@ -288,8 +326,11 @@ typedef struct IMG_buffer_format_public_t
 	/* Supported HW usage bits. If this is GRALLOC_USAGE_HW_MASK, all usages
 	 * are supported. Used for HAL_PIXEL_FORMAT_IMPLEMENTATION_DEFINED.
 	 */
+#if defined(PVR_ANDROID_HAS_GRAPHICSHAL_HIDL)
+	uint64_t iSupportedUsage;
+#else
 	int iSupportedUsage;
-
+#endif
 	/* Allocation description flags */
 	unsigned int uiFlags;
 }
@@ -322,123 +363,6 @@ IMG_buffer_handle_t;
 #define GRALLOC_GET_ION_CLIENT_IMG                   6
 #define GRALLOC_GET_BUFFER_HANDLE_IMG                7
 #define GRALLOC_GET_COLORSPACE_BUFFER_FORMAT_IMG     8
-#define GRALLOC_GET_BUFFER_PHYS_ADDRESS              9
 
-#if !defined(PVR_ANDROID_HAS_SET_BUFFERS_DATASPACE)
-
-enum
-{
-	HAL_DATASPACE_UNKNOWN             = 0x0,
-	HAL_DATASPACE_SRGB_LINEAR         = 0x200,
-	HAL_DATASPACE_SRGB                = 0x201,
-#if defined(PVR_ANDROID_HAS_HAL_DATASPACE_SCRGB)
-	HAL_DATASPACE_V0_SCRGB            = 0x18810000,
-	HAL_DATASPACE_V0_SCRGB_LINEAR     = 0x18410000,
-#endif
-#if defined(PVR_ANDROID_HAS_HAL_DATASPACE_DISPLAY_P3)
-	HAL_DATASPACE_DISPLAY_P3_LINEAR   = 0x084a0000,
-	HAL_DATASPACE_DISPLAY_P3          = 0x088a0000,
-#endif
-#if defined(PVR_ANDROID_HAS_HAL_DATASPACE_BT2020)
-	HAL_DATASPACE_BT2020_LINEAR       = 0x8460000,
-	HAL_DATASPACE_BT2020_PQ           = 0x9c60000,
-#endif
-	HAL_DATASPACE_BT601_625           = 0x102,
-	HAL_DATASPACE_BT601_525           = 0x103,
-	HAL_DATASPACE_BT709               = 0x104,
-};
-
-#endif /* !defined(PVR_ANDROID_HAS_SET_BUFFERS_DATASPACE) */
-
-#if !defined(PVR_ANDROID_HAS_SET_BUFFERS_DATASPACE_2)
-
-enum
-{
-	HAL_DATASPACE_STANDARD_SHIFT      = 16,
-	HAL_DATASPACE_TRANSFER_SHIFT      = 22,
-	HAL_DATASPACE_RANGE_SHIFT         = 27,
-
-	HAL_DATASPACE_STANDARD_BT2020     = 6 << HAL_DATASPACE_STANDARD_SHIFT,
-
-	HAL_DATASPACE_TRANSFER_LINEAR     = 1 << HAL_DATASPACE_TRANSFER_SHIFT,
-	HAL_DATASPACE_TRANSFER_SRGB       = 2 << HAL_DATASPACE_TRANSFER_SHIFT,
-	HAL_DATASPACE_TRANSFER_SMPTE_170M = 3 << HAL_DATASPACE_TRANSFER_SHIFT,
-
-	HAL_DATASPACE_RANGE_MASK          = 7 << HAL_DATASPACE_RANGE_SHIFT,
-	HAL_DATASPACE_RANGE_FULL          = 1 << HAL_DATASPACE_RANGE_SHIFT,
-	HAL_DATASPACE_RANGE_LIMITED       = 2 << HAL_DATASPACE_RANGE_SHIFT,
-};
-
-#endif /* !defined(PVR_ANDROID_HAS_SET_BUFFERS_DATASPACE_2) */
-
-/* We want to add BT.2020 and 'full range' versions of the existing dataspace
- * enums. These are extensions, so define a new android_dataspace_ext_t.
- * If you only have an android_dataspace_t, you can simply cast it.
- */
-typedef enum
-{
-	/* Identical to upstream enum android_dataspace */
-	HAL_DATASPACE_EXT_UNKNOWN           = HAL_DATASPACE_UNKNOWN,
-#if defined(PVR_ANDROID_HAS_HAL_DATASPACE_V0)
-	HAL_DATASPACE_EXT_SRGB_LINEAR       = HAL_DATASPACE_V0_SRGB_LINEAR,
-	HAL_DATASPACE_EXT_SRGB              = HAL_DATASPACE_V0_SRGB,
-#else
-	HAL_DATASPACE_EXT_SRGB_LINEAR       = HAL_DATASPACE_SRGB_LINEAR,
-	HAL_DATASPACE_EXT_SRGB              = HAL_DATASPACE_SRGB,
-#endif
-#if defined(PVR_ANDROID_HAS_HAL_DATASPACE_SCRGB)
-	HAL_DATASPACE_EXT_V0_SCRGB          = HAL_DATASPACE_V0_SCRGB,
-	HAL_DATASPACE_EXT_V0_SCRGB_LINEAR   = HAL_DATASPACE_V0_SCRGB_LINEAR,
-#endif
-#if defined(PVR_ANDROID_HAS_HAL_DATASPACE_DISPLAY_P3)
-	HAL_DATASPACE_EXT_DISPLAY_P3_LINEAR = HAL_DATASPACE_DISPLAY_P3_LINEAR,
-	HAL_DATASPACE_EXT_DISPLAY_P3        = HAL_DATASPACE_DISPLAY_P3,
-#endif
-#if defined(PVR_ANDROID_HAS_HAL_DATASPACE_BT2020)
-	HAL_DATASPACE_EXT_BT2020_LINEAR     = HAL_DATASPACE_BT2020_LINEAR,
-	HAL_DATASPACE_EXT_BT2020_PQ         = HAL_DATASPACE_BT2020_PQ,
-#endif
-	HAL_DATASPACE_EXT_BT601_625         = HAL_DATASPACE_BT601_625,
-	HAL_DATASPACE_EXT_BT601_525         = HAL_DATASPACE_BT601_525,
-	HAL_DATASPACE_EXT_BT709             = HAL_DATASPACE_BT709,
-
-	/* IMG extension for BT.2020 support */
-	HAL_DATASPACE_EXT_BT2020            = HAL_DATASPACE_STANDARD_BT2020     |
-	                                      HAL_DATASPACE_TRANSFER_SMPTE_170M |
-	                                      HAL_DATASPACE_RANGE_LIMITED,
-
-	/* IMG extensions for 'full range' versions of previous enums */
-	HAL_DATASPACE_EXT_BT601_625_FULL    = ( HAL_DATASPACE_BT601_625 &
-	                                       ~HAL_DATASPACE_RANGE_MASK) |
-	                                      HAL_DATASPACE_RANGE_FULL,
-	HAL_DATASPACE_EXT_BT601_525_FULL    = ( HAL_DATASPACE_BT601_525 &
-	                                       ~HAL_DATASPACE_RANGE_MASK) |
-	                                      HAL_DATASPACE_RANGE_FULL,
-	HAL_DATASPACE_EXT_BT709_FULL        = ( HAL_DATASPACE_BT709 &
-	                                       ~HAL_DATASPACE_RANGE_MASK) |
-	                                      HAL_DATASPACE_RANGE_FULL,
-	HAL_DATASPACE_EXT_BT2020_FULL       = ( HAL_DATASPACE_EXT_BT2020 &
-	                                       ~HAL_DATASPACE_RANGE_MASK) |
-	                                      HAL_DATASPACE_RANGE_FULL,
-}
-android_dataspace_ext_t;
-
-/* This is the same definition as hwc2_blend_mode_t to be able to set blend
- * modes per layer. It can be simplied cast from hwc2_blend_mode_t.
- */
-typedef enum
-{
-	HAL_BLEND_MODE_EXT_INVALID          = 0,
-
-	/* colorOut = colorSrc */
-	HAL_BLEND_MODE_EXT_NONE             = 1,
-
-	/* colorOut = colorSrc + colorDst * (1 - alphaSrc) */
-	HAL_BLEND_MODE_EXT_PREMULTIPLIED    = 2,
-
-	/* colorOut = colorSrc * alphaSrc + colorDst * (1 - alphaSrc) */
-	HAL_BLEND_MODE_EXT_COVERAGE         = 3,
-}
-android_blend_mode_ext_t;
 
 #endif /* IMG_GRALLOC_COMMON_PUBLIC_H */

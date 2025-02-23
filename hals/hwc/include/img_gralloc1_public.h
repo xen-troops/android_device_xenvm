@@ -39,8 +39,6 @@
 
 #define GRALLOC1_FUNCTION_IMG_EXT_OFF 1000
 
-//static_assert(GRALLOC1_LAST_FUNCTION <= GRALLOC1_FUNCTION_IMG_EXT_OFF,
-//               "gralloc1 function descriptors overlap with extension range");
 
 enum
 {
@@ -65,6 +63,21 @@ enum
 /* Public HAL extension API */
 
 typedef gralloc1_device_t gralloc_t;
+#if (API_LEVEL > 27)
+typedef gralloc1_buffer_descriptor_info_t gralloc_buffer_descriptor_info_t;
+#endif
+
+static inline int gralloc_open_gralloc(gralloc_t **g)
+{
+	const hw_module_t *h;
+	int err;
+
+	err = hw_get_module(GRALLOC_HARDWARE_MODULE_ID, (const hw_module_t **)&h);
+	if (err)
+		return err;
+
+	return gralloc1_open(h, g);
+}
 
 typedef int (*GRALLOC1_PFN_GET_BUFFER_FORMAT_IMG)
 	(gralloc_t *g, int format, const IMG_buffer_format_public_t **v);
@@ -108,13 +121,13 @@ static inline int gralloc_blit_handle_to_handle_img
 }
 
 typedef int (*GRALLOC1_PFN_BLIT_STAMP_TO_HANDLE_IMG)
-	(gralloc_t *g, unsigned long long src_stamp, int src_width, int src_height,
+	(gralloc_t *g, uint64_t src_stamp, int src_width, int src_height,
 	 int src_format, int src_stride_in_pixels, int src_rotation,
 	 buffer_handle_t dest, int dest_rotation, int input_fence,
 	 int *output_fence);
 
-static inline int gralloc_blit_stamp_to_handle
-	(gralloc_t *g, unsigned long long src_stamp, int src_width, int src_height,
+static inline int gralloc_blit_stamp_to_handle_img
+	(gralloc_t *g, uint64_t src_stamp, int src_width, int src_height,
 	 int src_format, int src_stride_in_pixels, int src_rotation,
 	 buffer_handle_t dest, int dest_rotation, int input_fence,
 	 int *output_fence)
@@ -126,23 +139,6 @@ static inline int gralloc_blit_stamp_to_handle
 	return f(g, src_stamp, src_width, src_height, src_format,
 			 src_stride_in_pixels, src_rotation, dest, dest_rotation,
 			 input_fence, output_fence);
-}
-
-typedef int (*GRALLOC1_PFN_SET_DATA_SPACE_IMG)
-	(gralloc_t *g, buffer_handle_t handle,
-	 android_dataspace_ext_t source_dataspace,
-	 android_dataspace_ext_t dest_dataspace);
-
-static inline int gralloc_set_data_space_img
-	(gralloc_t *g, buffer_handle_t handle,
-	 android_dataspace_ext_t source_dataspace,
-	 android_dataspace_ext_t dest_dataspace)
-{
-	GRALLOC1_PFN_SET_DATA_SPACE_IMG f =
-		(GRALLOC1_PFN_SET_DATA_SPACE_IMG)
-			g->getFunction(g, GRALLOC1_FUNCTION_SET_DATA_SPACE_IMG);
-
-	return f(g, handle, source_dataspace, dest_dataspace);
 }
 
 typedef int (*GRALLOC1_PFN_GET_ION_CLIENT_IMG)
@@ -177,7 +173,7 @@ static inline int gralloc_get_buffer_handle_img
 
 	return f(g, handle, buffer_handle);
 }
-
+/*
 typedef int (*GRALLOC1_PFN_GET_COLORSPACE_BUFFER_FORMAT_IMG)
 	(gralloc_t *g, int format, android_dataspace_ext_t eColorspace,
      const IMG_buffer_format_public_t **v);
@@ -192,5 +188,5 @@ static inline int gralloc_get_colorspace_buffer_format_img
 
 	return f(g, format, eColorspace, v);
 }
-
-#endif /* IMG_GRALLOC_PUBLIC_H */
+*/
+#endif /* IMG_GRALLOC1_PUBLIC_H */
