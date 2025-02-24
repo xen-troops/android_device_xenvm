@@ -6,10 +6,10 @@ on init
     symlink /sdcard /mnt/sdcard
 
 on fs
-    mount_all ./fstab.xenvm --early
+    mount_all --early
 
 on late-fs
-    mount_all ./fstab.xenvm --late
+    mount_all --late
 
 on post-fs-data
     mkdir /data/system/car 0700 system system
