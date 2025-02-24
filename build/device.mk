@@ -318,6 +318,11 @@ PRODUCT_COPY_FILES += \
 PRODUCT_VENDOR_PROPERTIES += \
     ro.setupwizard.mode?=OPTIONAL
 
+# Recovery packages
+PRODUCT_PACKAGES += \
+        linker.recovery \
+        shell_and_utilities_recovery \
+        adbd.recovery \
 
 # Enable Storage
 $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
