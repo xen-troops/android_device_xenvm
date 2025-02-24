@@ -323,8 +323,8 @@ PRODUCT_VENDOR_PROPERTIES += \
 $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
 
 # Virtual AB
-$(call inherit-product, \
-    $(SRC_TARGET_DIR)/product/virtual_ab_ota.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/compression.mk)
 
 # Updateble APEX
 $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
