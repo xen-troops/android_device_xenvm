@@ -15,9 +15,13 @@
 # limitations under the License.
 
 # IMG DDK Targets & dependencies
-ifneq (,$(filter r8a7795 r8a7796, $(TARGET_BOARD_PLATFORM)))
+ifneq (,$(filter r8a7795 r8a7796 r8a779g, $(TARGET_BOARD_PLATFORM)))
 
+ifneq ($(TARGET_BOARD_PLATFORM), r8a779g)
 PRODUCT_VENDOR_PROPERTIES += ro.hardware.egl=POWERVR_ROGUE
+else
+PRODUCT_VENDOR_PROPERTIES += ro.hardware.egl=powervr
+endif
 
 ABS_TOP := $(abspath $(TOP))
 TARGET_ARCH := arm64
@@ -93,13 +97,17 @@ PRODUCT_PACKAGES += \
     android.hardware.graphics.mapper@2.0-impl \
     android.hardware.graphics.mapper@2.0-impl-2.1 \
     android.hardware.graphics.allocator@2.0-impl \
-    android.hardware.graphics.allocator@2.0-service \
-    android.hardware.graphics.allocator@3.0-impl.xenvm \
-    android.hardware.graphics.allocator@3.0-service.xenvm \
     android.hardware.renderscript@1.0-impl \
     libion \
     libdrm \
     libLLVM \
+
+ifneq ($(TARGET_BOARD_PLATFORM), r8a779g)
+PRODUCT_PACKAGES += \
+    android.hardware.graphics.allocator@3.0-impl.xenvm \
+    android.hardware.graphics.allocator@3.0-service.xenvm \
+    android.hardware.graphics.allocator@2.0-service
+endif
 
 endif
 
