@@ -327,7 +327,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.keymaster@4.0-service \
     android.hardware.keymaster@4.0-impl \
-    android.hardware.gatekeeper@1.0-service \
+    android.hardware.gatekeeper@1.0-service.software \
 
 PRODUCT_PACKAGES += \
     android.hardware.audio.sounddose-vendor-impl \
