@@ -23,9 +23,8 @@ ifeq ($(PRODUCT_OUT),)
 $(error "PRODUCT_OUT is not set")
 endif
 
-# Realtek Wi-Fi driver
-#BOARD_VENDOR_KERNEL_MODULES += \
-#	$(KERNEL_MODULES_OUT)/8812au.ko
+BOARD_VENDOR_KERNEL_MODULES += \
+	$(KERNEL_MODULES_OUT)/rcar-rvgc-drm.ko \
 
 WLAN_KM_SRC             := hardware/realtek/rtl8812au_km
 WLAN_KM_OUT             := $(PRODUCT_OUT)/obj/WLAN_KM_OBJ
