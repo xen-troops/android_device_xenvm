@@ -398,6 +398,19 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/compression.mk)
 PRODUCT_PACKAGES += \
     updatable-media
 
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.hardware.audio.primary=caremu \
+    ro.vendor.caremu.audiohal.out_period_ms=16 \
+    ro.vendor.caremu.audiohal.in_period_ms=16
+
+# Car Emulator Audio HAL
+PRODUCT_PACKAGES += \
+    audio.primary.caremu \
+    audio.r_submix.default \
+    android.hardware.audio@6.0-impl \
+    android.hardware.audio.effect@6.0-impl \
+    android.hardware.audio.service \
+
 # Updateble APEX
 $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 
