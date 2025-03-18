@@ -217,11 +217,6 @@ PRODUCT_PACKAGES += \
     android.hardware.graphics.composer@2.3-passthrough \
     android.hardware.graphics.composer@2.3-service \
 
-# Composer 2.1
-#PRODUCT_PACKAGES += \
-#    android.hardware.graphics.composer@2.1-impl \
-#    android.hardware.graphics.composer@2.1-service \
-
 # DRM Composer
 PRODUCT_VENDOR_PROPERTIES += vendor.hwc.backend_override=client
 PRODUCT_PACKAGES += \
@@ -231,22 +226,14 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     modetest \
 
-# Health HAL 2.0
-#PRODUCT_PACKAGES += \
-#    android.hardware.health@2.0-service.xenvm \
-
 PRODUCT_PACKAGES += \
     android.hardware.health@2.1-service \
     android.hardware.health@2.1-impl \
     android.hardware.health.storage@1.0-service \
 
-# Keymaster HAL
-# All security related settings are moved into dedicated security.mk
-
-# Generic memtrack module
+# Generic Vehicle HAL
 PRODUCT_PACKAGES += \
-    android.hardware.memtrack@1.0-impl \
-    android.hardware.memtrack@1.0-service
+    android.hardware.automotive.vehicle@2.0-default-service
 
 # Wi-Fi
 PRODUCT_PACKAGES += \
@@ -319,6 +306,86 @@ PRODUCT_PACKAGES += \
         linker.recovery \
         shell_and_utilities_recovery \
         adbd.recovery \
+
+
+# Img deps
+PRODUCT_PACKAGES += \
+    libdmabufinfo \
+    libprotobuf-cpp-lite \
+    libaidlcommonsupport \
+    perfetto_trace_protos \
+    libperfetto_client_experimental \
+    android.hardware.atrace@1.0.vendor \
+    android.hardware.dumpstate@1.0.vendor \
+    android.hardware.thermal@2.0.vendor \
+    android.hardware.thermal@1.0.vendor \
+    libdrm \
+
+# Sw GK KM
+# Keymaster HAL
+# All security related settings are moved into dedicated security.mk
+PRODUCT_PACKAGES += \
+    android.hardware.keymaster@4.0-service \
+    android.hardware.keymaster@4.0-impl \
+    android.hardware.gatekeeper@1.0-service \
+
+PRODUCT_PACKAGES += \
+    android.hardware.audio.sounddose-vendor-impl \
+    audio_sounddose_aoc
+
+# Graphics allocator/mapper HIDL HALs
+PRODUCT_PACKAGES += \
+    android.hardware.graphics.allocator@2.0-impl \
+    android.hardware.graphics.mapper@2.0-impl-2.1
+
+# Graphics allocator AIDL V1 HAL
+PRODUCT_PACKAGES += \
+    android.hardware.graphics.allocator-V1-ndk.vendor
+
+PRODUCT_PACKAGES += \
+    android.hardware.graphics.allocator@2.0.vndk-sp \
+    android.hardware.graphics.mapper@2.0.vndk-sp \
+    android.hardware.graphics.mapper@2.1.vndk-sp \
+    android.hardware.graphics.common@1.0.vndk-sp \
+    android.hardware.atrace@1.0.vndk-sp \
+    libhwbinder.vndk-sp \
+    libbase.vndk-sp \
+    libcutils.vndk-sp \
+    libhardware.vndk-sp \
+    libhidlbase.vndk-sp \
+    libhidltransport.vndk-sp \
+    libutils.vndk-sp \
+    libc++.vndk-sp \
+    libRS_internal.vndk-sp \
+    libRSDriver.vndk-sp \
+    libRSCpuRef.vndk-sp \
+    libbcinfo.vndk-sp \
+    libblas.vndk-sp \
+    libft2.vndk-sp \
+    libpng.vndk-sp \
+    libcompiler_rt.vndk-sp \
+    libbacktrace.vndk-sp \
+    libunwind.vndk-sp \
+    libunwindstack.vndk-sp \
+    liblzma.vndk-sp \
+    libion.vndk-sp \
+    android.hardware.graphics.composer@2.1 \
+
+# Graphics composer HIDL HAL (service added below)
+PRODUCT_PACKAGES += \
+    android.hardware.graphics.composer@2.1.vendor \
+    android.hardware.graphics.composer@2.1-impl
+
+# Health service
+PRODUCT_PACKAGES += \
+    android.hardware.health@2.1-impl \
+    android.hardware.health@2.1-service
+
+# Dumpstate
+PRODUCT_PACKAGES += \
+    android.hardware.dumpstate@1.1 \
+    android.hardware.dumpstate@1.1.vendor
+
 
 # Enable Storage
 $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
