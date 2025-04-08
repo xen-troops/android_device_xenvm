@@ -101,6 +101,7 @@ PRODUCT_PACKAGES += \
     libion \
     libdrm \
     libLLVM \
+    img-deps \
 
 ifneq ($(TARGET_BOARD_PLATFORM), r8a779g)
 PRODUCT_PACKAGES += \
