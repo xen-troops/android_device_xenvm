@@ -25,9 +25,10 @@
 /vendor/lib(64)?/hw/android.hardware.graphics.mapper@2.0-impl.so                u:object_r:same_process_hal_file:s0
 /vendor/lib(64)?/hw/android.hardware.memtrack@1.0-impl.so                       u:object_r:same_process_hal_file:s0
 /vendor/lib(64)?/hw/android.hardware.renderscript@1.0-impl.so                   u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/hw/gralloc.r8a779(5|6)?.so                                     u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/hw/memtrack.r8a779(5|6)?.so                                    u:object_r:same_process_hal_file:s0
-
+/vendor/lib(64)?/hw/gralloc.xenvm.so                                            u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/hw/memtrack.xenvm.so                                           u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/hw/mapper.powervr.so                                           u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/hw/vulkan.powervr.so                                           u:object_r:same_process_hal_file:s0
 
 # sync drivers
 /dev/pvr_sync                                                                   u:object_r:gpu_device:s0
