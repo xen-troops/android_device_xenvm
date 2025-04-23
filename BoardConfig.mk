@@ -54,6 +54,7 @@ TARGET_ENABLE_MEDIADRM_64 := false
 
 USE_CAMERA_STUB := true
 USE_OPENGL_RENDERER := true
+USE_USB_AUDIO := true
 
 # Android images
 TARGET_USERIMAGES_USE_EXT4 := true

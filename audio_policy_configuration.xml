@@ -185,6 +185,11 @@
           </routes>
         </module>
 
+        <module name="usb" halVersion="3.0">
+            <device type="AUDIO_DEVICE_OUT_USB_ACCESSORY"/>
+            <device type="AUDIO_DEVICE_OUT_USB_DEVICE"/>
+            <device type="AUDIO_DEVICE_IN_USB_DEVICE"/>
+        </module>
     </modules>
 
     <xi:include href="audio_policy_volumes.xml"/>
