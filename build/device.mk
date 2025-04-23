@@ -150,6 +150,7 @@ PRODUCT_COPY_FILES +=\
     device/xen/xenvm/init.xenvm.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.xenvm.rc \
     device/xen/xenvm/init.xenvm.usb.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.xenvm.usb.rc \
     device/xen/xenvm/ueventd.xenvm.rc:$(TARGET_COPY_OUT_VENDOR)/etc/ueventd.rc \
+    device/xen/xenvm/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration.xml \
     packages/services/Car/car_product/init/init.car.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.car.rc \
     packages/services/Car/car_product/init/init.bootstat.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.bootstat.rc
 
@@ -327,6 +328,10 @@ PRODUCT_PACKAGES += \
     android.hardware.thermal@1.0.vendor \
     libdrm \
 
+PRODUCT_PACKAGES += \
+    audio.usb.default \
+    audio.usbv2.default
+
 # Sw GK KM
 # Keymaster HAL
 # All security related settings are moved into dedicated security.mk
@@ -408,6 +413,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.hardware.audio.primary=caremu-ext \
     ro.vendor.caremu.audiohal.out_period_ms=16 \
     ro.vendor.caremu.audiohal.in_period_ms=16
+
+# Enable audio source for USB Audio
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.sys.usb.config=audio_source,adb
 
 # Car Emulator Audio HAL
 PRODUCT_PACKAGES += \
