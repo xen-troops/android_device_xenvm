@@ -21,6 +21,7 @@ ifneq ($(TARGET_BOARD_PLATFORM), r8a779g)
 PRODUCT_VENDOR_PROPERTIES += ro.hardware.egl=POWERVR_ROGUE
 else
 PRODUCT_VENDOR_PROPERTIES += ro.hardware.egl=powervr
+PRODUCT_VENDOR_PROPERTIES += ro.hardware.vulkan=powervr
 endif
 
 ABS_TOP := $(abspath $(TOP))
@@ -108,6 +109,24 @@ PRODUCT_PACKAGES += \
     android.hardware.graphics.allocator@3.0-impl.xenvm \
     android.hardware.graphics.allocator@3.0-service.xenvm \
     android.hardware.graphics.allocator@2.0-service
+
+else
+
+software_features := \
+    vulkan.deqp.level-2020-03-01 \
+    opengles.deqp.level-2020-03-01
+
+hardware_features := \
+    vulkan.level-1 \
+    vulkan.version-1_3 \
+    vulkan.compute-0
+
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.vulkan.level-1.xml:vendor/etc/permissions/android.hardware.vulkan.level.xml \
+    frameworks/native/data/etc/android.hardware.vulkan.version-1_0_3.xml:vendor/etc/permissions/android.hardware.vulkan.version.xml \
+    $(foreach _f,$(hardware_features),frameworks/native/data/etc/android.hardware.${_f}.xml:vendor/etc/permissions/android.hardware.${_f}.xml) \
+    $(foreach _f,$(software_features),frameworks/native/data/etc/android.software.${_f}.xml:vendor/etc/permissions/android.software.${_f}.xml)
+
 endif
 
 endif
