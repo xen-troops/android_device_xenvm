@@ -15,6 +15,12 @@
 # limitations under the License.
 #
 
+$(call inherit-product-if-exists, external/hyphenation-patterns/patterns.mk)
+$(call inherit-product-if-exists, external/noto-fonts/fonts.mk)
+$(call inherit-product-if-exists, external/roboto-fonts/fonts.mk)
+$(call inherit-product-if-exists, frameworks/base/data/keyboards/keyboards.mk)
+$(call inherit-product-if-exists, frameworks/base/data/fonts/fonts.mk)
+
 $(call inherit-product, build/target/product/core_64_bit_only.mk)
 $(call inherit-product, frameworks/native/build/tablet-10in-xhdpi-2048-dalvik-heap.mk)
 $(call inherit-product, device/xen/xenvm/build/common_build.mk)
