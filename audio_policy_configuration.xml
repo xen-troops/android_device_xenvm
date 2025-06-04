@@ -190,6 +190,9 @@
             <device type="AUDIO_DEVICE_OUT_USB_DEVICE"/>
             <device type="AUDIO_DEVICE_IN_USB_DEVICE"/>
         </module>
+
+        <!-- Remote Submix Audio HAL -->
+        <xi:include href="r_submix_audio_policy_configuration.xml"/>
     </modules>
 
     <xi:include href="audio_policy_volumes.xml"/>
