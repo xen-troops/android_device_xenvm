@@ -39,6 +39,7 @@
     <string-array translatable="false" name="config_allowed_optional_car_features">
         <item>com.android.car.user.CarUserNoticeService</item>
         <item>storage_monitoring</item>
+        <item>car_evs_service</item>
     </string-array>
 
 </resources>
