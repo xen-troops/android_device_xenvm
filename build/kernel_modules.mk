@@ -25,6 +25,7 @@ endif
 
 BOARD_VENDOR_KERNEL_MODULES += \
 	$(KERNEL_MODULES_OUT)/rcar-rvgc-drm.ko \
+	$(KERNEL_MODULES_OUT)/rcar-vivid.ko \
 
 WLAN_KM_SRC             := hardware/realtek/rtl8812au_km
 WLAN_KM_OUT             := $(PRODUCT_OUT)/obj/WLAN_KM_OBJ
