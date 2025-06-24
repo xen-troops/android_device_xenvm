@@ -444,6 +444,15 @@ PRODUCT_PACKAGES += \
     android.hardware.audio.effect@6.0-impl \
     android.hardware.audio.service \
 
+# EVS Camera HAL
+PRODUCT_PACKAGES += \
+    android.hardware.automotive.evs-xt \
+    evs_app-xt \
+    evsmanagerd-xt \
+
+ENABLE_EVS_SAMPLE := true
+ENABLE_EVS_SERVICE := true
+
 # Updateble APEX
 $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 

@@ -65,9 +65,9 @@
 
 # evs
 #/vendor/bin/android\.hardware\.automotive\.evs@1\.[0-9]+\.xt                    u:object_r:hal_evs_driver_exec:s0
-#/vendor/bin/evs_app_xt                                                          u:object_r:evs_app_exec:s0
+/system/bin/evs_app-xt                                                           u:object_r:evs_app_exec:s0
 #/vendor/etc/automotive/evs(/.*)?                                                u:object_r:evs_app_files:s0
-#/system/bin/android\.automotive\.evs\.manager@1\.[0-9]+                         u:object_r:evs_manager_exec:s0
+/system/bin/evsmanagerd-xt                                                       u:object_r:evsmanagerd_exec:s0
 
 
 # Memory manager devices

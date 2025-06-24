@@ -32,6 +32,14 @@ on early-boot
     start pvrsrvctl
     insmod /vendor/lib/modules/rcar-vivid.ko
 
+on property:init.svc.vendor.hwcomposer-2-3=running
+    wait_for_prop init.svc.vendor.hwcomposer-2-3 running
+    wait /dev/video3
+    start android.hardware.automotive.evs-default
+    wait_for_prop init.svc.android.hardware.automotive.evs-default running
+    start evsmanagerd
+    start evs_app
+
 on boot
     chmod 777 /sys/kernel/debug/tracing
     chmod 0666 /sys/kernel/debug/tracing/trace_marker
