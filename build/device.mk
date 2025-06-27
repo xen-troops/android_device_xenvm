@@ -452,9 +452,13 @@ PRODUCT_PACKAGES += \
     android.hardware.automotive.evs-xt \
     evs_app-xt \
     evsmanagerd-xt \
+    TroutEvsOverlay \
 
 ENABLE_EVS_SAMPLE := true
 ENABLE_EVS_SERVICE := true
+ENABLE_REAR_VIEW_CAMERA_SAMPLE := true
+ENABLE_CAREVSSERVICE_SAMPLE := true
+
 
 # Updateble APEX
 $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
