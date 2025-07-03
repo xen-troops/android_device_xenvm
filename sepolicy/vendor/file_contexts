@@ -91,3 +91,5 @@
 /vendor/lib(64)?/hw/audio.primary.xenvm.so                                   u:object_r:same_process_hal_file:s0
 /vendor/lib(64)?/hw/audio.r_submix.xenvm.so                                  u:object_r:same_process_hal_file:s0
 
+# USB Bluetooth
+/vendor/bin/usb_bt_init\.sh                                                  u:object_r:vendor_shell_exec:s0

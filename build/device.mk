@@ -272,6 +272,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     device/xen/xenvm/bluetooth/firmware/rtl8761b_fw.bin:$(TARGET_COPY_OUT_VENDOR)/firmware/rtl_bt/rtl8761b_fw.bin \
     device/xen/xenvm/bluetooth/firmware/rtl8761b_config.bin:$(TARGET_COPY_OUT_VENDOR)/firmware/rtl_bt/rtl8761b_config.bin \
+    device/xen/xenvm/bluetooth/usb_bt_init.sh:$(TARGET_COPY_OUT_VENDOR)/bin/usb_bt_init.sh \
 
 # Set default log size on userdebug/eng builds to 2M
 ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
