@@ -142,15 +142,6 @@ DEVICE_MANIFEST_FILE             += device/xen/xenvm/manifest.xml
 DEVICE_MATRIX_FILE               := device/xen/xenvm/compatibility_matrix.xml
 BOARD_VNDK_VERSION               := current
 
-# Wi-Fi
-ifeq ($(BOARD_WIFI_VENDOR), realtek)
-    WPA_SUPPLICANT_VERSION := VER_0_8_X
-    BOARD_WPA_SUPPLICANT_DRIVER := NL80211
-    BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_rtl
-    BOARD_HOSTAPD_PRIVATE_LIB := lib_driver_cmd_rtl
-    BOARD_HOSTAPD_DRIVER := NL80211
-    BOARD_WLAN_DEVICE := realtek
-endif
 
 SOONG_CONFIG_NAMESPACES += vhal
 SOONG_CONFIG_vhal += vhal_type

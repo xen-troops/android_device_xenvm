@@ -10,13 +10,3 @@ on boot
 
 on early-fs
     mkdir -p /config
-
-on late-init
-    chmod 666 /dev/video0
-    mkdir /mnt/tee
-    start tee_supplicant
-
-service tee_supplicant /vendor/bin/tee-supplicant
-    user root
-    group keystore
-    seclabel u:r:tee-supp:s0
