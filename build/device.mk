@@ -113,8 +113,6 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.type.automotive.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.type.automotive.xml \
     frameworks/native/data/etc/android.hardware.usb.accessory.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.usb.accessory.xml \
     frameworks/native/data/etc/android.hardware.usb.host.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.usb.host.xml \
-    frameworks/native/data/etc/android.hardware.wifi.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.wifi.xml \
-    frameworks/native/data/etc/android.hardware.wifi.direct.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.wifi.direct.xml \
 
 
 # Copy car_core_hardware and overwrite handheld_core_hardware.xml with a disable config.
@@ -131,11 +129,6 @@ PRODUCT_COPY_FILES += \
     device/generic/car/common/android.hardware.disable.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.flash-autofocus.xml \
     device/generic/car/common/android.hardware.disable.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.raw.xml \
     device/generic/car/common/android.hardware.disable.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.fingerprint.xml \
-    device/generic/car/common/android.hardware.disable.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.wifi.direct.xml \
-
-# Permission for Wi-Fi passpoint support
-PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.wifi.passpoint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.wifi.passpoint.xml
 
 # Additional permissions
 PRODUCT_COPY_FILES += \
@@ -255,15 +248,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.automotive.vehicle@2.0-default-service
 
-# Wi-Fi
-PRODUCT_PACKAGES += \
-    android.hardware.wifi@1.0-service \
-    hostapd \
-    wlutil \
-    wificond \
-    wifilogd \
-    wpa_supplicant
-
 # Bluetooth
 PRODUCT_PACKAGES += \
     android.hardware.bluetooth@1.1-service.btlinux \
@@ -305,16 +289,6 @@ PRODUCT_COPY_FILES += \
     device/xen/xenvm/seccomp/mediacodec-seccomp.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediacodec.policy \
     device/xen/xenvm/seccomp/mediaextractor-seccomp.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediaextractor.policy \
     device/xen/xenvm/seccomp/mediaswcodec-seccomp.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediaswcodec.policy
-
-# Wifi
-PRODUCT_PACKAGES += \
-    libwpa_client \
-    libwifilogd \
-    p2p_supplicant.conf
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    wifi.direct.interface=p2p0 \
-    wifi.interface=wlan0
 
 PRODUCT_COPY_FILES += \
     frameworks/av/media/libeffects/data/audio_effects.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.conf
@@ -469,6 +443,7 @@ PRODUCT_PACKAGE_OVERLAYS += device/xen/xenvm/overlay
 $(call inherit-product, build/make/target/product/generic_ramdisk.mk)
 $(call inherit-product, packages/services/Car/car_product/build/car.mk)
 $(call inherit-product, device/xen/xenvm/build/graphics.mk)
+$(call inherit-product, device/xen/xenvm/build/wifi.mk)
 $(call inherit-product-if-exists, frameworks/base/data/sounds/AudioPackage13.mk)
 $(call inherit-product-if-exists, frameworks/base/data/fonts/fonts.mk)
 $(call inherit-product, device/xen/xenvm/build/kernel_modules.mk)

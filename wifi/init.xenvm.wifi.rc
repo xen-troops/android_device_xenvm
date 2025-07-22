@@ -1,0 +1,28 @@
+
+on post-fs-data
+    #Create directories for wifihal services
+    mkdir /dev/socket/wifihal 0770 wifi wifi
+    chmod 2770 /dev/socket/wifihal
+
+on early-boot
+    setprop wifi.interface wlan0
+
+on boot
+    setprop wlan.driver.status ok
+    # default country code
+    setprop ro.boot.wificountrycode UA
+    # Wireless regulators control
+    chmod 0666 /sys/class/rfkill/rfkill1/state
+    chmod 0666 /dev/rfkill
+
+service wpa_supplicant /vendor/bin/hw/wpa_supplicant \
+        -iwlan0 -Dnl80211 -c/vendor/etc/wifi/wpa_supplicant_xenvm.conf \
+        -g@android:wpa_wlan0 \
+        -ddd
+    interface aidl android.hardware.wifi.supplicant.ISupplicant/default
+    socket wpa_wlan0 dgram 660 wifi wifi
+    class main
+    group system wifi inet
+    user root
+    disabled
+    oneshot
